@@ -36,6 +36,9 @@
 	- sampling (data) rate: from 250 SPS to 16 kSPS (~1000 SPS is good?)
 
 - papers using ADS1299:
+	- [Development of an 8 channel sEMG wireless device based on ADS1299 with Virtual Instrumentation](https://arxiv.org/abs/1808.03711)
+	- [Analog front-ends comparison in the way of a portable, low-power and low-cost EMG controller based on pattern recognition](https://ieeexplore.ieee.org/abstract/document/7318805)
+	- [Data acquisition system of 16-channel EEG based on ATSAM3X8E ARM Cortex-M3 32-bit microcontroller and ADS1299 ](https://pubs.aip.org/aip/acp/article/1862/1/030149/649943/Data-acquisition-system-of-16-channel-EEG-based-on)
 
 # Pre-alpha build
 
