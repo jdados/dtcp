@@ -1,0 +1,13 @@
+# Ignore all generated LTspice output files
+*.raw
+*.log
+*.net
+*.plt
+*.op.raw
+*.temp
+
+# Ignore backup or autosave files
+*.bak
+*.tmp
+*.save
+*.db
