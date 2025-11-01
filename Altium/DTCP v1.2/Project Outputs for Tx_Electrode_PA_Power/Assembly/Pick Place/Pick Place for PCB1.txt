@@ -1,0 +1,78 @@
+Altium Designer Pick and Place Locations
+C:\Users\jerem\AppData\Local\TempReleases\Snapshot\6\Assembly\Pick Place\Pick Place for PCB1.txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       08/09/25
+Time:       14:13
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mil
+
+Center-X(mil) Center-Y(mil) Comment                   Description                                                                                                         Designator Footprint                  Layer    Rotation 
+4050.000      3575.000      XZCM2CRK53WA-8VF          LED                                                                                                                 LED        XZCFBB53W8VF               TopLayer 270      
+4024.919      3481.112      TFCR0603-10W-E-5001BT     "RES Thin Film,  4k?, 0.1%, 0.1W, 25ppm/°C, 0603"                                                                   R15        FP-TFCR0603-IPC_C          TopLayer 180      
+3625.912      3263.254      "100Ohm 0603"             "100Ohm 0603"                                                                                                       R14        FP-CRCW0603-e3-IPC_B       TopLayer 0        
+3458.386      3400.000      CRCW080550R0FKTA          "CRCW080550R0FKTA Res Thick Film 0805 50 Ohm 1% 0.125W(1/8W) ±100ppm/C Pad SMD Automotive T/R"                      R11        FP-D12-CRCW0805-MFG        TopLayer 0        
+3456.835      3330.000      CRCW060325R0FKEA          "RES Thick Film, 25?, 1%, 0.1W, 100ppm/°C, 0603"                                                                    R12        FP-CRCW0603-e3-IPC_B       TopLayer 0        
+3040.000      3235.000      VJ0603Y104KXJAP           ""                                                                                                                  C31        CAPC1608X92X38NL15T08      TopLayer 0        
+3210.000      2865.000      VJ0603Y104KXJAP           ""                                                                                                                  C30        CAPC1608X92X38NL15T08      TopLayer 0        
+3420.000      2828.425      VJ0603Y104KXJAP           ""                                                                                                                  C29        CAPC1608X92X38NL15T08      TopLayer 90       
+3585.000      3145.000      VJ0603Y104KXJAP           ""                                                                                                                  C28        CAPC1608X92X38NL15T08      TopLayer 90       
+3105.000      2865.000      C0603C106M8PACTU          "CAP CER 10UF 10V X5R 0603"                                                                                         C27        FP-C0603C106M8PACTU-MFG    TopLayer 0        
+3340.000      3100.000      AD9850BRSZ-REEL           "CMOS, 125 MHz Complete DDS Synthesizer, 10-Bit, Parallel, Serial, RS-28, 1500 Reel, Pb-Free"                       U1         ADI-RS-28_N                TopLayer 90       
+2841.181      2737.598      LD39200PU33R              "IC REG LINEAR 3.3V 2A 6DFN"                                                                                        U3         FP-DFN6-7946637-MFG        TopLayer 180      
+3125.000      2720.000      830207044109              "830207044109 WE-SPXO Crystal Oscillator"                                                                           Y1         WE-SPXO_CFPS-39            TopLayer 0        
+3405.000      2575.000      3362P-1-103LF             "Square Trimpot(R) Trimming Potentiometer, 10 KOhm, 300 V, -55 to 125 degC, 3-Pin THD, RoHS, Tube"                  VR1        BOUR-3362P                 TopLayer 180      
+2890.000      3095.000      MSPM0C1104SDGS20R         "24MHz ArmÂ® CortexÂ®-M0+ MCU with 16KB flash, 1KB SRAM, 12-bit ADC 20-VSSOP -40 to 125"                            U2         DGS0020A_TEX               TopLayer 0        
+3860.000      3300.315      LTC3122EDE#PBF            "2.5 A Synchronous Step-Up DC/DC Converter with Output Disconnect, 12-pin SON (DE-UE-12), -40 to 125 degC, Pb-Free" U1         LT-DE-UE-12_V              TopLayer 90       
+3692.898      2620.000      CRCW06031M02FKEA          "RES Thick Film, 1.02M?, 1%, 0.1W, 100ppm/°C, 0603"                                                                 R1         FP-CRCW0603-e3-IPC_A       TopLayer 0        
+3330.000      2363.505      613010143121              ""                                                                                                                  J1         613010143121               TopLayer 0        
+2725.000      2674.782      C1608X5R1H105K080AB       "Multilayer Ceramic Capacitors 1µF ±10% 50V X5R SMD 0603"                                                           C25        FP-C1608-080-0_1-IPC_B     TopLayer 270      
+2960.000      2670.000      C1608X5R1A106K080AC       "Multilayer Ceramic Capacitors 10µF ±10% 10V X5R SMD 0603"                                                          C26        FP-C1608-080-0_1-MFG       TopLayer 90       
+3965.000      2590.039      GRM32ER61E226KE15L        "CAP CER 22UF 25V X5R 1210"                                                                                         C2         FP-GRM32-MFG               TopLayer 270      
+3685.000      3360.000      CGA3E2X7R1H104K080AE      "Cap Ceramic 100nF 50V X7R 10% Pad SMD 0603 +125°C Automotive T/R"                                                  C1         FP-CGA3E-0_3-0_1-IPC_A     TopLayer 0        
+2785.000      3915.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C24        FP-POSCAP-D3L-MFG          TopLayer 0        
+3885.000      4125.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C23        FP-POSCAP-D3L-MFG          TopLayer 180      
+3885.000      3930.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C22        FP-POSCAP-D3L-MFG          TopLayer 180      
+2785.000      3710.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C21        FP-POSCAP-D3L-MFG          TopLayer 0        
+3885.000      3735.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C20        FP-POSCAP-D3L-MFG          TopLayer 180      
+2785.000      4125.000      16TQC220MD3               "Molded Tantalum Polymer Capacitor 220uF 20% 16V life 2000Hours SMD 2917"                                           C19        FP-POSCAP-D3L-MFG          TopLayer 0        
+3360.079      3647.913      PMA3-43-1W+               "Integrated Circuit"                                                                                                IC2        QFN51P300X300X89-13N       TopLayer 90       
+3840.000      2679.055      MP5000ADQ-LF-P            "Integrated Circuit"                                                                                                IC1        SON50P300X300X100-11N-D    TopLayer 270      
+3515.000      3520.000      FCHP0402E50R0BBT1         "FCHP0402E50R0BBT1 SMD Chip Resistor, 50 Ohm, ± 0.1%, 1 W, 0402 [1005 Metric], Thin Film, High Frequency"           R10        FP-FC0402-MFG              TopLayer 180      
+3360.000      3890.000      RMCF0603ZG0R00            "0? ±0 0.1W 0603 Thick Film Chip Resistor AEC-Q200 compliant"                                                       R9         FP-RMCF0603-IPC_B          TopLayer 90       
+3755.000      2830.000      CRCW060322R0FKEA          "RES Thick Film, 22?, 1%, 0.1W, 100ppm/°C, 0603"                                                                    R8         FP-CRCW0603-e3-IPC_B       TopLayer 180      
+3730.000      2715.000      DNP                       DNP                                                                                                                 R7         FP-RMCF0603-IPC_B          TopLayer 90       
+4035.000      3415.000      CRCW040286K6FKED          ""                                                                                                                  R6         RESC1005X40X25NL05T05      TopLayer 180      
+3965.000      3280.000      ERJ-2RKF5762X             ""                                                                                                                  R5         RESC1005X40X25NL05T05      TopLayer 270      
+3925.000      3460.000      CRCW0603113KFKEC          "RES Thick Film, 113k?, 1%, 0.1W, 100ppm/°C, 0603"                                                                  R4         FP-CRCW0603-e3-MFG         TopLayer 270      
+4005.787      3115.627      RMCF0603ZG0R00            "0? ±0 0.1W 0603 Thick Film Chip Resistor AEC-Q200 compliant"                                                       R3         FP-RMCF0603-IPC_B          TopLayer 90       
+3925.787      3110.627      RMCF0603ZG0R00            "0? ±0 0.1W 0603 Thick Film Chip Resistor AEC-Q200 compliant"                                                       R2         FP-RMCF0603-IPC_B          TopLayer 270      
+2770.000      2890.000      ESR03EZPF3301             "3.3k? ±1% 0.25W 0603 Anti-Surge Chip Resistor AEC-Q200"                                                            R1         FP-ESR03-IPC_A             TopLayer 0        
+3150.000      4365.000      MLZ2012M1R0HTD25          "Shielded Multilayer Inductor 1uH ±20% 800mA 130m? AEC-Q200 SMD 0805"                                               L7         FP-MLZ2012-1_25-IPC_C      TopLayer 270      
+3399.567      3515.000      LQW21HN1R5J00L            "Wire Wound Ferrite type RF Inuctor 1.5uH ±5% 85mA 5.33? 0805 (2012)"                                               L6         FP-LQW21HN_00-MFG          TopLayer 180      
+3310.000      4235.000      MLZ2012M1R0HTD25          "Shielded Multilayer Inductor 1uH ±20% 800mA 130m? AEC-Q200 SMD 0805"                                               L5         FP-MLZ2012-1_25-IPC_C      TopLayer 0        
+3310.000      4065.000      MABAES0060                "BALUN 300KHZ-200MHZ 1:1 6SMD"                                                                                      L4         FP-MABAES0060-MFG          TopLayer 90       
+3470.000      4360.000      MLZ2012M1R0HTD25          "Shielded Multilayer Inductor 1uH ±20% 800mA 130m? AEC-Q200 SMD 0805"                                               L3         FP-MLZ2012-1_25-IPC_C      TopLayer 90       
+3264.567      3770.000      LQW21HN1R5J00L            "Wire Wound Ferrite type RF Inuctor 1.5uH ±5% 85mA 5.33? 0805 (2012)"                                               L2         FP-LQW21HN_00-MFG          TopLayer 180      
+3789.134      3083.228      XAL4030-472MEC            "Power Inductor (SMD), 4.7 µH, 5.1 A, Shielded, 4.5 A, XAL40xx Series, 4mm x 4mm x 3.1mm"                           L1         FP-XAL4030-472MEC-MFG      TopLayer 180      
+3285.000      3510.000      GRM1555C1HR40WA01D        ""                                                                                                                  C18        CAPC1005X55X25LL05T10      TopLayer 0        
+3430.354      3755.000      GRM1555C1HR40WA01D        ""                                                                                                                  C17        CAPC1005X55X25LL05T10      TopLayer 180      
+3360.000      3775.000      GRM1555C1H102JA01D        "Chip Multilayer Ceramic Capacitors for General Purpose, 0402, 1000pF, C0G, 30ppm/°C, 5%, 50V"                      C16        FP-GRM155-0_05-IPC_B       TopLayer 90       
+3355.000      3420.000      GRM1555C1H102JA01D        "Chip Multilayer Ceramic Capacitors for General Purpose, 0402, 1000pF, C0G, 30ppm/°C, 5%, 50V"                      C15        FP-GRM155-0_05-IPC_B       TopLayer 90       
+3210.000      3710.000      GRM1555C1H102JA01D        "Chip Multilayer Ceramic Capacitors for General Purpose, 0402, 1000pF, C0G, 30ppm/°C, 5%, 50V"                      C14        FP-GRM155-0_05-IPC_B       TopLayer 0        
+3225.000      3630.000      GRM155R71H104KE14D        "Chip Multilayer Ceramic Capacitors for General Purpose, 0402, 0.10uF, X7R, 15%, 10%, 50V"                          C13        FP-GRM155-0_05-IPC_B       TopLayer 0        
+3206.872      3830.000      GRM155R71H104KE14D        "Chip Multilayer Ceramic Capacitors for General Purpose, 0402, 0.10uF, X7R, 15%, 10%, 50V"                          C12        FP-GRM155-0_05-IPC_B       TopLayer 0        
+3885.000      2821.575      DNP                       GRM1885C1H560JA01D                                                                                                  C11        CAPC1608X90X35NL10T15      TopLayer 270      
+3770.000      2500.000      GRM31CR71E106KA12L        "Chip Multilayer Ceramic Capacitors for General Purpose, 1206, 10uF, X7R, 15%, 10%, 25V"                            C10        FP-GRM31C-0_2-e0_3_0_8-MFG TopLayer 180      
+4025.000      2903.071      GRM31CR71E106KA12L        "Chip Multilayer Ceramic Capacitors for General Purpose, 1206, 10uF, X7R, 15%, 10%, 25V"                            C9         FP-GRM31C-0_2-e0_3_0_8-MFG TopLayer 90       
+3965.000      2756.457      GRM188R71E105KA12D        ""                                                                                                                  C8         CAPC1608X90X35ML10T15      TopLayer 270      
+4025.000      3265.000      C2012X5R1E475K125AB       "Multilayer Ceramic Capacitors 4.7µF ±10% 25V X5R SMD 0805"                                                         C7         FP-C2012-125-0_2-MFG       TopLayer 90       
+4034.252      3375.000      C0402C100J5GACTU          "Multilayer Ceramic Capacitor, C Series, 10 Pf, - 5%, C0G / Np0, 50 V, 0402 [1005 Metric] Rohs Compliant: Yes"      C6         FP-C0402-BB-MFG            TopLayer 0        
+3980.787      3394.629      C1005X7R1H331K050BA       "Multilayer Ceramic Capacitors 330pF ±10% 50V X7R SMD 0402"                                                         C5         FP-C1005-050-0_05-IPC_B    TopLayer 90       
+3780.000      2950.000      "CAP 10uF 10V 1206(3216)" "CAP 10uF 10V ±10% 1206 (3216 Metric) Thickness 1.9mm SMD"                                                          C4         CAPC1206(3216)190_L        TopLayer 0        
+3685.000      3440.000      CGA3E1X7R1E105K080AC      "Cap Ceramic 1uF 25V X7R 10% Pad SMD 0603 +125°C Automotive T/R"                                                    C3         FP-CGA3E-0_3-0_1-IPC_A     TopLayer 0        
+2700.000      3255.000      C0603C106M8PACTU          "CAP CER 10UF 10V X5R 0603"                                                                                         C2         FP-C0603C106M8PACTU-MFG    TopLayer 0        
+2685.000      3005.000      VJ0603Y104KXJAP           ""                                                                                                                  C1         CAPC1608X92X38NL15T08      TopLayer 90       
