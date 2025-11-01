@@ -1,0 +1,2 @@
+.step param freq 20Meg 30Meg 1e6
+.param freq 25Meg
