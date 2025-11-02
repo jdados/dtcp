@@ -43,6 +43,10 @@ The second prototype addresses issues found in the first design and focuses on i
 | Validate board outputs on lab equipment | End of March 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | [ ] |
 | Validate board functionality in animal experiments | End of April 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi |  | [ ] |
 
+## Bugs
+
+- N/A as we haven't tested the PCB and firmware yet.
+
 ## Links
 
 - [Time tracking log](https://docs.google.com/spreadsheets/d/18YieW_wAob6iDCQWRSr79hOXjbCugq7RjKLDexqUogo/edit?gid=0#gid=0)
