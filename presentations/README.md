@@ -10,6 +10,6 @@ This part of the repository is dedicated to maintaining and updating a **single 
 
 ## Latest Presentation Link
 
-You can always find the most recent version of our weekly presentation here if you are signed into your UF Account:
+You can always find the most recent version of our weekly presentation here:
 
-- Luis Wong: https://uflorida-my.sharepoint.com/:p:/g/personal/luiswong_ufl_edu/EaZ3J9vPRXhJklZfMs2pZLsB5hkF-rbkgZdJQji_YEtJgg?e=LGHKyK
+- [Luis Wong's Presentation (requires UF sign-in)](https://uflorida-my.sharepoint.com/:p:/g/personal/luiswong_ufl_edu/EaZ3J9vPRXhJklZfMs2pZLsB5hkF-rbkgZdJQji_YEtJgg?e=LGHKyK)
