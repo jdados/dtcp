@@ -4,7 +4,7 @@ RECTANGLE Normal -64 -56 80 56
 WINDOW 0 8 -56 Bottom 2
 SYMATTR Prefix X
 SYMATTR Value UCC27511A
-SYMATTR ModelFile C:\Users\lrwon\Documents\CEN4907C\Fall 2025\dtcp\LTspice\Amplifier\UCC27511A.lib
+SYMATTR ModelFile UCC27511A.lib
 WINDOW 3 8 56 Top 2
 PIN -64 -32 LEFT 8
 PINATTR PinName INM
