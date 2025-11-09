@@ -32,7 +32,6 @@ ReportSuppressedErrorsInMessages=0
 FSMCodingStyle=eFMSDropDownList_OneProcess
 FSMEncodingStyle=eFMSDropDownList_OneHot
 IsProjectConflictPreventionWarningsEnabled=0
-ConstraintManagerFlow=0
 IsVirtualBomDocumentRemoved=0
 OutputPath=
 LogFolderPath=
@@ -726,6 +725,10 @@ OutputName3=Test Point Report
 OutputDocumentPath3=
 OutputVariantName3=[No Variations]
 OutputDefault3=0
+Configuration3_Name1=ForceUpdateSettings
+Configuration3_Item1=False
+Configuration3_Name2=OutputConfigurationParameter1
+Configuration3_Item2=AssyAdjacencyDistance=250000|AssyGenerateCSVFormat=True|AssyGenerateIPCFormat=False|AssyGenerateSpreadSheetFormat=False|AssyGenerateTextFormat=False|AssyMergeNetTieNets=False|AssyOriginPosition=Relative|AssyOutlineLayer=56|AssyOutputAdjancencies=False|AssyOutputBoardOutline=False|AssyOutputTraces=False|AssyReportBottomLayerTestpoints=True|AssyReportTopLayerTestpoints=True|AssyUnits=Imperial|Record=TestPointView|DocumentPath=C:\Users\jerem\Desktop\dtcp design 1\dtcp\Altium\DTCP v1.2\PCB1.PcbDoc
 
 [OutputGroup5]
 Name=Fabrication Outputs
@@ -1223,23 +1226,6 @@ Type118=1
 Type119=1
 Type120=1
 Type121=1
-Type122=1
-Type123=1
-Type124=1
-Type125=1
-Type126=1
-Type127=1
-Type128=1
-Type129=1
-Type130=1
-Type131=1
-Type132=1
-Type133=1
-Type134=1
-Type135=1
-Type136=1
-Type137=1
-Type138=1
 
 [Difference Levels]
 Type1=1
@@ -1311,11 +1297,6 @@ Type66=1
 Type67=1
 Type68=1
 Type69=1
-Type70=1
-Type71=1
-Type72=1
-Type73=1
-Type74=1
 
 [Electrical Rules Check]
 Type1=1
@@ -1437,7 +1418,6 @@ Type116=2
 Type117=3
 Type118=3
 Type119=3
-MultiChannelAlternate=0
 AlternateItemFail=3
 Type122=2
 Type123=1
@@ -1469,8 +1449,6 @@ Type148=2
 Type149=2
 Type150=2
 Type151=2
-Type152=1
-Type153=1
 
 [ERC Connection Matrix]
 L1=NNNNNNNNNNNWNNNWW
