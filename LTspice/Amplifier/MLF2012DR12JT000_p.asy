@@ -1,0 +1,14 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal -48 -24 48 24
+WINDOW 0 0 -24 Bottom 2
+SYMATTR Prefix X
+SYMATTR Value MLF2012DR12JT000_p
+SYMATTR ModelFile C:\Users\lrwon\Downloads\mlf2012dr12jt000_p.mod
+WINDOW 3 0 24 Top 2
+PIN -48 0 LEFT 8
+PINATTR PinName n1
+PINATTR SpiceOrder 1
+PIN 48 0 RIGHT 8
+PINATTR PinName n2
+PINATTR SpiceOrder 2
