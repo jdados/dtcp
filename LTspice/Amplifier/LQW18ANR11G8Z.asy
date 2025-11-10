@@ -1,0 +1,14 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal -96 -24 96 24
+WINDOW 0 0 -24 Bottom 2
+SYMATTR Prefix X
+SYMATTR Value LQW18ANR11G8Z
+SYMATTR ModelFile C:\Users\lrwon\Downloads\LQW18ANR11G8Z.mod
+WINDOW 3 0 24 Top 2
+PIN -96 0 LEFT 8
+PINATTR PinName port1
+PINATTR SpiceOrder 1
+PIN 96 0 RIGHT 8
+PINATTR PinName port2
+PINATTR SpiceOrder 2
