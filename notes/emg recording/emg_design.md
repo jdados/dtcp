@@ -33,10 +33,10 @@
 	- gain of up to 24x
 	- amplifier gain is inversely proportial to the amplifier bandwidth
 - filtering: 
-	- external band-pass of 500 Hz and low-pass filters
+	- external band-pass of 10 to 500 Hz
 - ADC: 
 	- resolution: 24 bits (assuming reference of 4.5 V, (4.5 V / 2^24^) = 0.268 μV)
-	- sampling (data) rate: from 250 SPS to 16 kSPS (~1000 SPS is good?)
+	- sampling (data) rate: from 250 SPS to 16 kSPS (assuming that 500 Hz is the top limit of the signal, the sampling rate should be at least 1000 SPS to avoid aliasing)
 
 - papers using ADS1299:
 	- [Development of an 8 channel sEMG wireless device based on ADS1299 with Virtual Instrumentation](https://arxiv.org/abs/1808.03711)
@@ -46,11 +46,9 @@
 
 # Pre-alpha build
 
-- schematic (altium):
+- schematic (altium)
 
-- electrodes:
-	- how electrodes work (drawings)
-	- refer to some paper
+- electrodes
 
 - every connection needs to be able to be debugged
 - MCU needs to have a launchpad (for debugging; launchpad contains a debugger chip and the chip identical to one used in PCB)
