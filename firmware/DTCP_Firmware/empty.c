@@ -32,8 +32,9 @@
 
 #include "ti_msp_dl_config.h"
 
-int main(void)
-{
+int main(void) {
+    // test comment (commit)
+    
     SYSCFG_DL_init();
 
     while (1) {
