@@ -22,9 +22,9 @@ The first prototype aims to realize the most basic functionality: a 25 MHz diffe
 |------|------------|---------|-------------|-----------|---------|
 | Design the PA circuit | End of October 2025 | Luis Wong | Jeremiah Dados |  | ✔️ |
 | Design the EMG circuit | End of October 2025 | Dmytro Stavskyi | Jeremiah Dados |  | ✔️ |
-| Design the first prototype PCB in Altium | Mid-November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | 🟡 |
-| Place the fabrication order | Mid-November 2025 | Jeremiah Dados | Han Wu |  | ❌ |
-| Receive the board and assemble it | End of November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ❌ |
+| Design the first prototype PCB in Altium | Mid-November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
+| Place the fabrication order | Mid-November 2025 | Jeremiah Dados | Han Wu |  | ✔️ |
+| Receive the board and assemble it | End of November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | 🟡 |
 | Validate board outputs on lab equipment | Mid-December 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi | Present functional prototype at end of semester | ❌ |
 | Validate board functionality in animal experiments | End of January 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi | Work resumes 2nd week of January after winter break | ❌ |
 
@@ -45,12 +45,19 @@ The second prototype addresses issues found in the first design and focuses on i
 
 ## Bugs
 
-- N/A as we haven't tested the PCB and firmware yet.
+- Due to low Q of inductors the power efficiency we see in simulations is ~30% instead of the >50% we wish for and expect.
+- Impedance matching network of Class-E PA might be unoptimized introducing unwanted reactance at output.
+
+Note: As of this time we have not recieved our board so we haven't experimentally valididated it functionality.
 
 ## Links
 
-- [Time tracking log](https://docs.google.com/spreadsheets/d/18YieW_wAob6iDCQWRSr79hOXjbCugq7RjKLDexqUogo/edit?gid=0#gid=0)
+Some files may require UF sign-in:
 
-- [Design draft](https://docs.google.com/document/d/1d00vnsQUVDlf2uW5-OWDDMQm1jWjiy-7jFtAZofUm3A/edit?tab=t.0)
+- [Time Tracking Log](https://docs.google.com/spreadsheets/d/18YieW_wAob6iDCQWRSr79hOXjbCugq7RjKLDexqUogo/edit?gid=0#gid=0)
 
-- [Pre-alpha build](https://docs.google.com/document/d/1ijc-FFz9Bt2qVDn8euLwuQjNTMDzeiQRgQFuhg-fLZ0/edit?tab=t.0)
+- [Design Draft](https://docs.google.com/document/d/1d00vnsQUVDlf2uW5-OWDDMQm1jWjiy-7jFtAZofUm3A/edit?tab=t.0)
+
+- [Pre-Alpha Build](https://docs.google.com/document/d/1ijc-FFz9Bt2qVDn8euLwuQjNTMDzeiQRgQFuhg-fLZ0/edit?tab=t.0)
+
+- [Design Prototype](https://docs.google.com/document/d/1iM8SsOxejECSPiFp-hwhw81iVYtYDDtyBoNlvvrWGng/edit?usp=sharing)
