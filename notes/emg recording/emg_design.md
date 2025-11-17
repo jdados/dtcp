@@ -26,9 +26,6 @@
 - ADS1299 specs:
 	- 7.5 electrical characteristics (explain everything: importance of input capacitance, etc.)
 	- e.g., if amplitude of EMG is 1 mV, then we need minimum of 16 bit ADC
-- SPI: 
-	- can fully setup and control the device with SPI (commands include: WAKEUP, STANDBY, START, STOP)
-	- timing
 - PGA:
 	- gain of up to 24x
 	- amplifier gain is inversely proportial to the amplifier bandwidth
@@ -52,3 +49,18 @@
 
 - every connection needs to be able to be debugged
 - MCU needs to have a launchpad (for debugging; launchpad contains a debugger chip and the chip identical to one used in PCB)
+
+# SPI
+
+## ADS1299
+
+- can fully setup and control the device with SPI (commands include: WAKEUP, STANDBY, START, STOP)
+- maximum serial clock frequency of 20 MHz
+- uses SPI Mode 1
+	- clock polarity: 0
+	- clock phase: 1
+- timing
+
+## MCU
+
+- maximum serial clock frequency is 12 MHz
