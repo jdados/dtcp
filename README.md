@@ -48,7 +48,7 @@ The second prototype addresses issues found in the first design and focuses on i
 - Due to low Q of inductors the power efficiency we see in simulations is ~30% instead of the >50% we wish for and expect.
 - Impedance matching network of Class-E PA might be unoptimized introducing unwanted reactance at output.
 
-Note: As of this time we have not recieved our board so we haven't experimentally valididated it functionality.
+Note: As of this time we have not recieved our board so we haven't experimentally valididated its functionality.
 
 ## Links
 
