@@ -100,6 +100,15 @@ extern "C" {
 #define GPIO_SPI_0_IOMUX_CS0_FUNC                      IOMUX_PINCM3_PF_SPI0_CS0
 
 
+
+/* Port definition for Pin Group GPIO_LED */
+#define GPIO_LED_PORT                                                    (GPIOA)
+
+/* Defines for RED_22: GPIOA.22 with pinCMx 23 on package pin 17 */
+#define GPIO_LED_RED_22_PIN                                     (DL_GPIO_PIN_22)
+#define GPIO_LED_RED_22_IOMUX                                    (IOMUX_PINCM23)
+
+
 /* clang-format on */
 
 void SYSCFG_DL_init(void);
@@ -107,6 +116,7 @@ void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
 void SYSCFG_DL_SPI_0_init(void);
+
 
 
 #ifdef __cplusplus

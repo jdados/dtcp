@@ -75,6 +75,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
     DL_GPIO_initPeripheralOutputFunction(
         GPIO_SPI_0_IOMUX_CS0, GPIO_SPI_0_IOMUX_CS0_FUNC);
 
+    DL_GPIO_initDigitalOutput(GPIO_LED_RED_22_IOMUX);
+
+    DL_GPIO_setPins(GPIO_LED_PORT, GPIO_LED_RED_22_PIN);
+    DL_GPIO_enableOutput(GPIO_LED_PORT, GPIO_LED_RED_22_PIN);
+
 }
 
 

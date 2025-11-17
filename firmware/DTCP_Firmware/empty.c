@@ -32,16 +32,16 @@
 
 #include "ti_msp_dl_config.h"
 #include "ti/driverlib/dl_spi.h"
+#include "ti/driverlib/dl_gpio.h"
 
 int main(void) {
     // test comment (commit)
-    
+
     // initializes SPI as well
     // (Clock polarity: 0, clock phase: 1)
     SYSCFG_DL_init();
 
-    DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
-    DL_SPI_enable(SPI_0_INST);
+    // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
 
     while (1) { 
         uint8_t data = 0xFF;
@@ -51,5 +51,11 @@ int main(void) {
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[0]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[1]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[2]);
+
+        DL_GPIO_togglePins(GPIO_LED_PORT,
+            GPIO_LED_RED_22_PIN);
+
+        // pauses code execution
+        __BKPT(0);
     }
 }
