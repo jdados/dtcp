@@ -31,12 +31,25 @@
  */
 
 #include "ti_msp_dl_config.h"
+#include "ti/driverlib/dl_spi.h"
 
 int main(void) {
     // test comment (commit)
     
+    // initializes SPI as well
+    // (Clock polarity: 0, clock phase: 1)
     SYSCFG_DL_init();
 
-    while (1) {
+    DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
+    DL_SPI_enable(SPI_0_INST);
+
+    while (1) { 
+        uint8_t data = 0xFF;
+        DL_SPI_transmitData8(SPI_0_INST, data);
+
+        uint8_t data_buffer[] = {0x01, 0x02, 0x03};
+        DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[0]);
+        DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[1]);
+        DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[2]);
     }
 }
