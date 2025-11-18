@@ -94,19 +94,18 @@ extern "C" {
 #define GPIO_SPI_0_SCLK_PIN                                      DL_GPIO_PIN_11
 #define GPIO_SPI_0_IOMUX_SCLK                                   (IOMUX_PINCM12)
 #define GPIO_SPI_0_IOMUX_SCLK_FUNC                   IOMUX_PINCM12_PF_SPI0_SCLK
-#define GPIO_SPI_0_CS0_PORT                                               GPIOA
-#define GPIO_SPI_0_CS0_PIN                                        DL_GPIO_PIN_2
-#define GPIO_SPI_0_IOMUX_CS0                                     (IOMUX_PINCM3)
-#define GPIO_SPI_0_IOMUX_CS0_FUNC                      IOMUX_PINCM3_PF_SPI0_CS0
 
 
 
-/* Port definition for Pin Group GPIO_LED */
-#define GPIO_LED_PORT                                                    (GPIOA)
+/* Port definition for Pin Group GPIO_A */
+#define GPIO_A_PORT                                                      (GPIOA)
 
 /* Defines for RED_22: GPIOA.22 with pinCMx 23 on package pin 17 */
-#define GPIO_LED_RED_22_PIN                                     (DL_GPIO_PIN_22)
-#define GPIO_LED_RED_22_IOMUX                                    (IOMUX_PINCM23)
+#define GPIO_A_RED_22_PIN                                       (DL_GPIO_PIN_22)
+#define GPIO_A_RED_22_IOMUX                                      (IOMUX_PINCM23)
+/* Defines for CS: GPIOA.23 with pinCMx 24 on package pin 18 */
+#define GPIO_A_CS_PIN                                           (DL_GPIO_PIN_23)
+#define GPIO_A_CS_IOMUX                                          (IOMUX_PINCM24)
 
 
 /* clang-format on */

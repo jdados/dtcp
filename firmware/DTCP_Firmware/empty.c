@@ -44,19 +44,21 @@ int main(void) {
     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
 
     while (1) { 
+        /*
         uint8_t data = 0xFF;
         DL_SPI_transmitData8(SPI_0_INST, data);
+        */
 
-        /*
-        uint8_t data_buffer[] = {0x01, 0x02, 0x03};
+        // write to configuration register 1 (1 kSPS)
+        uint8_t data_buffer[3] = {0x41, 0x00, 0b10010100};
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[0]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[1]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[2]);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 
-        DL_GPIO_togglePins(GPIO_LED_PORT,
-            GPIO_LED_RED_22_PIN);
+        //DL_GPIO_togglePins(GPIO_PORTA, GPIO_PORTA_RED_22_PIN);
 
-        */
         // pauses code execution
         __BKPT(0);
     }

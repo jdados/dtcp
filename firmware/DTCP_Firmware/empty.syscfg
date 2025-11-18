@@ -18,21 +18,27 @@ const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
 /**
  * Write custom configuration values to the imported modules.
  */
-GPIO1.$name                          = "GPIO_LED";
-GPIO1.associatedPins[0].assignedPort = "PORTA";
+GPIO1.$name                          = "GPIO_A";
+GPIO1.associatedPins.create(2);
 GPIO1.associatedPins[0].initialValue = "SET";
 GPIO1.associatedPins[0].assignedPin  = "22";
 GPIO1.associatedPins[0].$name        = "RED_22";
+GPIO1.associatedPins[1].$name        = "CS";
+GPIO1.associatedPins[1].ioStructure  = "SD";
+GPIO1.associatedPins[1].initialValue = "SET";
+GPIO1.associatedPins[1].pin.$assign  = "PA23";
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
 SPI1.$name               = "SPI_0";
 SPI1.targetBitRate       = 2000000;
 SPI1.phase               = "1";
+SPI1.chipSelect          = ["3"];
+SPI1.frameFormat         = "MOTO3";
 SPI1.sclkPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric0";
 SPI1.mosiPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric1";
 SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
-SPI1.cs0PinConfig.$name  = "ti_driverlib_gpio_GPIOPinGeneric3";
+SPI1.peripheral.$assign  = "SPI0";
 
 
 /**
@@ -44,9 +50,7 @@ GPIO1.associatedPins[0].pin.$suggestSolution = "PA22";
 Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
-SPI1.peripheral.$suggestSolution             = "SPI0";
 SPI1.peripheral.sclkPin.$suggestSolution     = "PA11";
 SPI1.peripheral.mosiPin.$suggestSolution     = "PA18";
 SPI1.peripheral.misoPin.$suggestSolution     = "PA16";
-SPI1.peripheral.cs0Pin.$suggestSolution      = "PA2";
 SYSCTL.peripheral.$suggestSolution           = "SYSCTL";
