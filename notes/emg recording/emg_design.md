@@ -57,8 +57,8 @@
 - can fully setup and control the device with SPI (commands include: WAKEUP, STANDBY, START, STOP)
 - maximum serial clock frequency of 20 MHz
 - uses SPI Mode 1
-	- clock polarity: 0
-	- clock phase: 1
+	- clock polarity: 0 (clock low when not transmiting data)
+	- clock phase: 1 (sample at the second clock edge; falling clock edge)
 - timing
 
 ## MCU
