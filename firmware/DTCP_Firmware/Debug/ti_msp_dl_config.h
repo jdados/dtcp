@@ -77,6 +77,22 @@ extern "C" {
 
 
 
+/* Defines for UART_0 */
+#define UART_0_INST                                                        UART0
+#define UART_0_INST_FREQUENCY                                              32768
+#define UART_0_INST_IRQHandler                                  UART0_IRQHandler
+#define UART_0_INST_INT_IRQN                                      UART0_INT_IRQn
+#define GPIO_UART_0_TX_PORT                                                GPIOA
+#define GPIO_UART_0_TX_PIN                                        DL_GPIO_PIN_27
+#define GPIO_UART_0_IOMUX_TX                                     (IOMUX_PINCM28)
+#define GPIO_UART_0_IOMUX_TX_FUNC                      IOMUX_PINCM28_PF_UART0_TX
+#define UART_0_BAUD_RATE                                                  (9600)
+#define UART_0_IBRD_33_kHZ_9600_BAUD                                         (1)
+#define UART_0_FBRD_33_kHZ_9600_BAUD                                         (9)
+
+
+
+
 /* Defines for SPI_0 */
 #define SPI_0_INST                                                         SPI0
 #define SPI_0_INST_IRQHandler                                   SPI0_IRQHandler
@@ -114,6 +130,7 @@ void SYSCFG_DL_init(void);
 void SYSCFG_DL_initPower(void);
 void SYSCFG_DL_GPIO_init(void);
 void SYSCFG_DL_SYSCTL_init(void);
+void SYSCFG_DL_UART_0_init(void);
 void SYSCFG_DL_SPI_0_init(void);
 
 

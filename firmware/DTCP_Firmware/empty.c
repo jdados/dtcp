@@ -33,12 +33,14 @@
 #include "ti_msp_dl_config.h"
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
+#include "ti/driverlib/dl_uart.h"
 
 int main(void) {
     // test comment (commit)
 
-    // initializes SPI as well
-    // (Clock polarity: 0, clock phase: 1)
+    // initializes all the modules
+    // SPI Mode for ADS1299:
+    // Clock polarity: 0, clock phase: 1
     SYSCFG_DL_init();
 
     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
@@ -57,9 +59,13 @@ int main(void) {
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[2]);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 
+        // use "XDS110 Class Application/User UART" COM port
+        uint8_t byte = 'A';
+        DL_UART_transmitDataBlocking(UART_0_INST, byte);
+
         //DL_GPIO_togglePins(GPIO_PORTA, GPIO_PORTA_RED_22_PIN);
 
         // pauses code execution
-        __BKPT(0);
+        // __BKPT(0);
     }
 }
