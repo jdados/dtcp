@@ -6,10 +6,10 @@ SHELL = cmd.exe
 
 # Add inputs and outputs from these tool invocations to the build variables 
 SYSCFG_SRCS += \
-../empty.syscfg 
+../main.syscfg 
 
 C_SRCS += \
-../empty.c \
+../main.c \
 ./ti_msp_dl_config.c \
 C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c 
 
@@ -22,7 +22,7 @@ GEN_FILES += \
 ./ti_msp_dl_config.c 
 
 C_DEPS += \
-./empty.d \
+./main.d \
 ./ti_msp_dl_config.d \
 ./startup_mspm0c110x_ticlang.d 
 
@@ -30,7 +30,7 @@ GEN_OPTS += \
 ./device.opt 
 
 OBJS += \
-./empty.o \
+./main.o \
 ./ti_msp_dl_config.o \
 ./startup_mspm0c110x_ticlang.o 
 
@@ -40,7 +40,7 @@ GEN_MISC_FILES += \
 ./Event.dot 
 
 OBJS__QUOTED += \
-"empty.o" \
+"main.o" \
 "ti_msp_dl_config.o" \
 "startup_mspm0c110x_ticlang.o" 
 
@@ -50,7 +50,7 @@ GEN_MISC_FILES__QUOTED += \
 "Event.dot" 
 
 C_DEPS__QUOTED += \
-"empty.d" \
+"main.d" \
 "ti_msp_dl_config.d" \
 "startup_mspm0c110x_ticlang.d" 
 
@@ -60,11 +60,11 @@ GEN_FILES__QUOTED += \
 "ti_msp_dl_config.c" 
 
 C_SRCS__QUOTED += \
-"../empty.c" \
+"../main.c" \
 "./ti_msp_dl_config.c" \
 "C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c" 
 
 SYSCFG_SRCS__QUOTED += \
-"../empty.syscfg" 
+"../main.syscfg" 
 
 

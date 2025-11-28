@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Sat Nov 22 00:19:33 2025
+>> Linked Fri Nov 28 18:54:35 2025
 
 OUTPUT FILE NAME:   <DTCP_Firmware.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000325
@@ -41,7 +41,7 @@ section   page    origin      length       input sections
                   00000124    0000004c     ti_msp_dl_config.o (.text.SYSCFG_DL_SPI_0_init)
                   00000170    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
                   000001b8    00000044                 : dl_spi.o (.text.DL_SPI_init)
-                  000001fc    00000040     empty.o (.text.main)
+                  000001fc    00000040     main.o (.text.main)
                   0000023c    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
                   00000270    00000030     driverlib.a : dl_spi.o (.text.DL_SPI_transmitDataBlocking8)
                   000002a0    00000030                 : dl_uart.o (.text.DL_UART_transmitDataBlocking)
@@ -89,7 +89,7 @@ MODULE SUMMARY
     .\
        ti_msp_dl_config.o             336    24        0      
        startup_mspm0c110x_ticlang.o   6      192       0      
-       empty.o                        64     0         0      
+       main.o                         64     0         0      
     +--+------------------------------+------+---------+---------+
        Total:                         406    216       0      
                                                               

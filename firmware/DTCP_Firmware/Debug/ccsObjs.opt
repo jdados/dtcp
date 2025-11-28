@@ -1,4 +1,4 @@
-"./empty.o"
+"./main.o"
 "./ti_msp_dl_config.o"
 "./startup_mspm0c110x_ticlang.o"
 -l"./device_linker.cmd"
