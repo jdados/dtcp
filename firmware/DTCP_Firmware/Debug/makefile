@@ -10,6 +10,7 @@ GEN_OPTS__FLAG := @"./device.opt"
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
 
 ORDERED_OBJS += \
+"./ads1299.o" \
 "./main.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0c110x_ticlang.o" \
@@ -143,8 +144,8 @@ DTCP_Firmware.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" 
-	-$(RM) "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" 
+	-$(RM) "ads1299.o" "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" 
+	-$(RM) "ads1299.d" "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
