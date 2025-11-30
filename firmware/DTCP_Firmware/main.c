@@ -2,7 +2,10 @@
 #include "ti_msp_dl_config.h"
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
-#include "ti/driverlib/dl_uart.h"
+// #include "ti/driverlib/dl_uart.h"
+
+#include "ads1299.h"
+#include "uart.h"
 
 int main(void) {
     // test comment (commit)
@@ -21,19 +24,22 @@ int main(void) {
         */
 
         // write to configuration register 1 (1 kSPS)
+        /*
         uint8_t data_buffer[3] = {0x41, 0x00, 0b10010100};
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[0]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[1]);
         DL_SPI_transmitDataBlocking8(SPI_0_INST, data_buffer[2]);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        */
 
         // use "XDS110 Class Application/User UART" COM port
-        uint8_t byte = 'A';
-        DL_UART_transmitDataBlocking(UART_0_INST, byte);
+        // uint8_t byte = 'A';
+       //  DL_UART_transmitDataBlocking(UART_0_INST, byte);
 
         //DL_GPIO_togglePins(GPIO_PORTA, GPIO_PORTA_RED_22_PIN);
-
+        char string[] = "Hello, World!\n";
+        UART_transmit_message(string, 15);
         // pauses code execution
         // __BKPT(0);
     }

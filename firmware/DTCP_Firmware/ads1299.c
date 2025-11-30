@@ -1,7 +1,13 @@
 #include "ads1299.h"
 
 void SPI_init() {
-
+    DL_SPI_setClockConfig(SPI0, &SPI_0_clock_config);
+    DL_SPI_init(SPI0, &SPI_0_config);
+    DL_SPI_setBitRateSerialClockDivider(SPI0, 5);
+    DL_SPI_setFIFOThreshold(SPI0, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
+    // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
+    
+    DL_SPI_enable(SPI0);
 }
 
 void ADS1299_init() {

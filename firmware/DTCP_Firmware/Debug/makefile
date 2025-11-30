@@ -14,6 +14,7 @@ ORDERED_OBJS += \
 "./main.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0c110x_ticlang.o" \
+"./uart.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -144,8 +145,8 @@ DTCP_Firmware.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ads1299.o" "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" 
-	-$(RM) "ads1299.d" "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" 
+	-$(RM) "ads1299.o" "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" "uart.o" 
+	-$(RM) "ads1299.d" "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" "uart.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 
