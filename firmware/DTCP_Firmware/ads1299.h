@@ -1,6 +1,13 @@
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
 
+/* pins on the board (for now)
+    CS (Select) - PA23
+    SCLK (Clock) - PA11
+    MOSI (PICO) - PA18/A7
+    MISO (POCI) - PA16
+*/
+
 #define CS_PIN DL_GPIO_PIN_23
 #define READ_REG_ADDR_OFFSET 0x20
 #define WRITE_REG_ADDR_OFFSET 0x40
