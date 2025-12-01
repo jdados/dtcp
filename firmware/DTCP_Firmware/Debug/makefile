@@ -10,11 +10,11 @@ GEN_OPTS__FLAG := @"./device.opt"
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
 
 ORDERED_OBJS += \
-"./ads1299.o" \
 "./main.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0c110x_ticlang.o" \
-"./uart.o" \
+"./src/ads1299.o" \
+"./src/uart.o" \
 $(GEN_CMDS__FLAG) \
 -Wl,-ldevice.cmd.genlibs \
 -Wl,-llibc.a \
@@ -27,7 +27,9 @@ RMDIR := RMDIR /S/Q
 # All of the sources participating in the build are defined here
 -include sources.mk
 -include subdir_vars.mk
+-include src/subdir_vars.mk
 -include subdir_rules.mk
+-include src/subdir_rules.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -145,8 +147,8 @@ DTCP_Firmware.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "ads1299.o" "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" "uart.o" 
-	-$(RM) "ads1299.d" "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" "uart.d" 
+	-$(RM) "main.o" "ti_msp_dl_config.o" "startup_mspm0c110x_ticlang.o" "src\ads1299.o" "src\uart.o" 
+	-$(RM) "main.d" "ti_msp_dl_config.d" "startup_mspm0c110x_ticlang.d" "src\ads1299.d" "src\uart.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

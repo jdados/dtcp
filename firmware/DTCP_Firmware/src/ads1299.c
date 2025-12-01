@@ -1,4 +1,4 @@
-#include "ads1299.h"
+#include "../ads1299.h"
 
 void SPI_init() {
     DL_SPI_setClockConfig(SPI0, &SPI_0_clock_config);
@@ -15,7 +15,7 @@ void ADS1299_init() {
 }
 
 void ADS_1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data) {
-        uint8_t data_buffer[3] = {reg_addr, num_regs - 1, data};
+        uint8_t data_buffer[3] = {WRITE_REG_ADDR_OFFSET | reg_addr, num_regs - 1, data};
         DL_GPIO_clearPins(GPIOA, CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI0, data_buffer[0]);
         DL_SPI_transmitDataBlocking8(SPI0, data_buffer[1]);

@@ -1,4 +1,4 @@
-#include "uart.h"
+#include "../uart.h"
 
 void UART_init() {
     DL_UART_Main_setClockConfig(UART0, &UART0_clock_config);
