@@ -38,11 +38,11 @@ int main(void) {
        //  DL_UART_transmitDataBlocking(UART_0_INST, byte);
         ADS_1299_write_registers(1, 1, 0b10010100);
         // pauses code execution
-        __BKPT(0);
+        // __BKPT(0);
         //DL_GPIO_togglePins(GPIO_PORTA, GPIO_PORTA_RED_22_PIN);
 
-        char string[] = "Hello, World!\n";
-        UART_transmit_message(string, 15);
+        // char string[] = "Hello, World!\n";
+        // UART_transmit_message(string, 15);
         // pauses code execution
         // __BKPT(0);
     }
