@@ -10,7 +10,7 @@
 
 #define CS_PIN DL_GPIO_PIN_23
 #define READ_REG_ADDR_OFFSET 0x20
-#define WRITE_REG_ADDR_OFFSET 0x40
+#define WRITE_REG_ADDR_OFFSET 0b00100000
 
 static const DL_SPI_Config SPI_0_config = {
     .mode        = DL_SPI_MODE_CONTROLLER,

@@ -14,8 +14,6 @@ const GPIO1  = GPIO.addInstance();
 const SPI    = scripting.addModule("/ti/driverlib/SPI", {}, false);
 const SPI1   = SPI.addInstance();
 const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
-const UART   = scripting.addModule("/ti/driverlib/UART", {}, false);
-const UART1  = UART.addInstance();
 
 /**
  * Write custom configuration values to the imported modules.
@@ -28,28 +26,24 @@ GPIO1.associatedPins[0].$name        = "RED_22";
 GPIO1.associatedPins[1].$name        = "CS";
 GPIO1.associatedPins[1].ioStructure  = "SD";
 GPIO1.associatedPins[1].initialValue = "SET";
-GPIO1.associatedPins[1].pin.$assign  = "PA23";
+GPIO1.associatedPins[1].pin.$assign  = "PA6";
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
-SPI1.$name               = "SPI_0";
-SPI1.targetBitRate       = 2000000;
-SPI1.phase               = "1";
-SPI1.chipSelect          = ["3"];
-SPI1.frameFormat         = "MOTO3";
-SPI1.sclkPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric0";
-SPI1.mosiPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric1";
-SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
-SPI1.peripheral.$assign  = "SPI0";
+SPI1.$name                      = "SPI_0";
+SPI1.targetBitRate              = 2000000;
+SPI1.phase                      = "1";
+SPI1.chipSelect                 = ["3"];
+SPI1.sclkPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric0";
+SPI1.mosiPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric1";
+SPI1.misoPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric2";
+SPI1.peripheral.$assign         = "SPI0";
+SPI1.peripheral.sclkPin.$assign = "PA11";
+SPI1.peripheral.mosiPin.$assign = "PA18";
+SPI1.peripheral.misoPin.$assign = "PA4";
+SPI1.peripheral.cs3Pin.$assign  = "PA27";
+SPI1.cs3PinConfig.$name         = "ti_driverlib_gpio_GPIOPinGeneric4";
 
-
-UART1.$name                    = "UART_0";
-UART1.uartClkSrc               = "LFCLK";
-UART1.ovsRate                  = "3";
-UART1.direction                = "TX";
-UART1.txPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric3";
-UART1.peripheral.$assign       = "UART0";
-UART1.peripheral.txPin.$assign = "PA27";
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
@@ -60,7 +54,4 @@ GPIO1.associatedPins[0].pin.$suggestSolution = "PA22";
 Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
-SPI1.peripheral.sclkPin.$suggestSolution     = "PA11";
-SPI1.peripheral.mosiPin.$suggestSolution     = "PA18";
-SPI1.peripheral.misoPin.$suggestSolution     = "PA16";
 SYSCTL.peripheral.$suggestSolution           = "SYSCTL";

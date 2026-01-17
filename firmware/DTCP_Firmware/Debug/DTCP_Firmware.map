@@ -1,17 +1,17 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Mon Dec  1 18:35:46 2025
+>> Linked Fri Jan 16 20:45:33 2026
 
 OUTPUT FILE NAME:   <DTCP_Firmware.out>
-ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 0000031d
+ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 00000291
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  FLASH                 00000000   00004000  000003b0  00003c50  R  X
+  FLASH                 00000000   00004000  00000308  00003cf8  R  X
   SRAM                  20000000   00000400  00000040  000003c0  RW X
   BCR_CONFIG            41c00000   000000ff  00000000  000000ff  R   
 
@@ -20,10 +20,10 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-00000000    00000000    000003b0   000003b0    r-x
+00000000    00000000    00000308   00000308    r-x
   00000000    00000000    000000c0   000000c0    r-- .intvecs
-  000000c0    000000c0    000002d8   000002d8    r-x .text
-  00000398    00000398    00000018   00000018    r-- .rodata
+  000000c0    000000c0    00000238   00000238    r-x .text
+  000002f8    000002f8    00000010   00000010    r-- .rodata
 200003c0    200003c0    00000040   00000000    rw-
   200003c0    200003c0    00000040   00000000    rw- .stack
 
@@ -36,36 +36,32 @@ section   page    origin      length       input sections
 .intvecs   0    00000000    000000c0     
                   00000000    000000c0     startup_mspm0c110x_ticlang.o (.intvecs)
 
-.text      0    000000c0    000002d8     
-                  000000c0    00000064     ti_msp_dl_config.o (.text.SYSCFG_DL_UART_0_init)
-                  00000124    0000004c     ti_msp_dl_config.o (.text.SYSCFG_DL_SPI_0_init)
-                  00000170    00000048     driverlib.a : dl_uart.o (.text.DL_UART_init)
-                  000001b8    00000044                 : dl_spi.o (.text.DL_SPI_init)
-                  000001fc    00000040     ads1299.o (.text.ADS_1299_write_registers)
-                  0000023c    00000034     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
-                  00000270    00000030     driverlib.a : dl_spi.o (.text.DL_SPI_transmitDataBlocking8)
-                  000002a0    00000030     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
-                  000002d0    00000028     main.o (.text.main)
-                  000002f8    00000024     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
-                  0000031c    00000020     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs)
-                  0000033c    00000018     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
-                  00000354    00000012     driverlib.a : dl_spi.o (.text.DL_SPI_setClockConfig)
-                  00000366    00000012                 : dl_uart.o (.text.DL_UART_setClockConfig)
-                  00000378    0000000a                 : dl_common.o (.text.DL_Common_delayCycles)
-                  00000382    00000006     libc.a : exit.c.obj (.text:abort)
-                  00000388    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
-                  0000038c    00000004     startup_mspm0c110x_ticlang.o (.text.Reset_Handler)
-                  00000390    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
-                  00000394    00000002     startup_mspm0c110x_ticlang.o (.text.Default_Handler)
-                  00000396    00000002     --HOLE-- [fill = 0]
+.text      0    000000c0    00000238     
+                  000000c0    00000070     main.o (.text.main)
+                  00000130    0000004c     ti_msp_dl_config.o (.text.SYSCFG_DL_SPI_0_init)
+                  0000017c    00000044     driverlib.a : dl_spi.o (.text.DL_SPI_init)
+                  000001c0    00000030                 : dl_spi.o (.text.DL_SPI_transmitDataBlocking8)
+                  000001f0    00000030     ti_msp_dl_config.o (.text.SYSCFG_DL_GPIO_init)
+                  00000220    0000002c     ti_msp_dl_config.o (.text.SYSCFG_DL_initPower)
+                  0000024c    00000024     ti_msp_dl_config.o (.text.SYSCFG_DL_SYSCTL_init)
+                  00000270    00000020     driverlib.a : dl_spi.o (.text.DL_SPI_receiveDataBlocking8)
+                  00000290    00000020     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noinit_noargs)
+                  000002b0    00000014     ti_msp_dl_config.o (.text.SYSCFG_DL_init)
+                  000002c4    00000012     driverlib.a : dl_spi.o (.text.DL_SPI_setClockConfig)
+                  000002d6    0000000a                 : dl_common.o (.text.DL_Common_delayCycles)
+                  000002e0    00000006     libc.a : exit.c.obj (.text:abort)
+                  000002e6    00000004     libsysbm.a : hostexit.c.obj (.text.HOSTexit)
+                  000002ea    00000004     startup_mspm0c110x_ticlang.o (.text.Reset_Handler)
+                  000002ee    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  000002f2    00000002     startup_mspm0c110x_ticlang.o (.text.Default_Handler)
+                  000002f4    00000004     --HOLE-- [fill = 0]
 
 .cinit     0    00000000    00000000     
 
-.rodata    0    00000398    00000018     
-                  00000398    0000000a     ti_msp_dl_config.o (.rodata.gSPI_0_config)
-                  000003a2    0000000a     ti_msp_dl_config.o (.rodata.gUART_0Config)
-                  000003ac    00000002     ti_msp_dl_config.o (.rodata.gSPI_0_clockConfig)
-                  000003ae    00000002     ti_msp_dl_config.o (.rodata.gUART_0ClockConfig)
+.rodata    0    000002f8    00000010     
+                  000002f8    0000000a     ti_msp_dl_config.o (.rodata.gSPI_0_config)
+                  00000302    00000002     ti_msp_dl_config.o (.rodata.gSPI_0_clockConfig)
+                  00000304    00000004     --HOLE-- [fill = 0]
 
 .init_array 
 *          0    00000000    00000000     UNINITIALIZED
@@ -87,23 +83,17 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
-       ti_msp_dl_config.o             336    24        0      
+       ti_msp_dl_config.o             224    12        0      
        startup_mspm0c110x_ticlang.o   6      192       0      
-       main.o                         40     0         0      
+       main.o                         112    0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         382    216       0      
-                                                              
-    .\src\
-       ads1299.o                      64     0         0      
-    +--+------------------------------+------+---------+---------+
-       Total:                         64     0         0      
+       Total:                         342    204       0      
                                                               
     C:/ti/mspm0_sdk_2_07_00_05/source/ti/driverlib/lib/ticlang/m0p/mspm0c110x/driverlib.a
-       dl_spi.o                       134    0         0      
-       dl_uart.o                      90     0         0      
+       dl_spi.o                       166    0         0      
        dl_common.o                    10     0         0      
     +--+------------------------------+------+---------+---------+
-       Total:                         234    0         0      
+       Total:                         176    0         0      
                                                               
     C:\ti\ccs2031\ccs\tools\compiler\ti-cgt-armllvm_4.0.4.LTS\lib\armv6m-ti-none-eabi/c/libc.a
        boot_cortex_m.c.obj            32     0         0      
@@ -119,45 +109,42 @@ MODULE SUMMARY
                                                               
        Stack:                         0      0         64     
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   726    216       64     
+       Grand Total:                   564    204       64     
 
 
 GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name 
 
 address   name                        
 -------   ----                        
-00000395  ADC0_IRQHandler             
-000001fd  ADS_1299_write_registers    
-00000388  C$$EXIT                     
-00000379  DL_Common_delayCycles       
-000001b9  DL_SPI_init                 
-00000355  DL_SPI_setClockConfig       
-00000271  DL_SPI_transmitDataBlocking8
-00000171  DL_UART_init                
-00000367  DL_UART_setClockConfig      
-00000395  DMA_IRQHandler              
-00000395  Default_Handler             
-00000395  GPIOA_IRQHandler            
-00000395  GROUP0_IRQHandler           
-00000389  HOSTexit                    
-00000395  HardFault_Handler           
-00000395  I2C0_IRQHandler             
-00000395  NMI_Handler                 
-00000395  PendSV_Handler              
-0000038d  Reset_Handler               
-00000395  SPI0_IRQHandler             
-00000395  SVC_Handler                 
-000002a1  SYSCFG_DL_GPIO_init         
-00000125  SYSCFG_DL_SPI_0_init        
-000002f9  SYSCFG_DL_SYSCTL_init       
-000000c1  SYSCFG_DL_UART_0_init       
-0000033d  SYSCFG_DL_init              
-0000023d  SYSCFG_DL_initPower         
-00000395  SysTick_Handler             
-00000395  TIMA0_IRQHandler            
-00000395  TIMG14_IRQHandler           
-00000395  TIMG8_IRQHandler            
-00000395  UART0_IRQHandler            
+000002f3  ADC0_IRQHandler             
+000002e6  C$$EXIT                     
+000002d7  DL_Common_delayCycles       
+0000017d  DL_SPI_init                 
+00000271  DL_SPI_receiveDataBlocking8 
+000002c5  DL_SPI_setClockConfig       
+000001c1  DL_SPI_transmitDataBlocking8
+000002f3  DMA_IRQHandler              
+000002f3  Default_Handler             
+000002f3  GPIOA_IRQHandler            
+000002f3  GROUP0_IRQHandler           
+000002e7  HOSTexit                    
+000002f3  HardFault_Handler           
+000002f3  I2C0_IRQHandler             
+000002f3  NMI_Handler                 
+000002f3  PendSV_Handler              
+000002eb  Reset_Handler               
+000002f3  SPI0_IRQHandler             
+000002f3  SVC_Handler                 
+000001f1  SYSCFG_DL_GPIO_init         
+00000131  SYSCFG_DL_SPI_0_init        
+0000024d  SYSCFG_DL_SYSCTL_init       
+000002b1  SYSCFG_DL_init              
+00000221  SYSCFG_DL_initPower         
+000002f3  SysTick_Handler             
+000002f3  TIMA0_IRQHandler            
+000002f3  TIMG14_IRQHandler           
+000002f3  TIMG8_IRQHandler            
+000002f3  UART0_IRQHandler            
 20000400  __STACK_END                 
 00000040  __STACK_SIZE                
 00000000  __TI_ATRegion0_region_sz    
@@ -183,12 +170,12 @@ UNDEFED   __mpu_init
 20000000  __start___llvm_prf_cnts     
 20000000  __stop___llvm_prf_bits      
 20000000  __stop___llvm_prf_cnts      
-0000031d  _c_int00_noinit_noargs      
-00000391  _system_pre_init            
-00000383  abort                       
+00000291  _c_int00_noinit_noargs      
+000002ef  _system_pre_init            
+000002e1  abort                       
 ffffffff  binit                       
 00000000  interruptVectors            
-000002d1  main                        
+000000c1  main                        
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -210,42 +197,39 @@ address   name
 00000000  __TI_static_base__          
 00000000  interruptVectors            
 00000040  __STACK_SIZE                
-000000c1  SYSCFG_DL_UART_0_init       
-00000125  SYSCFG_DL_SPI_0_init        
-00000171  DL_UART_init                
-000001b9  DL_SPI_init                 
-000001fd  ADS_1299_write_registers    
-0000023d  SYSCFG_DL_initPower         
-00000271  DL_SPI_transmitDataBlocking8
-000002a1  SYSCFG_DL_GPIO_init         
-000002d1  main                        
-000002f9  SYSCFG_DL_SYSCTL_init       
-0000031d  _c_int00_noinit_noargs      
-0000033d  SYSCFG_DL_init              
-00000355  DL_SPI_setClockConfig       
-00000367  DL_UART_setClockConfig      
-00000379  DL_Common_delayCycles       
-00000383  abort                       
-00000388  C$$EXIT                     
-00000389  HOSTexit                    
-0000038d  Reset_Handler               
-00000391  _system_pre_init            
-00000395  ADC0_IRQHandler             
-00000395  DMA_IRQHandler              
-00000395  Default_Handler             
-00000395  GPIOA_IRQHandler            
-00000395  GROUP0_IRQHandler           
-00000395  HardFault_Handler           
-00000395  I2C0_IRQHandler             
-00000395  NMI_Handler                 
-00000395  PendSV_Handler              
-00000395  SPI0_IRQHandler             
-00000395  SVC_Handler                 
-00000395  SysTick_Handler             
-00000395  TIMA0_IRQHandler            
-00000395  TIMG14_IRQHandler           
-00000395  TIMG8_IRQHandler            
-00000395  UART0_IRQHandler            
+000000c1  main                        
+00000131  SYSCFG_DL_SPI_0_init        
+0000017d  DL_SPI_init                 
+000001c1  DL_SPI_transmitDataBlocking8
+000001f1  SYSCFG_DL_GPIO_init         
+00000221  SYSCFG_DL_initPower         
+0000024d  SYSCFG_DL_SYSCTL_init       
+00000271  DL_SPI_receiveDataBlocking8 
+00000291  _c_int00_noinit_noargs      
+000002b1  SYSCFG_DL_init              
+000002c5  DL_SPI_setClockConfig       
+000002d7  DL_Common_delayCycles       
+000002e1  abort                       
+000002e6  C$$EXIT                     
+000002e7  HOSTexit                    
+000002eb  Reset_Handler               
+000002ef  _system_pre_init            
+000002f3  ADC0_IRQHandler             
+000002f3  DMA_IRQHandler              
+000002f3  Default_Handler             
+000002f3  GPIOA_IRQHandler            
+000002f3  GROUP0_IRQHandler           
+000002f3  HardFault_Handler           
+000002f3  I2C0_IRQHandler             
+000002f3  NMI_Handler                 
+000002f3  PendSV_Handler              
+000002f3  SPI0_IRQHandler             
+000002f3  SVC_Handler                 
+000002f3  SysTick_Handler             
+000002f3  TIMA0_IRQHandler            
+000002f3  TIMG14_IRQHandler           
+000002f3  TIMG8_IRQHandler            
+000002f3  UART0_IRQHandler            
 20000000  __start___llvm_prf_bits     
 20000000  __start___llvm_prf_cnts     
 20000000  __stop___llvm_prf_bits      
@@ -259,4 +243,4 @@ ffffffff  __binit__
 ffffffff  binit                       
 UNDEFED   __mpu_init                  
 
-[63 symbols]
+[60 symbols]
