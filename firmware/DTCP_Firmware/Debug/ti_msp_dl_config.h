@@ -94,10 +94,6 @@ extern "C" {
 #define GPIO_SPI_0_SCLK_PIN                                      DL_GPIO_PIN_11
 #define GPIO_SPI_0_IOMUX_SCLK                                   (IOMUX_PINCM12)
 #define GPIO_SPI_0_IOMUX_SCLK_FUNC                   IOMUX_PINCM12_PF_SPI0_SCLK
-#define GPIO_SPI_0_CS3_PORT                                               GPIOA
-#define GPIO_SPI_0_CS3_PIN                                       DL_GPIO_PIN_27
-#define GPIO_SPI_0_IOMUX_CS3                                    (IOMUX_PINCM28)
-#define GPIO_SPI_0_IOMUX_CS3_FUNC            IOMUX_PINCM28_PF_SPI0_CS3_CD_POCI3
 
 
 
@@ -107,9 +103,15 @@ extern "C" {
 /* Defines for RED_22: GPIOA.22 with pinCMx 23 on package pin 17 */
 #define GPIO_A_RED_22_PIN                                       (DL_GPIO_PIN_22)
 #define GPIO_A_RED_22_IOMUX                                      (IOMUX_PINCM23)
-/* Defines for CS: GPIOA.6 with pinCMx 7 on package pin 10 */
-#define GPIO_A_CS_PIN                                            (DL_GPIO_PIN_6)
-#define GPIO_A_CS_IOMUX                                           (IOMUX_PINCM7)
+/* Defines for CS: GPIOA.24 with pinCMx 25 on package pin 19 */
+#define GPIO_A_CS_PIN                                           (DL_GPIO_PIN_24)
+#define GPIO_A_CS_IOMUX                                          (IOMUX_PINCM25)
+/* Defines for RESET: GPIOA.2 with pinCMx 3 on package pin 8 */
+#define GPIO_A_RESET_PIN                                         (DL_GPIO_PIN_2)
+#define GPIO_A_RESET_IOMUX                                        (IOMUX_PINCM3)
+/* Defines for PWDN: GPIOA.23 with pinCMx 24 on package pin 18 */
+#define GPIO_A_PWDN_PIN                                         (DL_GPIO_PIN_23)
+#define GPIO_A_PWDN_IOMUX                                        (IOMUX_PINCM24)
 
 
 /* clang-format on */

@@ -17,6 +17,20 @@ int main(void) {
     // (GPIOA, CS_PIN);
 
     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
+    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    DL_SPI_transmitDataBlocking8(SPI0, 0x06);
+    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    delay_cycles(100);
+
+    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    DL_SPI_transmitDataBlocking8(SPI0, 0x02);
+    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    delay_cycles(100);
+
+    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    DL_SPI_transmitDataBlocking8(SPI0, 0x11);
+    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    delay_cycles(100);
 
     while (1) { 
         /*
@@ -47,14 +61,16 @@ int main(void) {
         // pauses code execution
         // __BKPT(0);
 
+
         /* read ID */
         uint8_t id = 0;
         // uint8_t data_buffer[2] = {0x20, 0};
-        DL_GPIO_clearPins(GPIOA, CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0b10101010);
-        DL_SPI_transmitDataBlocking8(SPI0, 0b01010101);
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x20);
+        DL_SPI_transmitDataBlocking8(SPI0, 0);
         id = DL_SPI_receiveDataBlocking8(SPI0);
-        DL_GPIO_setPins(GPIOA, CS_PIN);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        // DL_GPIO_setPins(GPIOA, CS_PIN);
         // __BKPT(0);
         // printf("Received id: %x", id);
     }

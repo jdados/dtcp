@@ -1,6 +1,6 @@
 # FIXED
 
-main.o: ../main.c \
+.o: ../main.c \
  ti_msp_dl_config.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/DeviceFamily.h \
