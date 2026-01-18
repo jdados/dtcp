@@ -1,0 +1,6 @@
+Today, we meet as the group in the lab to continue working on the firmware and the power amplifier.
+We started working at 3pm and ended at 6pm.
+For the firmware side, the results were:
+- We made the CS a GPIO pin in order to have more control over it, specifically in order to have valid SPI transactions as defined by the datasheet for the chip, and now can properly pull down and pull up the pin.
+- We were able to get 0.034 A (instead of 0.01 ~ 0 A initially) to be outputed by the chip, indicated that the chip is actually powered up.
+- With the current code, we also get data from MISO and can now properly read from registers (for now, only tested with reset values).
