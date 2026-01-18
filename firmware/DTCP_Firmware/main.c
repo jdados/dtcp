@@ -66,8 +66,8 @@ int main(void) {
         uint8_t id = 0;
         // uint8_t data_buffer[2] = {0x20, 0};
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0x20);
-        DL_SPI_transmitDataBlocking8(SPI0, 0);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x22);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x00);
         id = DL_SPI_receiveDataBlocking8(SPI0);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         // DL_GPIO_setPins(GPIOA, CS_PIN);

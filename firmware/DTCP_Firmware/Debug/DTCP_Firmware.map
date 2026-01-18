@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Sun Jan 18 16:20:19 2026
+>> Linked Sun Jan 18 16:36:46 2026
 
 OUTPUT FILE NAME:   <DTCP_Firmware.out>
 ENTRY POINT SYMBOL: "_c_int00_noinit_noargs"  address: 000002e1
