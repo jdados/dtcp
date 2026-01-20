@@ -19,7 +19,7 @@ const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
  * Write custom configuration values to the imported modules.
  */
 GPIO1.$name                          = "GPIO_A";
-GPIO1.associatedPins.create(4);
+GPIO1.associatedPins.create(5);
 GPIO1.associatedPins[0].initialValue = "SET";
 GPIO1.associatedPins[0].assignedPin  = "22";
 GPIO1.associatedPins[0].$name        = "RED_22";
@@ -27,11 +27,15 @@ GPIO1.associatedPins[1].$name        = "CS";
 GPIO1.associatedPins[1].ioStructure  = "SD";
 GPIO1.associatedPins[1].initialValue = "SET";
 GPIO1.associatedPins[1].pin.$assign  = "PA24";
-GPIO1.associatedPins[2].$name        = "RESET";
+GPIO1.associatedPins[2].initialValue = "SET";
+GPIO1.associatedPins[2].direction    = "INPUT";
+GPIO1.associatedPins[2].$name        = "DRDY";
 GPIO1.associatedPins[2].pin.$assign  = "PA2";
 GPIO1.associatedPins[3].$name        = "PWDN";
 GPIO1.associatedPins[3].initialValue = "SET";
 GPIO1.associatedPins[3].pin.$assign  = "PA23";
+GPIO1.associatedPins[4].$name        = "START";
+GPIO1.associatedPins[4].pin.$assign  = "PA17";
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 

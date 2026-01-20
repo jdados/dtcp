@@ -11,20 +11,47 @@ void SPI_init() {
 }
 
 void ADS1299_init() {
-	SPI_init();
+	// SPI_init();
+        // GPIO_A_RESET_PIN
+        //DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
+        //delay_cycles(40);
+        //DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
+        //delay_cycles(40);
+
+
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x06);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(100);
+
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x02);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(100);
+
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x11);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(100);
+
+        // ADS1299_write_registers(1, 1, 0b11011100);
+        // delay_cycles(10);
 }
 
-void ADS_1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data) {
-        uint8_t data_buffer[3] = {WRITE_REG_ADDR_OFFSET | reg_addr, num_regs - 1, data};
-        DL_GPIO_clearPins(GPIOA, CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, data_buffer[0]);
-        DL_SPI_transmitDataBlocking8(SPI0, data_buffer[1]);
-        DL_SPI_transmitDataBlocking8(SPI0, data_buffer[2]);
-        DL_GPIO_setPins(GPIOA, CS_PIN);
+void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data) {
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x40 | reg_addr);
+        DL_SPI_transmitDataBlocking8(SPI0, num_regs - 1);
+        DL_SPI_transmitDataBlocking8(SPI0, data);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 }
 
-uint32_t ADS1299_read_register(void) {
-        uint32_t data = 0;
+uint8_t ADS1299_read_register(uint8_t reg_addr, uint8_t num_regs) {
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x20);
+        DL_SPI_transmitDataBlocking8(SPI0, 0);
+        uint8_t data = DL_SPI_receiveDataBlocking8(SPI0);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         return data;
 }
 

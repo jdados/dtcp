@@ -17,20 +17,56 @@ int main(void) {
     // (GPIOA, CS_PIN);
 
     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x06);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(100);
 
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x02);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(100);
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x06);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(20);
 
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x11);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(100);
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x02);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(5);
+
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x11);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(5);
+
+
+        /* Write to CONFIG1  - CHN2 registers */
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 1);
+        DL_SPI_transmitDataBlocking8(SPI0, 6 - 1);
+        /* DAISY_EN = 1, CLK_EN = 0, Output data rate = 1 kSPS */
+        // DL_SPI_transmitDataBlocking8(SPI0, 0b11011100);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x96);
+        /* CONFIG 2*/
+        // DL_SPI_transmitDataBlocking8(SPI0, 0b11000000);
+        DL_SPI_transmitDataBlocking8(SPI0, 0xC0);
+        /* CONFIG 3 */
+        DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
+        /* default values */
+        DL_SPI_transmitDataBlocking8(SPI0, 0x00);
+        /* CH 1*/
+        // DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+        /* CH 2*/
+        DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+
+        /* Start the conversions */
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x08);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(40);
+        // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_START_PIN);
+
+        /* Cannot read from or write to registers in this mode */
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x10);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        delay_cycles(8);
 
     while (1) { 
         /*
@@ -63,13 +99,33 @@ int main(void) {
 
 
         /* read ID */
-        uint8_t id = 0;
+        
+        /*
+        uint32_t data[28] = {0};
+        for (uint32_t i = 0; i < 28; ++i) {
+            data[i] = DL_SPI_receiveDataBlocking32(SPI0);
+        }
+        */
+
+        /*
+        uint8_t val = 0;
+        val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+        if (val == 0) {
+            DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+            __BKPT(0);
+        }
+        */
+
         // uint8_t data_buffer[2] = {0x20, 0};
+        /*
+        uint8_t id = 0;
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0x22);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x25);
         DL_SPI_transmitDataBlocking8(SPI0, 0x00);
         id = DL_SPI_receiveDataBlocking8(SPI0);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        */
+        // uint8_t stuff = ADS1299_read_register(0, 1);
         // DL_GPIO_setPins(GPIOA, CS_PIN);
         // __BKPT(0);
         // printf("Received id: %x", id);

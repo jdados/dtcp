@@ -106,12 +106,15 @@ extern "C" {
 /* Defines for CS: GPIOA.24 with pinCMx 25 on package pin 19 */
 #define GPIO_A_CS_PIN                                           (DL_GPIO_PIN_24)
 #define GPIO_A_CS_IOMUX                                          (IOMUX_PINCM25)
-/* Defines for RESET: GPIOA.2 with pinCMx 3 on package pin 8 */
-#define GPIO_A_RESET_PIN                                         (DL_GPIO_PIN_2)
-#define GPIO_A_RESET_IOMUX                                        (IOMUX_PINCM3)
+/* Defines for DRDY: GPIOA.2 with pinCMx 3 on package pin 8 */
+#define GPIO_A_DRDY_PIN                                          (DL_GPIO_PIN_2)
+#define GPIO_A_DRDY_IOMUX                                         (IOMUX_PINCM3)
 /* Defines for PWDN: GPIOA.23 with pinCMx 24 on package pin 18 */
 #define GPIO_A_PWDN_PIN                                         (DL_GPIO_PIN_23)
 #define GPIO_A_PWDN_IOMUX                                        (IOMUX_PINCM24)
+/* Defines for START: GPIOA.17 with pinCMx 18 on package pin 13 */
+#define GPIO_A_START_PIN                                        (DL_GPIO_PIN_17)
+#define GPIO_A_START_IOMUX                                       (IOMUX_PINCM18)
 
 
 /* clang-format on */
