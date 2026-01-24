@@ -1,5 +1,6 @@
 #include "../ads1299.h"
 
+/* don't use yet */
 void SPI_init() {
     DL_SPI_setClockConfig(SPI0, &SPI_0_clock_config);
     DL_SPI_init(SPI0, &SPI_0_config);
@@ -10,6 +11,7 @@ void SPI_init() {
     DL_SPI_enable(SPI0);
 }
 
+/* don't use yet */
 void ADS1299_init() {
 	// SPI_init();
         // GPIO_A_RESET_PIN
@@ -17,7 +19,6 @@ void ADS1299_init() {
         //delay_cycles(40);
         //DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
         //delay_cycles(40);
-
 
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI0, 0x06);
@@ -38,6 +39,14 @@ void ADS1299_init() {
         // delay_cycles(10);
 }
 
+/* does not work */
+void ADS1299_transmit_cmd(uint8_t cmd) {
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        DL_SPI_transmitDataBlocking8(SPI0, cmd);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+}
+
+/* not done yet*/
 void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data) {
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI0, 0x40 | reg_addr);
@@ -46,10 +55,11 @@ void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data) {
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 }
 
-uint8_t ADS1299_read_register(uint8_t reg_addr, uint8_t num_regs) {
+/* appears to be working */
+uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs) {
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0x20);
-        DL_SPI_transmitDataBlocking8(SPI0, 0);
+        DL_SPI_transmitDataBlocking8(SPI0, 0x20 | reg_addr);
+        DL_SPI_transmitDataBlocking8(SPI0, num_regs - 1);
         uint8_t data = DL_SPI_receiveDataBlocking8(SPI0);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         return data;
