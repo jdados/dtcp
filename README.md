@@ -59,39 +59,16 @@ The second prototype addresses issues found in the first design and focuses on i
 
 - Not tested yet.
 
-#### Class A PA
-
-- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use.
-
-#### Class E PA
-
-### Firmware
+#### DDS
 
 - TBD
 
-### Hardware
-
-#### MCU
-
-- Improper pins used as we failed to consider that our MCU only supports certain funtions (like chip select) on certain pins.
-
-#### EMG Circuit
-
-- Not tested yet.
-
 #### Class A PA
 
 - Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use.
 
 #### Class E PA
 
-1. DDS:
-
-2. class-A PA1:
-
-3. class-A PA2:
-
-4. class-E PA
 - Due to low Q of inductors the power efficiency we see in simulations is ~30% instead of the >50% we wish for and expect.
 - Impedance matching network of Class-E PA might be unoptimized introducing unwanted reactance at output.
 - Initial testing shows an extremely weak output signal at -45 dBm.
