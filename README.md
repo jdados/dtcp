@@ -60,7 +60,7 @@ The second prototype addresses issues found in the first design and focuses on i
 
 #### EMG Circuit
 
-- Not tested yet.
+- 5V connection with the soldered header pins is not properly working
 
 #### DDS
 
