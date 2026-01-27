@@ -47,13 +47,16 @@ The second prototype addresses issues found in the first design and focuses on i
 
 ### Firmware
 
-- TBD
+- Some code works when embed into the main but not as a function
+- `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
+	- look for smaller alternative
+- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (ana hence should start with low)
 
 ### Hardware
 
 #### MCU
 
-- Improper pins used as we failed to consider that our MCU only supports certain funtions (like chip select) on certain pins.
+- Improper pins were used as we failed to consider that our MCU only supports certain funtions (like chip select) on certain pins.
 
 #### EMG Circuit
 
