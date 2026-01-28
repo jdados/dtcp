@@ -1,6 +1,6 @@
 # FIXED
 
-src/ads1299.o: ../src/ads1299.c ../ads1299.h \
+src/.o: ../src/ads1299.c ../ads1299.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/driverlib/dl_spi.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/msp/msp.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/DeviceFamily.h \

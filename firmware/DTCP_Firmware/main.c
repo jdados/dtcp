@@ -16,67 +16,58 @@ int main(void) {
     SYSCFG_DL_init();
     // (GPIOA, CS_PIN);
 
-    // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
+    /* dummy */
+    DL_SPI_transmitDataBlocking8(SPI0, 0x00);
 
     /* Reset */
-    // ADS1299_transmit_cmd(RESET_cmd);
     DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
     DL_SPI_transmitDataBlocking8(SPI0, RESET_cmd);
+    delay_cycles(10e3);
     DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(2e3);
 
     /* Wake up */
-    // ADS1299_transmit_cmd(WAKEUP_cmd);
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, WAKEUP_cmd);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(1e3);
+    ADS1299_transmit_cmd(WAKEUP_cmd);
 
     /* SDATAC (Stop Read Data Continuously mode) */
-    // ADS1299_transmit_cmd(SDATAC_cmd);
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, SDATAC_cmd);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(1e3);
+    ADS1299_transmit_cmd(SDATAC_cmd);
 
     /* Write to CONFIG1  - CHN2 registers */
-    DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 1);
-    DL_SPI_transmitDataBlocking8(SPI0, 6 - 1);
-    /* DAISY_EN = 1, CLK_EN = 0, Output data rate = 1 kSPS */
-    // DL_SPI_transmitDataBlocking8(SPI0, 0b11011100);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x96);
-    /* CONFIG 2*/
-    // DL_SPI_transmitDataBlocking8(SPI0, 0b11000000);
-    DL_SPI_transmitDataBlocking8(SPI0, 0xC0);
-    /* CONFIG 3 */
-    DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
-    /* default values */
-    DL_SPI_transmitDataBlocking8(SPI0, 0x00);
-    /* CH 1*/
-    // DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
-    DL_SPI_transmitDataBlocking8(SPI0, 0x01);
-    /* CH 2*/
-    DL_SPI_transmitDataBlocking8(SPI0, 0x01);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    delay_cycles(2e3);
+    // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 1);
+    // DL_SPI_transmitDataBlocking8(SPI0, 6 - 1);
+    // /* DAISY_EN = 1, CLK_EN = 0, Output data rate = 1 kSPS */
+    // // DL_SPI_transmitDataBlocking8(SPI0, 0b11011100);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x96);
+    // /* CONFIG 2*/
+    // // DL_SPI_transmitDataBlocking8(SPI0, 0b11000000);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0xC0);
+    // /* CONFIG 3 */
+    // DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
+    // /* default values */
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
+    // /* CH 1*/
+    // // DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+    // /* CH 2*/
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+    // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    // delay_cycles(2e3);
 
     /* Single-shot */
     // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
     // DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 0x17);
     // DL_SPI_transmitDataBlocking8(SPI0, 0);
     // DL_SPI_transmitDataBlocking8(SPI0, 0b00001000);
+    // delay_cycles(100);
     // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
     // delay_cycles(15);
 
     /* Start the conversions */
     // ADS1299_transmit_cmd(START_cmd);
-    // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    // DL_SPI_transmitDataBlocking8(SPI0, START_cmd);
-    // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-    DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_START_PIN);
-    delay_cycles(1e3);
+    // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_START_PIN);
+    delay_cycles(15);
 
+    // __BKPT(0);
     /* Cannot read from or write to registers in this mode */
     // ADS1299_transmit_cmd(RDATAC_cmd);
     // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
@@ -85,19 +76,23 @@ int main(void) {
     // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 
     while (1) { 
+        uint8_t data = ADS1299_read_registers(1, 1);
+        // uint8_t data_2 = ADS1299_read_registers(2, 1);
+        __BKPT(0);
 
+        // uint8_t data_2 = ADS1299_read_registers(2, 1);
         // use "XDS110 Class Application/User UART" COM port
 
-        uint8_t val = 0;
-        val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
-        if (val == 0) {
-            DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-            DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);
-            uint32_t data = DL_SPI_receiveDataBlocking32(SPI0);
-            DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-            delay_cycles(20);
-            /* Start the conversions */
-        }
+        // uint8_t val = 0;
+        // val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+        // if (val == 0) {
+        //     DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        //     DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);
+        //     uint32_t data = DL_SPI_receiveDataBlocking32(SPI0);
+        //     DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        //     delay_cycles(20);
+        //     /* Start the conversions */
+        // }
 
         // uint8_t data = ADS1299_read_registers(1, 1);
         // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);

@@ -135,9 +135,9 @@ SYSCONFIG_WEAK void SYSCFG_DL_SPI_0_init(void) {
     /*
      * Set the bit rate clock divider to generate the serial output clock
      *     outputBitRate = (spiInputClock) / ((1 + SCR) * 2)
-     *     2000000 = (24000000)/((1 + 5) * 2)
+     *     1000000 = (24000000)/((1 + 11) * 2)
      */
-    DL_SPI_setBitRateSerialClockDivider(SPI_0_INST, 5);
+    DL_SPI_setBitRateSerialClockDivider(SPI_0_INST, 11);
     /* Set RX and TX FIFO threshold levels */
     DL_SPI_setFIFOThreshold(SPI_0_INST, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
 

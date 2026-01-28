@@ -26,7 +26,6 @@ C_DEPS__QUOTED += \
 "src\uart.d" 
 
 C_SRCS__QUOTED += \
-"../src/ads1299.c" \
 "../src/uart.c" 
 
 

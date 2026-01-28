@@ -43,10 +43,10 @@ GPIO1.associatedPins[5].pin.$assign  = "PA28";
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
 SPI1.$name                      = "SPI_0";
-SPI1.targetBitRate              = 2000000;
 SPI1.phase                      = "1";
 SPI1.chipSelect                 = [];
 SPI1.frameFormat                = "MOTO3";
+SPI1.targetBitRate              = 1000000;
 SPI1.sclkPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric0";
 SPI1.mosiPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric1";
 SPI1.misoPinConfig.$name        = "ti_driverlib_gpio_GPIOPinGeneric2";
