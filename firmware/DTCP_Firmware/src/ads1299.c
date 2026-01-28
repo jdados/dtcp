@@ -42,6 +42,7 @@ void ADS1299_init() {
 void ADS1299_transmit_cmd(uint8_t cmd) {
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI0, cmd);
+        DL_SPI_receiveData8(SPI_0_INST);
         delay_cycles(100);
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 }
@@ -62,7 +63,6 @@ uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs) {
         DL_SPI_receiveData8(SPI_0_INST);
         DL_SPI_transmitDataBlocking8(SPI0, num_regs - 1);
         DL_SPI_receiveData8(SPI_0_INST);
-        /* remove this line and you'll get correct at some point in time but not immediately*/
         DL_SPI_transmitDataBlocking8(SPI0, 0x00);
         uint8_t data = DL_SPI_receiveData8(SPI_0_INST);
         delay_cycles(50);
