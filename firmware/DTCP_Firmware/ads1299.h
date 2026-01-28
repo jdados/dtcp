@@ -29,6 +29,9 @@
 #define SDATAC_cmd 0x11
 #define RDATA_cmd 0x12
 
+#define V_REF 4.5f
+#define GAIN 24
+
 static const DL_SPI_Config SPI_0_config = {
     .mode        = DL_SPI_MODE_CONTROLLER,
     .frameFormat = DL_SPI_FRAME_FORMAT_MOTO3_POL0_PHA1,
