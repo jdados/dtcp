@@ -24,9 +24,9 @@ The first prototype aims to realize the most basic functionality: a 25 MHz diffe
 | Design the EMG circuit | End of October 2025 | Dmytro Stavskyi | Jeremiah Dados |  | ✔️ |
 | Design the first prototype PCB in Altium | Mid-November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
 | Place the fabrication order | Mid-November 2025 | Jeremiah Dados | Han Wu |  | ✔️ |
-| Receive the board and assemble it | End of November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | 🟡 |
-| Validate board outputs on lab equipment | Mid-December 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi | Present functional prototype at end of semester | ❌ |
-| Validate board functionality in animal experiments | End of January 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi | Work resumes 2nd week of January after winter break | ❌ |
+| Receive the board and assemble it | End of November 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
+| Validate board outputs on lab equipment | Mid-December 2025 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi | Present functional prototype at end of semester | ✔️ |
+| Validate board functionality in animal experiments | End of January 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi | Work resumes 2nd week of January after winter break | 🟡 |
 
 ---
 
@@ -36,7 +36,7 @@ The second prototype addresses issues found in the first design and focuses on i
 
 | Task | Finish By | Leader | Supporters | Comments | Status |
 |------|------------|---------|-------------|-----------|---------|
-| Revisions to the circuit design | Mid-February 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ❌ |
+| Revisions to the circuit design | Mid-February 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | 🟡 |
 | Design and order the PCB | End of February 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ❌ |
 | Place the fabrication order | End of February 2026 | Jeremiah Dados | Han Wu |  | ❌ |
 | Receive the board and assemble it | Mid-March 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ❌ |
@@ -45,10 +45,36 @@ The second prototype addresses issues found in the first design and focuses on i
 
 ## Bugs
 
+### Firmware
+
+- Some code works when embed into the main but not as a function
+- `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
+	- look for smaller alternative
+- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (ana hence should start with low)
+
+### Hardware
+
+#### MCU
+
+- Improper pins were used as we failed to consider that our MCU only supports certain funtions (like chip select) on certain pins.
+
+#### EMG Circuit
+
+- 5V connection with the soldered header pins is not properly working
+
+#### DDS
+
+- TBD
+
+#### Class A PA
+
+- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use.
+
+#### Class E PA
+
 - Due to low Q of inductors the power efficiency we see in simulations is ~30% instead of the >50% we wish for and expect.
 - Impedance matching network of Class-E PA might be unoptimized introducing unwanted reactance at output.
-
-Note: As of this time we have not recieved our board so we haven't experimentally valididated its functionality.
+- Initial testing shows an extremely weak output signal at -45 dBm.
 
 ## Links
 
