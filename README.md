@@ -50,7 +50,9 @@ The second prototype addresses issues found in the first design and focuses on i
 - Some code works when embed into the main but not as a function
 - `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
 	- look for smaller alternative
-- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (ana hence should start with low)
+- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
+- For the normal input to the channel, we are measuring values near zero (~0.019 mV; basically noise) that do not change as the amplitude increases, except at high voltages (in the range of Volts), where we do get some mV (1-3)
+	- might be a grounding or a input terminal issue
 
 ### Hardware
 
