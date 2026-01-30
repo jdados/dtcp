@@ -122,6 +122,13 @@ int main(void)
     uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
 
     dds_serial_data_tx(freq_dword);
+    DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+    wait_us(10000);
+    DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+    wait_us(10000000);
+    DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+    wait_us(10000000);
+    DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
     //DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
     while (1) {
         // DL_GPIO_setPins(PA_PORT, PA_EN_PIN);

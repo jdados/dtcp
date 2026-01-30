@@ -11,7 +11,7 @@ SYSCFG_SRCS += \
 C_SRCS += \
 ../gpio_toggle_output.c \
 ./ti_msp_dl_config.c \
-C:/ti/mspm0_sdk_2_06_00_05/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c 
+C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c 
 
 GEN_CMDS += \
 ./device_linker.lds 
@@ -62,7 +62,7 @@ GEN_FILES__QUOTED += \
 C_SRCS__QUOTED += \
 "../gpio_toggle_output.c" \
 "./ti_msp_dl_config.c" \
-"C:/ti/mspm0_sdk_2_06_00_05/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c" 
+"C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c" 
 
 SYSCFG_SRCS__QUOTED += \
 "../gpio_toggle_output.syscfg" 
