@@ -70,7 +70,8 @@ The second prototype addresses issues found in the first design and focuses on i
 
 #### Class A PA
 
-- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use.
+- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use. Another solution for regulating power might be necessary.
+- The gain of the first stage is much less than expected, only producing 3 dBm with Vdd = 5V. VDD had to be increased to 13V to obtain 10 dBm output.
 
 #### Class E PA
 
