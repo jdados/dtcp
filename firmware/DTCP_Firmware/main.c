@@ -53,6 +53,7 @@ int main(void) {
     DL_SPI_receiveData8(SPI_0_INST);
     /* CONFIG 3 */
     DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0b11111000);
     DL_SPI_receiveData8(SPI_0_INST);
     /* default values */
     DL_SPI_transmitDataBlocking8(SPI0, 0x00);
@@ -62,7 +63,7 @@ int main(void) {
     // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 2*/
-    DL_SPI_transmitDataBlocking8(SPI0, 0b01100001);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b11100001);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 3 */
     DL_SPI_transmitDataBlocking8(SPI0, 0x81);
@@ -105,7 +106,10 @@ int main(void) {
     voltage = 0;
     // uint8_t index = 0;
     uint8_t data[15];
+    /* LSB with gain 24 */
     const float LSB = 2.235e-8;
+    /* LSB with gain 1*/
+    // const float LSB = 5.364e-7;
 
     while (1) { 
         // uint8_t data = ADS1299_read_registers(1, 1);
