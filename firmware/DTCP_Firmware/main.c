@@ -52,18 +52,18 @@ int main(void) {
     // DL_SPI_transmitDataBlocking8(SPI0, 0xC0);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CONFIG 3 */
-    DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
-    // DL_SPI_transmitDataBlocking8(SPI0, 0b11111000);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b11100000);
     DL_SPI_receiveData8(SPI_0_INST);
     /* default values */
     DL_SPI_transmitDataBlocking8(SPI0, 0x00);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 1*/
-    DL_SPI_transmitDataBlocking8(SPI0, 0b01100101);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
     // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 2*/
-    DL_SPI_transmitDataBlocking8(SPI0, 0b11100001);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b01100001);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 3 */
     DL_SPI_transmitDataBlocking8(SPI0, 0x81);
@@ -74,6 +74,22 @@ int main(void) {
     delay_cycles(50);
     DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
     delay_cycles(2e3);
+
+    // /* Bias */
+    // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 0x0D);
+    // DL_SPI_receiveData8(SPI_0_INST);
+    // DL_SPI_transmitDataBlocking8(SPI0, 2 - 1);
+    // DL_SPI_receiveData8(SPI_0_INST);
+    // /* Positive */
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+    // DL_SPI_receiveData8(SPI_0_INST);
+    // /* Negative */
+    // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
+    // DL_SPI_receiveData8(SPI_0_INST);
+    // delay_cycles(50);
+    // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+    // delay_cycles(2e3);
 
     /* Single-shot */
     // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
@@ -143,6 +159,7 @@ int main(void) {
             // channel_1_data[index] = channel_1_data[index] * 4.5 / (2e23 - 1);
             // voltage[index] = (float)channel_1_data[index] * LSB * 1e3f;
             voltage = (float)channel_1_data * LSB * 1e3f;
+
             // ++index;
         }
 
