@@ -78,6 +78,9 @@ The second prototype addresses issues found in the first design and focuses on i
 - Due to low Q of inductors the power efficiency we see in simulations is ~30% instead of the >50% we wish for and expect.
 - Impedance matching network of Class-E PA might be unoptimized introducing unwanted reactance at output.
 - Initial testing shows an extremely weak output signal at -45 dBm.
+- Fixing drain inductance yields a power output of 7.26 dBm which is short of the 30dBm target.
+- Simulations of the current setup on the physical board show the gain is below what we expected since the gate charge is too high requiring the power at input to be 0.704 W when we are aiming for a 1W output.
+  - The current transistor is insufficient for our purposes as it's gate charge is too high to be efficient for amplification to 1W.
 
 ## Links
 
