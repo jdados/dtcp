@@ -50,7 +50,9 @@ The second prototype addresses issues found in the first design and focuses on i
 - Some code works when embed into the main but not as a function
 - `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
 	- look for smaller alternative
-- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (ana hence should start with low)
+- Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
+- For the normal input to the channel, we are measuring values near zero (~0.019 mV; basically noise) that do not change as the amplitude increases, except at high voltages (in the range of Volts), where we do get some mV (1-3)
+	- might be a grounding or a input terminal issue
 
 ### Hardware
 
@@ -68,7 +70,8 @@ The second prototype addresses issues found in the first design and focuses on i
 
 #### Class A PA
 
-- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use.
+- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use. Another solution for regulating power might be necessary.
+- The gain of the first stage is much less than expected, only producing 3 dBm with Vdd = 5V. VDD had to be increased to 13V to obtain 10 dBm output.
 
 #### Class E PA
 
