@@ -127,6 +127,12 @@ int main(void) {
     /* LSB with gain 1*/
     // const float LSB = 5.364e-7;
 
+    /* Com5 */
+    uint8_t data_uart[] = "Hello World\n";
+    for (int i=0; i < sizeof(data_uart); i++) {
+        DL_UART_transmitDataBlocking(UART_0_INST, data_uart[i]);
+    }
+
     while (1) { 
         // uint8_t data = ADS1299_read_registers(1, 1);
         // uint8_t data_2 = ADS1299_read_registers(2, 1);
@@ -159,7 +165,6 @@ int main(void) {
             // channel_1_data[index] = channel_1_data[index] * 4.5 / (2e23 - 1);
             // voltage[index] = (float)channel_1_data[index] * LSB * 1e3f;
             voltage = (float)channel_1_data * LSB * 1e3f;
-
             // ++index;
         }
 
