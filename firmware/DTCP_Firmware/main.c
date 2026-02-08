@@ -54,7 +54,7 @@ int main(void) {
     DL_SPI_receiveData8(SPI_0_INST);
     /* CONFIG 3 */
     // DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
-    DL_SPI_transmitDataBlocking8(SPI0, 0b11100000);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b11101100);
     DL_SPI_receiveData8(SPI_0_INST);
     /* default values */
     DL_SPI_transmitDataBlocking8(SPI0, 0x00);
