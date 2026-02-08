@@ -8,6 +8,7 @@
 #include "uart.h"
 
 float voltage;
+float voltages[50];
 /* small printf implementation */
 
 int main(void) {
@@ -63,7 +64,7 @@ int main(void) {
     // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 2*/
-    DL_SPI_transmitDataBlocking8(SPI0, 0b01100001);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b11100001);
     DL_SPI_receiveData8(SPI_0_INST);
     /* CH 3 */
     DL_SPI_transmitDataBlocking8(SPI0, 0x81);
@@ -122,6 +123,7 @@ int main(void) {
     voltage = 0;
     // uint8_t index = 0;
     uint8_t data[15];
+    
     /* LSB with gain 24 */
     const float LSB = 2.235e-8;
     /* LSB with gain 1*/
@@ -132,6 +134,8 @@ int main(void) {
     for (int i=0; i < sizeof(data_uart); i++) {
         DL_UART_transmitDataBlocking(UART_0_INST, data_uart[i]);
     }
+
+    uint8_t index = 0;
 
     while (1) { 
         // uint8_t data = ADS1299_read_registers(1, 1);
@@ -165,7 +169,9 @@ int main(void) {
             // channel_1_data[index] = channel_1_data[index] * 4.5 / (2e23 - 1);
             // voltage[index] = (float)channel_1_data[index] * LSB * 1e3f;
             voltage = (float)channel_1_data * LSB * 1e3f;
-            // ++index;
+            if (index == 50) index = 0;
+            voltages[index] = voltage;
+            ++index;
         }
 
         // uint8_t data = ADS1299_read_registers(1, 1);
