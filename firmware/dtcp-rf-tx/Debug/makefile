@@ -68,9 +68,6 @@ endif
 ifneq ($(strip $(S64_DEPS)),)
 -include $(S64_DEPS)
 endif
-ifneq ($(strip $(INO_DEPS)),)
--include $(INO_DEPS)
-endif
 ifneq ($(strip $(CLA_DEPS)),)
 -include $(CLA_DEPS)
 endif
@@ -85,9 +82,6 @@ ifneq ($(strip $(C62_DEPS)),)
 endif
 ifneq ($(strip $(C67_DEPS)),)
 -include $(C67_DEPS)
-endif
-ifneq ($(strip $(PDE_DEPS)),)
--include $(PDE_DEPS)
 endif
 ifneq ($(strip $(K_DEPS)),)
 -include $(K_DEPS)
@@ -139,7 +133,7 @@ all: $(OBJS) $(GEN_CMDS)
 dtcp.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: GNU Linker'
-	"C:/ti/gcc_arm_none_eabi_9_2_1/bin/arm-none-eabi-gcc-9.2.1.exe" @"device.opt"  -O2 -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -mthumb -mfloat-abi=soft -Wl,-Map,"dtcp.map" -nostartfiles -static -Wl,--gc-sections -L"C:/ti/mspm0_sdk_2_06_00_05/source/ti/driverlib/lib/gcc/m0p/mspm0c110x" -L"C:/ti/mspm0_sdk_2_06_00_05/source" -L"C:/Users/jdado/workspace_ccstheia/dtcp" -L"C:/Users/jdado/workspace_ccstheia/dtcp/Debug/syscfg" -L"C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp" -march=armv6-m -mthumb --specs=nosys.specs -o"dtcp.out" $(ORDERED_OBJS)
+	"C:/ti/gcc_arm_none_eabi_9_2_1/bin/arm-none-eabi-gcc-9.2.1.exe" @"device.opt"  -O2 -ffunction-sections -fdata-sections -g -gdwarf-3 -gstrict-dwarf -Wall -mthumb -mfloat-abi=soft -Wl,-Map,"dtcp.map" -nostartfiles -static -Wl,--gc-sections -L"C:/ti/mspm0_sdk_2_09_00_01/source/ti/driverlib/lib/gcc/m0p/mspm0c110x" -L"C:/ti/mspm0_sdk_2_09_00_01/source" -L"C:/Users/jdado/Desktop/dtcp/dtcp/firmware/dtcp-rf-tx" -L"C:/Users/jdado/Desktop/dtcp/dtcp/firmware/dtcp-rf-tx/Debug/syscfg" -L"C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp" -march=armv6-m -mthumb --specs=nosys.specs -o"dtcp.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
