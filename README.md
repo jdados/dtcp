@@ -52,7 +52,7 @@ The second prototype addresses issues found in the first design and focuses on i
 	- look for smaller alternative
 - Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
 - For the normal input to the channel, we are measuring values near zero (~0.019 mV; basically noise) that do not change as the amplitude increases, except at high voltages (in the range of Volts), where we do get some mV (1-3)
-	- might be a grounding or a input terminal issue
+	- an offset issue; for the PGA to work, the common-mode voltage between the positive input and negative input should be mid-supply, which with our current setup is 2.5V
 
 ### Hardware
 
@@ -63,6 +63,7 @@ The second prototype addresses issues found in the first design and focuses on i
 #### EMG Circuit
 
 - 5V connection with the soldered header pins is not properly working
+- It seems that we cannot use the bias drive amplifier with the current circuit to provide a 2.5V offset to the input signals
 
 #### DDS
 
