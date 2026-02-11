@@ -54,7 +54,7 @@ int main(void) {
     DL_SPI_receiveData8(SPI_0_INST);
     /* CONFIG 3 */
     // DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
-    DL_SPI_transmitDataBlocking8(SPI0, 0b11101100);
+    DL_SPI_transmitDataBlocking8(SPI0, 0b11111100);
     DL_SPI_receiveData8(SPI_0_INST);
     /* default values */
     DL_SPI_transmitDataBlocking8(SPI0, 0x00);
@@ -168,7 +168,7 @@ int main(void) {
             // channel_1_data[index] = (channel_1_data[index] - 0x800000) / (4.5 / (2e23 - 1));
             // channel_1_data[index] = channel_1_data[index] * 4.5 / (2e23 - 1);
             // voltage[index] = (float)channel_1_data[index] * LSB * 1e3f;
-            voltage = (float)channel_1_data * LSB * 1e3f;
+            voltage = (float)channel_1_data * LSB  * 1e3f;
             if (index == 50) index = 0;
             voltages[index] = voltage;
             ++index;
