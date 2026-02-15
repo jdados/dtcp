@@ -8,7 +8,7 @@
 #include "uart.h"
 
 float voltage;
-float voltages[50];
+float voltages[150];
 /* small printf implementation */
 
 int main(void) {
@@ -168,8 +168,8 @@ int main(void) {
             // channel_1_data[index] = (channel_1_data[index] - 0x800000) / (4.5 / (2e23 - 1));
             // channel_1_data[index] = channel_1_data[index] * 4.5 / (2e23 - 1);
             // voltage[index] = (float)channel_1_data[index] * LSB * 1e3f;
-            voltage = (float)channel_1_data * LSB  * 1e3f;
-            if (index == 50) index = 0;
+            voltage = (float)channel_1_data * LSB * 1e3f;
+            if (index == 150) index = 0;
             voltages[index] = voltage;
             ++index;
         }
