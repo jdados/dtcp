@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Sun Feb  8 18:11:20 2026
+>> Linked Sun Feb 15 16:59:35 2026
 
 OUTPUT FILE NAME:   <DTCP_Firmware.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 000006b1
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   FLASH                 00000000   00004000  00000830  000037d0  R  X
-  SRAM                  20000000   00000400  0000010c  000002f4  RW X
+  SRAM                  20000000   00000400  0000029c  00000164  RW X
   BCR_CONFIG            41c00000   000000ff  00000000  000000ff  R   
 
 
@@ -25,8 +25,8 @@ run origin  load origin   length   init length attrs members
   000000c0    000000c0    00000740   00000740    r-x .text
   00000800    00000800    00000018   00000018    r-- .rodata
   00000818    00000818    00000018   00000018    r-- .cinit
-20000000    20000000    000000cc   00000000    rw-
-  20000000    20000000    000000cc   00000000    rw- .bss
+20000000    20000000    0000025c   00000000    rw-
+  20000000    20000000    0000025c   00000000    rw- .bss
 200003c0    200003c0    00000040   00000000    rw-
   200003c0    200003c0    00000040   00000000    rw- .stack
 
@@ -91,9 +91,9 @@ section   page    origin      length       input sections
 
 .binit     0    00000000    00000000     
 
-.bss       0    20000000    000000cc     UNINITIALIZED
-                  20000000    000000c8     (.common:voltages)
-                  200000c8    00000004     (.common:voltage)
+.bss       0    20000000    0000025c     UNINITIALIZED
+                  20000000    00000258     (.common:voltages)
+                  20000258    00000004     (.common:voltage)
 
 .stack     0    200003c0    00000040     UNINITIALIZED
                   200003c0    00000004     libc.a : boot_cortex_m.c.obj (.stack)
@@ -110,11 +110,11 @@ MODULE SUMMARY
        Module                         code   ro data   rw data
        ------                         ----   -------   -------
     .\
-       main.o                         682    0         204    
+       main.o                         682    0         604    
        ti_msp_dl_config.o             360    24        0      
        startup_mspm0c110x_ticlang.o   6      192       0      
     +--+------------------------------+------+---------+---------+
-       Total:                         1048   216       204    
+       Total:                         1048   216       604    
                                                               
     .\src\
        ads1299.o                      132    0         0      
@@ -152,13 +152,13 @@ MODULE SUMMARY
        Stack:                         0      0         64     
        Linker Generated:              0      20        0      
     +--+------------------------------+------+---------+---------+
-       Grand Total:                   1856   236       268    
+       Grand Total:                   1856   236       668    
 
 
 LINKER GENERATED COPY TABLES
 
 __TI_cinit_table @ 00000824 records: 1, size/record: 8, table size: 8
-	.bss: load addr=00000818, load size=00000008 bytes, run addr=20000000, run size=000000cc bytes, compression=zero_init
+	.bss: load addr=00000818, load size=00000008 bytes, run addr=20000000, run size=0000025c bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
@@ -245,7 +245,7 @@ UNDEFED   _system_post_cinit
 ffffffff  binit                         
 00000000  interruptVectors              
 000000c1  main                          
-200000c8  voltage                       
+20000258  voltage                       
 20000000  voltages                      
 
 
@@ -319,7 +319,7 @@ address   name
 20000000  __stop___llvm_prf_bits        
 20000000  __stop___llvm_prf_cnts        
 20000000  voltages                      
-200000c8  voltage                       
+20000258  voltage                       
 200003c0  __stack                       
 20000400  __STACK_END                   
 ffffffff  __TI_pprof_out_hndl           

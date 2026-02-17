@@ -8,7 +8,7 @@ The system transmits high-frequency (~20 – 25 MHz) differential signals throug
 The project integrates four key subsystems:
 
 1. **RF Signal Generation** – AD9850 DDS digitally tunes the HF output frequency.  
-2. **Power Amplification** – A Class-E PA delivers ≥ 1 W (≈ 30–35 dBm) efficiently.  
+2. **Power Amplification** – 2 PAs in series deliver ≥ 1 W (≈ 30–35 dBm).  
 3. **Signal Acquisition** – ADS1299 AFE captures and amplifies EMG signals.  
 4. **Control & Interface** – MSPM0C1104 microcontroller manages DDS control, AFE sampling, and power switching.
 
@@ -49,10 +49,11 @@ The second prototype addresses issues found in the first design and focuses on i
 
 - Some code works when embed into the main but not as a function
 - `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
-	- look for smaller alternative
+  - look for smaller alternative
 - Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
 - For the normal input to the channel, we are measuring values near zero (~0.019 mV; basically noise) that do not change as the amplitude increases, except at high voltages (in the range of Volts), where we do get some mV (1-3)
-	- an offset issue; for the PGA to work, the common-mode voltage between the positive input and negative input should be mid-supply, which with our current setup is 2.5V
+  - an offset issue; for the PGA to work, the common-mode voltage between the positive input and negative input should be mid-supply, which with our current setup is 2.5V
+- The need for the biasing feature of the ADS is becoming apparent but we did not wire the circuit in our current PCB prototype.
 
 ### Hardware
 
@@ -67,7 +68,7 @@ The second prototype addresses issues found in the first design and focuses on i
 
 #### DDS
 
-- TBD
+- Not producing signal in the complete PCB only working periodically.
 
 #### Class A PA
 
@@ -82,6 +83,7 @@ The second prototype addresses issues found in the first design and focuses on i
 - Fixing drain inductance yields a power output of 7.26 dBm which is short of the 30dBm target.
 - Simulations of the current setup on the physical board show the gain is below what we expected since the gate charge is too high requiring the power at input to be 0.704 W when we are aiming for a 1W output.
   - The current transistor is insufficient for our purposes as it's gate charge is too high to be efficient for amplification to 1W.
+- We have elected to drop this design.
 
 ## Links
 
