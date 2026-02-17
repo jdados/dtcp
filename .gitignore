@@ -11,3 +11,6 @@
 *.tmp
 *.save
 *.db
+
+# Ignore Altium history for DTCP v2.0
+Altium/DTCP v2.0/History/
