@@ -9,9 +9,7 @@ Discarded input sections
 
  .text.wait_us  0x00000000       0x10 ./gpio_toggle_output.o
  .text.pin_init
-                0x00000000       0x14 ./gpio_toggle_output.o
- .text.dds_reset
-                0x00000000       0x50 ./gpio_toggle_output.o
+                0x00000000       0x1c ./gpio_toggle_output.o
 
 Memory Configuration
 
@@ -39,7 +37,7 @@ LOAD ./startup_mspm0c110x_gcc.o
 .vtable
  *(.vtable)
 
-.text           0x000000c0      0x2b8
+.text           0x000000c0      0x318
  CREATE_OBJECT_SYMBOLS
  *(.text)
  .text          0x000000c0        0x0 ./gpio_toggle_output.o
@@ -49,133 +47,136 @@ LOAD ./startup_mspm0c110x_gcc.o
  .text          0x000000c0        0x0 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
                 0x000000c0                . = ALIGN (0x8)
  *(.text.*)
+ .text.dds_reset
+                0x000000c0       0x50 ./gpio_toggle_output.o
+                0x000000c0                dds_reset
  .text.dds_serial_load_en
-                0x000000c0       0x44 ./gpio_toggle_output.o
-                0x000000c0                dds_serial_load_en
+                0x00000110       0x44 ./gpio_toggle_output.o
+                0x00000110                dds_serial_load_en
  .text.dds_serial_data_tx
-                0x00000104       0xdc ./gpio_toggle_output.o
-                0x00000104                dds_serial_data_tx
+                0x00000154       0xdc ./gpio_toggle_output.o
+                0x00000154                dds_serial_data_tx
  .text.startup.main
-                0x000001e0       0x28 ./gpio_toggle_output.o
-                0x000001e0                main
+                0x00000230       0x38 ./gpio_toggle_output.o
+                0x00000230                main
  .text.SYSCFG_DL_initPower
-                0x00000208       0x28 ./ti_msp_dl_config.o
-                0x00000208                SYSCFG_DL_initPower
+                0x00000268       0x28 ./ti_msp_dl_config.o
+                0x00000268                SYSCFG_DL_initPower
  .text.SYSCFG_DL_GPIO_init
-                0x00000230       0x30 ./ti_msp_dl_config.o
-                0x00000230                SYSCFG_DL_GPIO_init
+                0x00000290       0x30 ./ti_msp_dl_config.o
+                0x00000290                SYSCFG_DL_GPIO_init
  .text.SYSCFG_DL_SYSCTL_init
-                0x00000260       0x20 ./ti_msp_dl_config.o
-                0x00000260                SYSCFG_DL_SYSCTL_init
+                0x000002c0       0x20 ./ti_msp_dl_config.o
+                0x000002c0                SYSCFG_DL_SYSCTL_init
  .text.SYSCFG_DL_init
-                0x00000280       0x10 ./ti_msp_dl_config.o
-                0x00000280                SYSCFG_DL_init
+                0x000002e0       0x10 ./ti_msp_dl_config.o
+                0x000002e0                SYSCFG_DL_init
  .text.Default_Handler
-                0x00000290        0x4 ./startup_mspm0c110x_gcc.o
-                0x00000290                TIMG8_IRQHandler
-                0x00000290                I2C0_IRQHandler
-                0x00000290                HardFault_Handler
-                0x00000290                GPIOA_IRQHandler
-                0x00000290                SysTick_Handler
-                0x00000290                PendSV_Handler
-                0x00000290                NMI_Handler
-                0x00000290                UART0_IRQHandler
-                0x00000290                ADC0_IRQHandler
-                0x00000290                GROUP0_IRQHandler
-                0x00000290                Default_Handler
-                0x00000290                TIMG14_IRQHandler
-                0x00000290                SVC_Handler
-                0x00000290                SPI0_IRQHandler
-                0x00000290                DMA_IRQHandler
-                0x00000290                TIMA0_IRQHandler
+                0x000002f0        0x4 ./startup_mspm0c110x_gcc.o
+                0x000002f0                TIMG8_IRQHandler
+                0x000002f0                I2C0_IRQHandler
+                0x000002f0                HardFault_Handler
+                0x000002f0                GPIOA_IRQHandler
+                0x000002f0                SysTick_Handler
+                0x000002f0                PendSV_Handler
+                0x000002f0                NMI_Handler
+                0x000002f0                UART0_IRQHandler
+                0x000002f0                ADC0_IRQHandler
+                0x000002f0                GROUP0_IRQHandler
+                0x000002f0                Default_Handler
+                0x000002f0                TIMG14_IRQHandler
+                0x000002f0                SVC_Handler
+                0x000002f0                SPI0_IRQHandler
+                0x000002f0                DMA_IRQHandler
+                0x000002f0                TIMA0_IRQHandler
  .text.Reset_Handler
-                0x00000294       0x8c ./startup_mspm0c110x_gcc.o
-                0x00000294                Reset_Handler
+                0x000002f4       0x8c ./startup_mspm0c110x_gcc.o
+                0x000002f4                Reset_Handler
  .text.initStub
-                0x00000320        0x4 ./startup_mspm0c110x_gcc.o
-                0x00000320                initStub
-                0x00000320                _init
+                0x00000380        0x4 ./startup_mspm0c110x_gcc.o
+                0x00000380                initStub
+                0x00000380                _init
  .text.DL_Common_delayCycles
-                0x00000324        0xc C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
-                0x00000324                DL_Common_delayCycles
+                0x00000384        0xc C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+                0x00000384                DL_Common_delayCycles
  .text.__libc_init_array
-                0x00000330       0x44 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
-                0x00000330                __libc_init_array
-                0x00000378                . = ALIGN (0x8)
- *fill*         0x00000374        0x4 
+                0x00000390       0x44 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+                0x00000390                __libc_init_array
+                0x000003d8                . = ALIGN (0x8)
+ *fill*         0x000003d4        0x4 
  *(.ctors)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
  *(.dtors)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
  *(.init)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
  *(.fini*)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
 
-.glue_7         0x00000378        0x0
- .glue_7        0x00000378        0x0 linker stubs
+.glue_7         0x000003d8        0x0
+ .glue_7        0x000003d8        0x0 linker stubs
 
-.glue_7t        0x00000378        0x0
- .glue_7t       0x00000378        0x0 linker stubs
+.glue_7t        0x000003d8        0x0
+ .glue_7t       0x000003d8        0x0 linker stubs
 
-.vfp11_veneer   0x00000378        0x0
- .vfp11_veneer  0x00000378        0x0 linker stubs
+.vfp11_veneer   0x000003d8        0x0
+ .vfp11_veneer  0x000003d8        0x0 linker stubs
 
-.v4_bx          0x00000378        0x0
- .v4_bx         0x00000378        0x0 linker stubs
+.v4_bx          0x000003d8        0x0
+ .v4_bx         0x000003d8        0x0 linker stubs
 
-.iplt           0x00000378        0x0
- .iplt          0x00000378        0x0 ./gpio_toggle_output.o
+.iplt           0x000003d8        0x0
+ .iplt          0x000003d8        0x0 ./gpio_toggle_output.o
 
-.rel.dyn        0x00000378        0x0
- .rel.iplt      0x00000378        0x0 ./gpio_toggle_output.o
+.rel.dyn        0x000003d8        0x0
+ .rel.iplt      0x000003d8        0x0 ./gpio_toggle_output.o
 
-.ramfunc        0x20000000        0x0 load address 0x00000378
-                0x00000378                __ramfunct_load__ = LOADADDR (.ramfunc)
+.ramfunc        0x20000000        0x0 load address 0x000003d8
+                0x000003d8                __ramfunct_load__ = LOADADDR (.ramfunc)
                 0x20000000                __ramfunct_start__ = .
  *(.ramfunc)
                 0x20000000                . = ALIGN (0x8)
                 0x20000000                __ramfunct_end__ = .
 
-.rodata         0x00000378        0x0
+.rodata         0x000003d8        0x0
  *(.rodata)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
  *(.rodata.*)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
 
-.preinit_array  0x00000378        0x0
-                0x00000378                PROVIDE (__preinit_array_start = .)
+.preinit_array  0x000003d8        0x0
+                0x000003d8                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x00000378                PROVIDE (__preinit_array_end = .)
+                0x000003d8                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x00000378        0x0
-                0x00000378                . = ALIGN (0x8)
-                0x00000378                PROVIDE (__init_array_start = .)
+.init_array     0x000003d8        0x0
+                0x000003d8                . = ALIGN (0x8)
+                0x000003d8                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
-                0x00000378                PROVIDE (__init_array_end = .)
+                0x000003d8                PROVIDE (__init_array_end = .)
 
-.fini_array     0x00000378        0x0
-                0x00000378                . = ALIGN (0x8)
+.fini_array     0x000003d8        0x0
+                0x000003d8                . = ALIGN (0x8)
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x00000378                . = ALIGN (0x8)
+                0x000003d8                . = ALIGN (0x8)
 
-.ARM.exidx      0x00000378        0x0
-                0x00000378                __exidx_start = .
+.ARM.exidx      0x000003d8        0x0
+                0x000003d8                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000378                __exidx_end = .
+                0x000003d8                __exidx_end = .
 
-.ARM.extab      0x00000378        0x0
-                0x00000378                . = ALIGN (0x8)
+.ARM.extab      0x000003d8        0x0
+                0x000003d8                . = ALIGN (0x8)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000378                . = ALIGN (0x8)
-                0x00000378                __etext = .
+                0x000003d8                . = ALIGN (0x8)
+                0x000003d8                __etext = .
 
-.data           0x20000000        0x0 load address 0x00000378
-                0x00000378                __data_load__ = LOADADDR (.data)
+.data           0x20000000        0x0 load address 0x000003d8
+                0x000003d8                __data_load__ = LOADADDR (.data)
                 0x20000000                __data_start__ = .
  *(.data)
  .data          0x20000000        0x0 ./gpio_toggle_output.o
@@ -187,7 +188,7 @@ LOAD ./startup_mspm0c110x_gcc.o
                 0x20000000                . = ALIGN (0x8)
                 0x20000000                __data_end__ = .
 
-.igot.plt       0x20000000        0x0 load address 0x00000378
+.igot.plt       0x20000000        0x0 load address 0x000003d8
  .igot.plt      0x20000000        0x0 ./gpio_toggle_output.o
 
 .bss            0x20000000        0x0
@@ -242,11 +243,11 @@ LOAD C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libnosys.a
 END GROUP
 OUTPUT(dtcp.out elf32-littlearm)
 
-.debug_info     0x00000000     0xc920
- .debug_info    0x00000000     0x486f ./gpio_toggle_output.o
- .debug_info    0x0000486f     0x45a3 ./ti_msp_dl_config.o
- .debug_info    0x00008e12      0x1bc ./startup_mspm0c110x_gcc.o
- .debug_info    0x00008fce     0x3952 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_info     0x00000000     0xc95e
+ .debug_info    0x00000000     0x48ad ./gpio_toggle_output.o
+ .debug_info    0x000048ad     0x45a3 ./ti_msp_dl_config.o
+ .debug_info    0x00008e50      0x1bc ./startup_mspm0c110x_gcc.o
+ .debug_info    0x0000900c     0x3952 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
 
 .debug_abbrev   0x00000000      0x811
  .debug_abbrev  0x00000000      0x328 ./gpio_toggle_output.o
@@ -268,17 +269,17 @@ OUTPUT(dtcp.out elf32-littlearm)
  .debug_aranges
                 0x000000b0       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
 
-.debug_ranges   0x00000000      0x400
- .debug_ranges  0x00000000      0x328 ./gpio_toggle_output.o
- .debug_ranges  0x00000328       0xa8 ./ti_msp_dl_config.o
- .debug_ranges  0x000003d0       0x20 ./startup_mspm0c110x_gcc.o
- .debug_ranges  0x000003f0       0x10 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_ranges   0x00000000      0x430
+ .debug_ranges  0x00000000      0x358 ./gpio_toggle_output.o
+ .debug_ranges  0x00000358       0xa8 ./ti_msp_dl_config.o
+ .debug_ranges  0x00000400       0x20 ./startup_mspm0c110x_gcc.o
+ .debug_ranges  0x00000420       0x10 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
 
-.debug_line     0x00000000     0x1362
- .debug_line    0x00000000      0x848 ./gpio_toggle_output.o
- .debug_line    0x00000848      0x598 ./ti_msp_dl_config.o
- .debug_line    0x00000de0      0x1cb ./startup_mspm0c110x_gcc.o
- .debug_line    0x00000fab      0x3b7 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_line     0x00000000     0x1389
+ .debug_line    0x00000000      0x86f ./gpio_toggle_output.o
+ .debug_line    0x0000086f      0x598 ./ti_msp_dl_config.o
+ .debug_line    0x00000e07      0x1cb ./startup_mspm0c110x_gcc.o
+ .debug_line    0x00000fd2      0x3b7 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
 
 .debug_str      0x00000000     0x1b4e
  .debug_str     0x00000000     0x15a0 ./gpio_toggle_output.o
@@ -310,9 +311,9 @@ OUTPUT(dtcp.out elf32-littlearm)
  .ARM.attributes
                 0x000000ac       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
 
-.debug_frame    0x00000000      0x1ac
- .debug_frame   0x00000000       0xb8 ./gpio_toggle_output.o
- .debug_frame   0x000000b8       0x60 ./ti_msp_dl_config.o
- .debug_frame   0x00000118       0x48 ./startup_mspm0c110x_gcc.o
- .debug_frame   0x00000160       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
- .debug_frame   0x00000180       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+.debug_frame    0x00000000      0x1b0
+ .debug_frame   0x00000000       0xbc ./gpio_toggle_output.o
+ .debug_frame   0x000000bc       0x60 ./ti_msp_dl_config.o
+ .debug_frame   0x0000011c       0x48 ./startup_mspm0c110x_gcc.o
+ .debug_frame   0x00000164       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_frame   0x00000184       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)

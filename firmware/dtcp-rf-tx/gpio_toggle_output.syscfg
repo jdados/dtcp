@@ -1,8 +1,8 @@
 /**
  * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
  * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
- * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.06.00.06"
- * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.06.00.06"
+ * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.02"
+ * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.02"
  * @versions {"tool":"1.25.0+4268"}
  */
 
@@ -34,7 +34,7 @@ const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
 GPIO2.$name                         = "PA";
 GPIO2.associatedPins[0].$name       = "EN";
-GPIO2.associatedPins[0].assignedPin = "6";
+GPIO2.associatedPins[0].assignedPin = "28";
 
 SYSCTL.clockTreeEn = true;
 
@@ -51,4 +51,4 @@ GPIO1.associatedPins[4].pin.$suggestSolution = "PA0";
 Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
-GPIO2.associatedPins[0].pin.$suggestSolution = "PA6";
+GPIO2.associatedPins[0].pin.$suggestSolution = "PA28";
