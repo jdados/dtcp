@@ -82,9 +82,9 @@ extern "C" {
 /* Port definition for Pin Group PA */
 #define PA_PORT                                                          (GPIOA)
 
-/* Defines for EN: GPIOA.6 with pinCMx 7 on package pin 10 */
-#define PA_EN_PIN                                                (DL_GPIO_PIN_6)
-#define PA_EN_IOMUX                                               (IOMUX_PINCM7)
+/* Defines for EN: GPIOA.28 with pinCMx 29 on package pin 3 */
+#define PA_EN_PIN                                               (DL_GPIO_PIN_28)
+#define PA_EN_IOMUX                                              (IOMUX_PINCM29)
 /* Port definition for Pin Group DDS */
 #define DDS_PORT                                                         (GPIOA)
 
