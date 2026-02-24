@@ -48,6 +48,8 @@ static const DL_SPI_ClockConfig SPI_0_clock_config = {
 void SPI_init(void);
 void ADS1299_init(void);
 void ADS1299_transmit_cmd(uint8_t cmd);
-void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t data);
+void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data);
 uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs);
-uint32_t ADS1299_read_data(void);
+float ADS1299_read_data(void);
+void ADS1299_start_conversions(void);
+void ADS1299_stop_conversions(void);
