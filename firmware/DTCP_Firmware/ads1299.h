@@ -53,3 +53,4 @@ uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs);
 float ADS1299_read_data(void);
 void ADS1299_start_conversions(void);
 void ADS1299_stop_conversions(void);
+extern void delay_ms(int ms);

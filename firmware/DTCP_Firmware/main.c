@@ -2,7 +2,7 @@
 #include "ti_msp_dl_config.h"
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
-// #include "ti/driverlib/dl_uart.h"
+#include "ti/driverlib/dl_uart.h"
 
 #include "ads1299.h"
 #include "uart.h"
@@ -12,7 +12,7 @@ float voltages[128];
 /* small printf implementation */
 
 int main(void) {
-    delay_cycles(10e3);
+    delay_ms(150);
 
     // initializes all the modules
     // SPI Mode for ADS1299:
@@ -21,7 +21,7 @@ int main(void) {
     // (GPIOA, CS_PIN);
 
     ADS1299_init();
-
+    // NVIC_EnableIRQ(GPIOA_INT_IRQn);
     ADS1299_start_conversions();
 
     /* Com5 */
@@ -38,14 +38,25 @@ int main(void) {
         val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
         if (val == 0) {
             voltage = ADS1299_read_data();
-            if (index == 128) index = 0;
+            if (index == 128) {
+                /* Remove offset */
+                // int sum = 0;
+                // for (uint8_t i = 0; i < 128; ++i) sum += voltages[i];
+                // int average = sum / 128;
+                // for (uint8_t i = 0; i < 128; ++i) voltages[i] -= average;
+                index = 0;
+            }
             voltages[index] = voltage;
             ++index;
         }
     }
 }
 
-
-// static delay_ms(int ms) {
-
+// void GROUP1_IRQHandler(void) {
+//     switch (DL_Interrupt_getPendingGroup(DL_INTERRUPT_GROUP_1)) {
+//     }
 // }
+
+void delay_ms(int ms) {
+    delay_cycles(ms * (24e6)/1000);
+}

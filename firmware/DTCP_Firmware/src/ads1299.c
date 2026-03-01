@@ -38,7 +38,8 @@ void ADS1299_init() {
 
         /* Wake up */
         ADS1299_transmit_cmd(WAKEUP_cmd);
-
+        delay_ms(150);
+        
         /* SDATAC (Stop Read Data Continuously mode) */
         ADS1299_transmit_cmd(SDATAC_cmd);
 
