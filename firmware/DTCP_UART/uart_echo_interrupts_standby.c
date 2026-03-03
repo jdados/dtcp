@@ -37,6 +37,8 @@
 float dataArray[] = {12.34f, 56.78f, 90.12f, -5.67f}; 
 #define ARRAY_SIZE (sizeof(dataArray) / sizeof(dataArray[0]))
 
+uint8_t gCurrentIndex = 0; // Tracks which element to send next
+
 void UART_transmitString(char* str) {
     while (*str) {
         // Wait for TX FIFO to have space, then send
@@ -44,23 +46,66 @@ void UART_transmitString(char* str) {
     }
 }
 
-void transmitFloatArray() {
+// void transmitFloatArray() {
+//     char buffer[32];
+//     for (int i = 0; i < ARRAY_SIZE; i++) {
+//         float val = dataArray[i];
+        
+//         // Handle negative numbers
+//         if (val < 0) {
+//             UART_transmitString("-");
+//             val = -val;
+//         }
+
+//         int intPart = (int)val;
+//         int fracPart = (int)((val - intPart) * 100); // 2 decimal places
+
+//         // Format into buffer: "12.34\r\n"
+//         sprintf(buffer, "%d.%02d\r\n", intPart, fracPart);
+//         UART_transmitString(buffer);
+//     }
+// }
+
+void transmitFloatArrayPlotter() {
     char buffer[32];
     for (int i = 0; i < ARRAY_SIZE; i++) {
         float val = dataArray[i];
         
-        // Handle negative numbers
-        if (val < 0) {
-            UART_transmitString("-");
-            val = -val;
-        }
-
+        // Manual float formatting
         int intPart = (int)val;
-        int fracPart = (int)((val - intPart) * 100); // 2 decimal places
+        int fracPart = (int)((val - (float)intPart) * 100.0f);
+        if (fracPart < 0) fracPart = -fracPart; // Ensure decimal is positive
 
-        // Format into buffer: "12.34\r\n"
-        sprintf(buffer, "%d.%02d\r\n", intPart, fracPart);
+        // Format: "Value," for first elements, "Value\r\n" for the last one
+        // if (i < ARRAY_SIZE - 1) {
+        //     snprintf(buffer, sizeof(buffer), "%d.%02d,", intPart, fracPart);
+        // } else {
+        //     snprintf(buffer, sizeof(buffer), "%d.%02d\r\n", intPart, fracPart);
+        // }
+
+        snprintf(buffer, sizeof(buffer), "%d.%02d\r\n", intPart, fracPart);
+        
         UART_transmitString(buffer);
+    }
+}
+
+void transmitNextValue() {
+    char buffer[32];
+    float val = dataArray[gCurrentIndex];
+
+    // Manual float to string conversion
+    int intPart = (int)val;
+    int fracPart = (int)((val - (float)intPart) * 100.0f);
+    if (fracPart < 0) fracPart = -fracPart; 
+
+    // Serial Plotter needs one value + newline to plot a single point
+    snprintf(buffer, sizeof(buffer), "%d.%02d\r\n", intPart, fracPart);
+    UART_transmitString(buffer);
+
+    // Increment index and wrap around to the start of the array
+    gCurrentIndex++;
+    if (gCurrentIndex >= ARRAY_SIZE) {
+        gCurrentIndex = 0;
     }
 }
 
@@ -68,9 +113,13 @@ int main(void) {
     SYSCFG_DL_init();
     
     // Transmit the whole array once
-    transmitFloatArray();
+    // transmitFloatArray();
 
     while (1) {
-        __WFI();
+        // transmitFloatArrayPlotter(); // Plot the array repeatedly
+        transmitNextValue(); 
+
+        // DL_Common_delayCycles(32000000); // Delay to plotter does not move too fast.
+        //__WFI();
     }
 }
