@@ -91,7 +91,7 @@ void ADS1299_init() {
         // delay_cycles(2e3);
 
         /* Bias driver registers */
-        uint8_t bias_config_data[] = {0x01, 0x00};
+        uint8_t bias_config_data[] = {0x01, 0x01};
         ADS1299_write_registers(0x0D, 2, bias_config_data);
         delay_cycles(2e3);
 
