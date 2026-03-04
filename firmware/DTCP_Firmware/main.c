@@ -7,9 +7,31 @@
 #include "ads1299.h"
 #include "uart.h"
 
+#include <stdio.h>
+
 float voltage;
 float voltages[128];
 /* small printf implementation */
+
+void UART_transmitString(char* str) {
+    while (*str) {
+        // Wait for TX FIFO to have space, then send
+        DL_UART_Main_transmitDataBlocking(UART_0_INST, *str++);
+    }
+}
+
+void UART_transmit_voltage(float voltage) {
+        /* UART Transmission */
+        char buffer[32];
+        // Manual float to string conversion
+        int intPart = (int)voltage;
+        int fracPart = (int)((voltage - (float)intPart) * 100.0f);
+        if (fracPart < 0) fracPart = -fracPart; 
+
+        // Serial Plotter needs one value + newline to plot a single point
+        snprintf(buffer, sizeof(buffer), "%d.%02d\r\n", intPart, fracPart);
+        UART_transmitString(buffer);
+}
 
 int main(void) {
     delay_ms(150);
@@ -38,6 +60,9 @@ int main(void) {
         val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
         if (val == 0) {
             voltage = ADS1299_read_data();
+            
+            //UART_transmit_voltage(voltage);
+
             if (index == 128) {
                 /* Remove offset */
                 // int sum = 0;
