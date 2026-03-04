@@ -35485,6 +35485,24 @@
           <Set>
             <ColorRef id="LAYER_COLOR_Mechanical 1" />
           </Set>
+          <Set net="No Net">
+            <Features>
+              <UserSpecial>
+                <Line startX="75.692" startY="46.99" endX="140.716" endY="46.99">
+                  <LineDesc lineEnd="ROUND" lineWidth="2.5E-05" lineProperty="SOLID" />
+                </Line>
+                <Line startX="140.716" startY="46.99" endX="140.716" endY="94.742">
+                  <LineDesc lineEnd="ROUND" lineWidth="2.5E-05" lineProperty="SOLID" />
+                </Line>
+                <Line startX="75.692" startY="94.742" endX="140.716" endY="94.742">
+                  <LineDesc lineEnd="ROUND" lineWidth="2.5E-05" lineProperty="SOLID" />
+                </Line>
+                <Line startX="75.692" startY="46.99" endX="75.692" endY="94.742">
+                  <LineDesc lineEnd="ROUND" lineWidth="2.5E-05" lineProperty="SOLID" />
+                </Line>
+              </UserSpecial>
+            </Features>
+          </Set>
         </LayerFeature>
         <LayerFeature layerRef="Top Designator">
           <Set>

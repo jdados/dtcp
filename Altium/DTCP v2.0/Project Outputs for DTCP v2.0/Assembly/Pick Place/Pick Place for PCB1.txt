@@ -1,11 +1,11 @@
 Altium Designer Pick and Place Locations
-C:\Users\jerem\AppData\Local\TempReleases\Snapshot\3\Assembly\Pick Place\Pick Place for PCB1.txt
+C:\Users\jerem\AppData\Local\TempReleases\Snapshot\4\Assembly\Pick Place\Pick Place for PCB1.txt
 
 ========================================================================================================================
 File Design Information:
 
 Date:       04/03/26
-Time:       15:15
+Time:       15:45
 Revision:   Not in VersionControl
 Variant:    No variations
 Units used: mil
