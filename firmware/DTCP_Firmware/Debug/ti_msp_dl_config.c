@@ -122,14 +122,14 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
 
 static const DL_UART_Main_ClockConfig gUART_0ClockConfig = {
     .clockSel    = DL_UART_MAIN_CLOCK_BUSCLK,
-    .divideRatio = DL_UART_MAIN_CLOCK_DIVIDE_RATIO_8
+    .divideRatio = DL_UART_MAIN_CLOCK_DIVIDE_RATIO_1
 };
 
 static const DL_UART_Main_Config gUART_0Config = {
     .mode        = DL_UART_MAIN_MODE_NORMAL,
     .direction   = DL_UART_MAIN_DIRECTION_TX,
     .flowControl = DL_UART_MAIN_FLOW_CONTROL_NONE,
-    .parity      = DL_UART_MAIN_PARITY_NONE,
+    .parity      = DL_UART_MAIN_PARITY_ODD,
     .wordLength  = DL_UART_MAIN_WORD_LENGTH_8_BITS,
     .stopBits    = DL_UART_MAIN_STOP_BITS_ONE
 };
@@ -141,11 +141,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
     DL_UART_Main_init(UART_0_INST, (DL_UART_Main_Config *) &gUART_0Config);
     /*
      * Configure baud rate by setting oversampling and baud rate divisors.
-     *  Target baud rate: 9600
-     *  Actual baud rate: 9600
+     *  Target baud rate: 115200
+     *  Actual baud rate: 115246.1
      */
     DL_UART_Main_setOversampling(UART_0_INST, DL_UART_OVERSAMPLING_RATE_16X);
-    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_3_MHZ_9600_BAUD, UART_0_FBRD_3_MHZ_9600_BAUD);
+    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_24_MHZ_115200_BAUD, UART_0_FBRD_24_MHZ_115200_BAUD);
 
 
 

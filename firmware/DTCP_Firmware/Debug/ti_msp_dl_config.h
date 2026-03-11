@@ -79,16 +79,16 @@ extern "C" {
 
 /* Defines for UART_0 */
 #define UART_0_INST                                                        UART0
-#define UART_0_INST_FREQUENCY                                            3000000
+#define UART_0_INST_FREQUENCY                                           24000000
 #define UART_0_INST_IRQHandler                                  UART0_IRQHandler
 #define UART_0_INST_INT_IRQN                                      UART0_INT_IRQn
 #define GPIO_UART_0_TX_PORT                                                GPIOA
 #define GPIO_UART_0_TX_PIN                                        DL_GPIO_PIN_27
 #define GPIO_UART_0_IOMUX_TX                                     (IOMUX_PINCM28)
 #define GPIO_UART_0_IOMUX_TX_FUNC                      IOMUX_PINCM28_PF_UART0_TX
-#define UART_0_BAUD_RATE                                                  (9600)
-#define UART_0_IBRD_3_MHZ_9600_BAUD                                         (19)
-#define UART_0_FBRD_3_MHZ_9600_BAUD                                         (34)
+#define UART_0_BAUD_RATE                                                (115200)
+#define UART_0_IBRD_24_MHZ_115200_BAUD                                      (13)
+#define UART_0_FBRD_24_MHZ_115200_BAUD                                       (1)
 
 
 
