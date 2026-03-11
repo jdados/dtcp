@@ -46,7 +46,7 @@ void ADS1299_init() {
         /* Configure Registers */
         /* Config 1, Config 2, Config 3, LOFF (not used), CH1-CH4 */
         uint8_t config_data[] = {0b11010100, 0b11010000, 0b11111100, \
-        0x00, 0b01100000, 0b11100001, 0x81, 0x81};
+        0x00, 0b01100000, 0b01100000, 0x81, 0x81};
 
         ADS1299_write_registers(1, 8, config_data);
         delay_cycles(2e3);
@@ -109,6 +109,11 @@ void ADS1299_init() {
         // delay_cycles(50);
         // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         // delay_cycles(2e3);
+
+        // /* SRB1 */
+        uint8_t srb1_config[] = {0x20};
+        ADS1299_write_registers(0x15, 1, srb1_config);
+        delay_cycles(2e3);
 }
 
 /* Transmit a SPI command to ADS1299 */
@@ -163,6 +168,26 @@ float ADS1299_read_data() {
         DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
 
         int32_t channel_1_data = ((int32_t)data[3] << 16) | ((int32_t)data[4] << 8) | ((int32_t)data[5]);
+        /* sign extend */
+        if (channel_1_data & 0x800000) channel_1_data |= 0xFF000000;
+        float voltage = (float)channel_1_data * LSB * 1e3f;
+        return voltage;
+}
+
+/* Read conversion data from channel 1 */
+float ADS1299_read_data_channel_2() {
+        uint8_t data[15];
+        DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+        // DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);
+        // DL_SPI_receiveData8(SPI_0_INST);
+        for (uint8_t i = 0; i < 15; ++i) {
+                DL_SPI_transmitDataBlocking8(SPI0, 0x00);
+                data[i] = DL_SPI_receiveData8(SPI_0_INST);
+        }
+        delay_cycles(50);
+        DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
+
+        int32_t channel_1_data = ((int32_t)data[6] << 16) | ((int32_t)data[7] << 8) | ((int32_t)data[8]);
         /* sign extend */
         if (channel_1_data & 0x800000) channel_1_data |= 0xFF000000;
         float voltage = (float)channel_1_data * LSB * 1e3f;
