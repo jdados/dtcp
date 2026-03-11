@@ -125,7 +125,7 @@ static const DL_UART_Main_Config gUART_0Config = {
     .mode        = DL_UART_MAIN_MODE_NORMAL,
     .direction   = DL_UART_MAIN_DIRECTION_TX_RX,
     .flowControl = DL_UART_MAIN_FLOW_CONTROL_NONE,
-    .parity      = DL_UART_MAIN_PARITY_NONE,
+    .parity      = DL_UART_MAIN_PARITY_ODD,
     .wordLength  = DL_UART_MAIN_WORD_LENGTH_8_BITS,
     .stopBits    = DL_UART_MAIN_STOP_BITS_ONE
 };

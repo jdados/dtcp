@@ -8,14 +8,14 @@ SHELL = cmd.exe
 %.o: ../%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: Arm Compiler'
-	"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby" -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby/Debug" -I"C:/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_09_00_01/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
+	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART" -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART/Debug" -I"C:/ti/mspm0_sdk_2_08_00_03/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_08_00_03/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
 build-49135318: ../uart_echo_interrupts_standby.syscfg
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: SysConfig'
-	"C:/ti/sysconfig_1.25.0/sysconfig_cli.bat" -s "C:/ti/mspm0_sdk_2_09_00_01/.metadata/product.json" --script "C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby/uart_echo_interrupts_standby.syscfg" -o "." --compiler ticlang
+	"C:/ti/ccs2031/ccs/utils/sysconfig_1.25.0/sysconfig_cli.bat" -s "C:/ti/mspm0_sdk_2_08_00_03/.metadata/product.json" --script "C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART/uart_echo_interrupts_standby.syscfg" -o "." --compiler ticlang
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
@@ -29,14 +29,14 @@ Event.dot: build-49135318
 %.o: ./%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: Arm Compiler'
-	"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby" -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby/Debug" -I"C:/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_09_00_01/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
+	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART" -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART/Debug" -I"C:/ti/mspm0_sdk_2_08_00_03/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_08_00_03/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-startup_mspm0c110x_ticlang.o: C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
+startup_mspm0c110x_ticlang.o: C:/ti/mspm0_sdk_2_08_00_03/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: Arm Compiler'
-	"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby" -I"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby/Debug" -I"C:/ti/mspm0_sdk_2_09_00_01/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_09_00_01/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
+	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" -c @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART" -I"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART/Debug" -I"C:/ti/mspm0_sdk_2_08_00_03/source/third_party/CMSIS/Core/Include" -I"C:/ti/mspm0_sdk_2_08_00_03/source" -gdwarf-3 -MMD -MP -MF"$(basename $(<F)).d_raw" -MT"$(@)"  $(GEN_OPTS__FLAG) -o"$@" "$<"
 	@echo 'Finished building: "$<"'
 	@echo ' '
 

@@ -4,7 +4,7 @@
 
 SHELL = cmd.exe
 
-CG_TOOL_ROOT := C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
+CG_TOOL_ROOT := C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS
 
 GEN_OPTS__FLAG := @"./device.opt" 
 GEN_CMDS__FLAG := -Wl,-l"./device_linker.cmd" 
@@ -130,7 +130,7 @@ all: $(OBJS) $(GEN_CMDS)
 uart_echo_interrupts_standby.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_echo_interrupts_standby.map" -Wl,-i"C:/ti/mspm0_sdk_2_09_00_01/source" -Wl,-i"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby" -Wl,-i"C:/Users/luisr/workspace_ccstheia/uart_echo_interrupts_standby/Debug/syscfg" -Wl,-i"C:/ti/ccs2041/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_echo_interrupts_standby_linkInfo.xml" -Wl,--rom_model -o "uart_echo_interrupts_standby.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"uart_echo_interrupts_standby.map" -Wl,-i"C:/ti/mspm0_sdk_2_08_00_03/source" -Wl,-i"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART" -Wl,-i"C:/Users/lrwon/Documents/CEN4907C/Fall 2025/dtcp/firmware/DTCP_UART/Debug/syscfg" -Wl,-i"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="uart_echo_interrupts_standby_linkInfo.xml" -Wl,--rom_model -o "uart_echo_interrupts_standby.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 

@@ -9,6 +9,15 @@
                 "name": "dtcp",
                 "resourceId": "/dtcp"
             }
+        },
+        {
+            "name": "uart_echo_interrupts_standby",
+            "type": "ccs-debug",
+            "request": "launch",
+            "projectInfo": {
+                "name": "uart_echo_interrupts_standby",
+                "resourceId": "/uart_echo_interrupts_standby"
+            }
         }
     ]
 }
