@@ -11,7 +11,7 @@ SYSCFG_SRCS += \
 C_SRCS += \
 ../uart_echo_interrupts_standby.c \
 ./ti_msp_dl_config.c \
-C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c 
+C:/ti/mspm0_sdk_2_08_00_03/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c 
 
 GEN_CMDS += \
 ./device_linker.cmd 
@@ -62,7 +62,7 @@ GEN_FILES__QUOTED += \
 C_SRCS__QUOTED += \
 "../uart_echo_interrupts_standby.c" \
 "./ti_msp_dl_config.c" \
-"C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c" 
+"C:/ti/mspm0_sdk_2_08_00_03/source/ti/devices/msp/m0p/startup_system_files/ticlang/startup_mspm0c110x_ticlang.c" 
 
 SYSCFG_SRCS__QUOTED += \
 "../uart_echo_interrupts_standby.syscfg" 
