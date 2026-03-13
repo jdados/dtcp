@@ -1,5 +1,6 @@
 #include "ti/driverlib/dl_uart_main.h"
 #include "ti/driverlib/dl_gpio.h"
+#include <stdio.h>
 
 // use "XDS110 Class Application/User UART" COM port
 
@@ -31,3 +32,7 @@
 
 // void UART_init();
 // void UART_transmit_message(char* string, uint32_t size);
+
+void UART_transmitString(char* str);
+void UART_transmit_voltage_ascii(float voltage);
+void UART_transmit_voltage_binary(float val);
