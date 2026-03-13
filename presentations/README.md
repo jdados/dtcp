@@ -13,3 +13,4 @@ This part of the repository is dedicated to maintaining and updating a **single 
 You can always find the most recent version of our weekly presentation here:
 
 - [Luis Wong's Presentation (requires UF sign-in)](https://uflorida-my.sharepoint.com/:p:/g/personal/luiswong_ufl_edu/EaZ3J9vPRXhJklZfMs2pZLsB5hkF-rbkgZdJQji_YEtJgg?e=LGHKyK)
+- [Dmytro Stavskyi's Presentation](https://uflorida.sharepoint.com/:p:/t/WirelessLink/IQApcrP-7q0iRYNKnVsI6gC2AfxkJmvafTwaHvvIEMqpRVk?e=zye5ED)
