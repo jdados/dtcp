@@ -47,13 +47,13 @@ The second prototype addresses issues found in the first design and focuses on i
 
 ### Firmware
 
-- Some code works when embed into the main but not as a function
 - `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
   - look for smaller alternative
 - Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
-- For the normal input to the channel, we are measuring values near zero (~0.019 mV; basically noise) that do not change as the amplitude increases, except at high voltages (in the range of Volts), where we do get some mV (1-3)
-  - an offset issue; for the PGA to work, the common-mode voltage between the positive input and negative input should be mid-supply, which with our current setup is 2.5V
 - The need for the biasing feature of the ADS is becoming apparent but we did not wire the circuit in our current PCB prototype.
+- When using UART to transmit the data from the AFE (to have real-time measurements) and viewing it through SerialPlot, we are seeing spikes (if the signal is 10mVpp, we are seeing spikes of +- 100mV-150mV regularly) that are not present when viewing the data through the Code Composer Studio graph functionality
+	- maybe an issue with UART not sending / receiving data correctly or from the microcontroller overhead or that it's actually correct and CCS does not capture it for some reason
+	- increasing the baud rate fixed the issue in one setup but not in setup involving saline
 
 ### Hardware
 

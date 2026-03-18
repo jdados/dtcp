@@ -1,8 +1,6 @@
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
 #include "ti_msp_dl_config.h"
-#include "ti/driverlib/dl_gpio.h"
-#include "ti/driverlib/dl_spi.h"
 
 
 /* pins on the board (invalid)
