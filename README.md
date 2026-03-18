@@ -36,11 +36,11 @@ The second prototype addresses issues found in the first design and focuses on i
 
 | Task | Finish By | Leader | Supporters | Comments | Status |
 |------|------------|---------|-------------|-----------|---------|
-| Revisions to the circuit design | Mid-February 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | 🟡 |
-| Design and order the PCB | End of February 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ❌ |
-| Place the fabrication order | End of February 2026 | Jeremiah Dados | Han Wu |  | ❌ |
-| Receive the board and assemble it | Mid-March 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ❌ |
-| Validate board outputs on lab equipment | End of March 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ❌ |
+| Revisions to the circuit design | Mid-February 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ✔️ |
+| Design and order the PCB | End of February 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
+| Place the fabrication order | End of February 2026 | Jeremiah Dados | Han Wu |  | ✔️ |
+| Receive the board and assemble it | Mid-March 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | 🟡 |
+| Validate board outputs on lab equipment | End of March 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | 🟡 |
 | Validate board functionality in animal experiments | End of April 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi |  | ❌ |
 
 ## Bugs
