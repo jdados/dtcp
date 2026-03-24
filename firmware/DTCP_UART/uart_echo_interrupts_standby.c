@@ -138,7 +138,10 @@ void transmitFloatBinary(float val) {
     // 1. Create a pointer to the float and treat it as a byte array
     uint8_t *ptr = (uint8_t *)&val;
 
-    // 2. Transmit each of the 4 bytes in the float
+    // 2. Send Frame Start (many tools use 0xABCD or 0xAA)
+    DL_UART_Main_transmitDataBlocking(UART_0_INST, 0xAA); 
+
+    // 3. Transmit each of the 4 bytes in the float
     for (int i = 0; i < sizeof(float); i++) {
         // DL_UART_Main_transmitDataBlocking sends 1 byte at a time
         DL_UART_Main_transmitDataBlocking(UART_0_INST, ptr[i]);
