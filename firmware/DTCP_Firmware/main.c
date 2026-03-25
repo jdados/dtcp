@@ -28,7 +28,12 @@ int main(void) {
         uint8_t val = 0;
         val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
         if (val == 0) {
-            voltage = ADS1299_read_data_channel_2();
+            voltage = ADS1299_read_data();
+
+            // if (voltage > 1.0f) {
+            //     delay_ms(55);
+
+            // }
             
             UART_transmit_voltage_binary(voltage);
 

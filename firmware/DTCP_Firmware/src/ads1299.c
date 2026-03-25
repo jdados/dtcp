@@ -45,7 +45,7 @@ void ADS1299_init() {
 
         /* Configure Registers */
         /* Config 1, Config 2, Config 3, LOFF (not used), CH1-CH4 */
-        uint8_t config_data[] = {0b11010100, 0b11010000, 0b11111100, \
+        uint8_t config_data[] = {0b11010001, 0b11010000, 0b11111100, \
         0x00, 0b01100000, 0b01100000, 0x81, 0x81};
 
         ADS1299_write_registers(1, 8, config_data);
@@ -111,9 +111,9 @@ void ADS1299_init() {
         // delay_cycles(2e3);
 
         // /* SRB1 */
-        uint8_t srb1_config[] = {0x20};
-        ADS1299_write_registers(0x15, 1, srb1_config);
-        delay_cycles(2e3);
+        // uint8_t srb1_config[] = {0x20};
+        // ADS1299_write_registers(0x15, 1, srb1_config);
+        // delay_cycles(2e3);
 }
 
 /* Transmit a SPI command to ADS1299 */
