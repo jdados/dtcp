@@ -4,7 +4,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 sampling_rate = 100e3  # 10 kHz sampling rate
-duration = 10e-3  # 10 ms total duration
+duration = 1.0  # 1 second total duration
 num_samples = int(sampling_rate * duration)
 time = np.arange(num_samples) / sampling_rate
 voltage = np.zeros_like(time)
@@ -24,8 +24,8 @@ emg_samples = int(emg_duration * sampling_rate)
 emg_time = np.arange(emg_samples) / sampling_rate
 dip_time = 1e-3
 spike_time = 4e-3
-dip = -2e-3 * np.exp(-((emg_time - dip_time)**2) / (0.5e-3)**2)
-spike = 2e-3 * np.exp(-((emg_time - spike_time)**2) / (0.8e-3)**2)
+dip = -0.2 * np.exp(-((emg_time - dip_time)**2) / (0.5e-3)**2)
+spike = 0.2 * np.exp(-((emg_time - spike_time)**2) / (0.8e-3)**2)
 
 emg = dip + spike
 

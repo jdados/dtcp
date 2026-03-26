@@ -4,7 +4,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 
 sampling_rate = 100e3  # 100 kHz sampling rate
-duration = 10e-3  # 10 ms total duration
+duration = 1.0  # 1 second total duration
 num_samples = int(sampling_rate * duration)
 time = np.arange(num_samples) / sampling_rate
 voltage = np.zeros_like(time)
@@ -23,13 +23,6 @@ with open(output_filename, 'w', newline='') as csvfile:
     writer.writerow(['Time (s)', 'Voltage (V)'])
     for t, v in zip(time, voltage):
         writer.writerow([f'{t:.9e}', f'{v:.9e}'])
-
-print(f"Control waveform generated and saved to {output_filename}")
-print(f"Total duration: {duration*1e3:.1f} ms")
-print(f"Sampling rate: {sampling_rate/1e3:.1f} kHz")
-print(f"Total samples: {num_samples}")
-print(f"\nWaveform features:")
-print(f"  - 2V spike from {spike_start*1e3:.1f} ms to {spike_end*1e3:.2f} ms ({spike_duration*1e3:.1f} ms wide)")
 
 # plot waveform
 fig, (ax1, ax2) = plt.subplots(2, 1, figsize=(12, 8))
