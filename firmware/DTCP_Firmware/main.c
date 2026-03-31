@@ -5,7 +5,7 @@
 #include "ads1299.h"
 #include "uart.h"
 
-float voltage;
+volatile float voltage;
 float voltages[128];
 /* small printf implementation */
 
@@ -45,7 +45,7 @@ int main(void) {
                 // for (uint8_t i = 0; i < 128; ++i) voltages[i] -= average;
                 index = 0;
             }
-            voltages[index] = voltage;
+            // voltages[index] = voltage;
             ++index;
         }
     }
