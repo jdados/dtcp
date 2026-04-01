@@ -17,12 +17,12 @@ void SPI_init() {
 }
 
 void ADS1299_init() {
-	// SPI_init();
+        // SPI_init();
         // GPIO_A_RESET_PIN
-        //DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
-        //delay_cycles(40);
-        //DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
-        //delay_cycles(40);
+        // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
+        // delay_cycles(40);
+        // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
+        // delay_cycles(40);
 
         /* dummy */
         // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
@@ -51,64 +51,10 @@ void ADS1299_init() {
         ADS1299_write_registers(1, 8, config_data);
         delay_cycles(2e3);
 
-        /* Working solution */
-        // /* Write to CONFIG1  - CHN4 registers */
-        // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 1);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // DL_SPI_transmitDataBlocking8(SPI0, 8 - 1);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* DAISY_EN = 1, CLK_EN = 0, Output data rate = 1 kSPS */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0b11010100);
-        // // DL_SPI_transmitDataBlocking8(SPI0, 0x96);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CONFIG 2*/
-        // DL_SPI_transmitDataBlocking8(SPI0, 0b11010000);
-        // // DL_SPI_transmitDataBlocking8(SPI0, 0xC0);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CONFIG 3 */
-        // // DL_SPI_transmitDataBlocking8(SPI0, 0xE0);
-        // DL_SPI_transmitDataBlocking8(SPI0, 0b11111100);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* default values */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CH 1*/
-        // DL_SPI_transmitDataBlocking8(SPI0, 0b01100000);
-        // // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CH 2*/
-        // DL_SPI_transmitDataBlocking8(SPI0, 0b11100001);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CH 3 */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x81);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* CH 4 */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x81);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // delay_cycles(50);
-        // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        // delay_cycles(2e3);
-
         /* Bias driver registers */
         uint8_t bias_config_data[] = {0x01, 0x01};
         ADS1299_write_registers(0x0D, 2, bias_config_data);
         delay_cycles(2e3);
-
-        // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x40 | 0x0D);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // DL_SPI_transmitDataBlocking8(SPI0, 2 - 1);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* Positive */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x01);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // /* Negative */
-        // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
-        // DL_SPI_receiveData8(SPI_0_INST);
-        // delay_cycles(50);
-        // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        // delay_cycles(2e3);
 
         // /* SRB1 */
         // uint8_t srb1_config[] = {0x20};
@@ -174,8 +120,8 @@ float ADS1299_read_data_channel_1(void) {
         return voltage;
 }
 
-/* Read conversion data from channel 1 */
-float ADS1299_read_data_channel_2() {
+/* Read conversion data from channel 2 */
+float ADS1299_read_data_channel_2(void) {
         uint8_t data[15];
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         // DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);

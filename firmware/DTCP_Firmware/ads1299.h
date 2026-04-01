@@ -49,7 +49,7 @@ void ADS1299_transmit_cmd(uint8_t cmd);
 void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data);
 uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs);
 float ADS1299_read_data_channel_1(void);
-float ADS1299_read_data_channel_2();
+float ADS1299_read_data_channel_2(void);
 void ADS1299_start_conversions(void);
 void ADS1299_stop_conversions(void);
 extern void delay_ms(int ms);
