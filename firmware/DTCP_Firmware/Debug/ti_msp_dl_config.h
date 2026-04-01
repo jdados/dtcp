@@ -123,6 +123,10 @@ extern "C" {
 #define GPIO_A_CS_PIN                                           (DL_GPIO_PIN_24)
 #define GPIO_A_CS_IOMUX                                          (IOMUX_PINCM25)
 /* Defines for DRDY: GPIOA.2 with pinCMx 3 on package pin 8 */
+// pins affected by this interrupt request:["DRDY"]
+#define GPIO_A_INT_IRQN                                         (GPIOA_INT_IRQn)
+#define GPIO_A_INT_IIDX                         (DL_INTERRUPT_GROUP1_IIDX_GPIOA)
+#define GPIO_A_DRDY_IIDX                                     (DL_GPIO_IIDX_DIO2)
 #define GPIO_A_DRDY_PIN                                          (DL_GPIO_PIN_2)
 #define GPIO_A_DRDY_IOMUX                                         (IOMUX_PINCM3)
 /* Defines for PWDN: GPIOA.23 with pinCMx 24 on package pin 18 */

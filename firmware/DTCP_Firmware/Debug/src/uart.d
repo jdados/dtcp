@@ -1,6 +1,6 @@
 # FIXED
 
-src/.o: ../src/uart.c ../uart.h \
+src/uart.o: ../src/uart.c ../uart.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/driverlib/dl_uart_main.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/driverlib/dl_uart.h \
  C:/ti/mspm0_sdk_2_07_00_05/source/ti/devices/msp/msp.h \

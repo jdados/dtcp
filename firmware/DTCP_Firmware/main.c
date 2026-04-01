@@ -7,6 +7,8 @@
 
 volatile float voltage;
 float voltages[128];
+uint8_t count;
+
 /* small printf implementation */
 
 int main(void) {
@@ -19,10 +21,13 @@ int main(void) {
     // (GPIOA, CS_PIN);
 
     ADS1299_init();
-    // NVIC_EnableIRQ(GPIOA_INT_IRQn);
     ADS1299_start_conversions();
 
-    uint8_t index = 0;
+    DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+    DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+    // NVIC_EnableIRQ(GPIOA_INT_IRQn);
+
+    count = 0;
 
     while (1) { 
         uint8_t val = 0;
@@ -37,24 +42,38 @@ int main(void) {
             
             UART_transmit_voltage_binary(voltage);
 
-            if (index == 128) {
+            if (count == 128) {
                 /* Remove offset */
                 // int sum = 0;
                 // for (uint8_t i = 0; i < 128; ++i) sum += voltages[i];
                 // int average = sum / 128;
                 // for (uint8_t i = 0; i < 128; ++i) voltages[i] -= average;
-                index = 0;
+                count = 0;
             }
-            // voltages[index] = voltage;
-            ++index;
+            // voltages[count] = voltage;
+            ++count;
         }
     }
 }
 
-// void GROUP1_IRQHandler(void) {
-//     switch (DL_Interrupt_getPendingGroup(DL_INTERRUPT_GROUP_1)) {
-//     }
-// }
+void GPIOA_IRQHandler(void) {
+    uint32_t int_status = DL_GPIO_getPendingInterrupt(GPIOA);
+    if (int_status & GPIO_A_DRDY_IOMUX) {
+        // voltage = ADS1299_read_data_channel_1();
+        // voltages[count] = voltage;
+
+        // if (voltage > 1.0f) {
+        //     delay_ms(55);
+        // }
+        
+        /* UART transmit interrupt ? */
+        // // UART_transmit_voltage_binary(voltage);
+        
+        // if (count == 128) count = 0;
+        // ++count;   
+        DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_IOMUX);
+    }
+}
 
 void delay_ms(int ms) {
     delay_cycles(ms * (24e6)/1000);

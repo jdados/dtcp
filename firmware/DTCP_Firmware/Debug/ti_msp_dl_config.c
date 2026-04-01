@@ -104,6 +104,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		GPIO_A_START_PIN |
 		GPIO_A_RESET_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIO_A_PORT, DL_GPIO_PIN_2_EDGE_FALL);
+    DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+    DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
 
 }
 
@@ -116,6 +118,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
 
     DL_SYSCTL_setSYSOSCFreq(DL_SYSCTL_SYSOSC_FREQ_BASE);
     DL_SYSCTL_setMCLKDivider(DL_SYSCTL_MCLK_DIVIDER_DISABLE);
+    /* INT_GROUP1 Priority */
+    NVIC_SetPriority(GPIOA_INT_IRQn, 1);
 
 }
 

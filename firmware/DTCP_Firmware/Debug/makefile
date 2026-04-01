@@ -140,7 +140,7 @@ all: $(OBJS) $(GEN_CMDS)
 DTCP_Firmware.out: $(OBJS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: Arm Linker'
-	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -gdwarf-3 -Wl,-m"DTCP_Firmware.map" -Wl,-i"C:/ti/mspm0_sdk_2_07_00_05/source" -Wl,-i"C:/Users/user/Documents/CCS/dtcp/firmware/DTCP_Firmware" -Wl,-i"C:/Users/user/Documents/CCS/dtcp/firmware/DTCP_Firmware/Debug/syscfg" -Wl,-i"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="DTCP_Firmware_linkInfo.xml" -Wl,--rom_model -o "DTCP_Firmware.out" $(ORDERED_OBJS)
+	"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/bin/tiarmclang.exe" @"device.opt"  -march=thumbv6m -mcpu=cortex-m0plus -mfloat-abi=soft -mlittle-endian -mthumb -O2 -finline-functions -gdwarf-3 -Wl,-m"DTCP_Firmware.map" -Wl,-i"C:/ti/mspm0_sdk_2_07_00_05/source" -Wl,-i"C:/Users/user/Documents/CCS/dtcp/firmware/DTCP_Firmware" -Wl,-i"C:/Users/user/Documents/CCS/dtcp/firmware/DTCP_Firmware/Debug/syscfg" -Wl,-i"C:/ti/ccs2031/ccs/tools/compiler/ti-cgt-armllvm_4.0.4.LTS/lib" -Wl,--diag_wrap=off -Wl,--display_error_number -Wl,--warn_sections -Wl,--xml_link_info="DTCP_Firmware_linkInfo.xml" -Wl,--rom_model -o "DTCP_Firmware.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
