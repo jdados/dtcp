@@ -1,7 +1,7 @@
 ******************************************************************************
             TI ARM Clang Linker PC v4.0.4                      
 ******************************************************************************
->> Linked Tue Mar 31 19:28:41 2026
+>> Linked Wed Apr  1 11:44:31 2026
 
 OUTPUT FILE NAME:   <DTCP_Firmware.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs"  address: 00000981
@@ -42,7 +42,7 @@ section   page    origin      length       input sections
 .text      0    000000c0    000009e0     
                   000000c0    0000010c     libclang_rt.builtins.a : divdf3.S.obj (.text.__divdf3)
                   000001cc    000000e4                            : muldf3.S.obj (.text.__muldf3)
-                  000002b0    000000a8     ads1299.o (.text.ADS1299_read_data)
+                  000002b0    000000a8     ads1299.o (.text.ADS1299_read_data_channel_1)
                   00000358    00000098     ads1299.o (.text.ADS1299_write_registers)
                   000003f0    00000090     ads1299.o (.text.ADS1299_init)
                   00000480    0000008c     libclang_rt.builtins.a : mulsf3.S.obj (.text.__mulsf3)
@@ -185,7 +185,7 @@ address   name
 -------   ----                          
 0000079f  ADC0_IRQHandler               
 000003f1  ADS1299_init                  
-000002b1  ADS1299_read_data             
+000002b1  ADS1299_read_data_channel_1   
 00000a75  ADS1299_start_conversions     
 000006d5  ADS1299_transmit_cmd          
 00000359  ADS1299_write_registers       
@@ -294,7 +294,7 @@ address   name
 000000c1  __divdf3                      
 000001cd  __aeabi_dmul                  
 000001cd  __muldf3                      
-000002b1  ADS1299_read_data             
+000002b1  ADS1299_read_data_channel_1   
 00000359  ADS1299_write_registers       
 000003f1  ADS1299_init                  
 00000481  __aeabi_fmul                  

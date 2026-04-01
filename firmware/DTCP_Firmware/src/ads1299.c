@@ -155,7 +155,7 @@ uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs) {
 }
 
 /* Read conversion data from channel 1 */
-float ADS1299_read_data() {
+float ADS1299_read_data_channel_1() {
         uint8_t data[15];
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         // DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);
