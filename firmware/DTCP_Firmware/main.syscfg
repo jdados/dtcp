@@ -22,9 +22,9 @@ const UART1  = UART.addInstance();
  */
 GPIO1.$name                               = "GPIO_A";
 GPIO1.associatedPins.create(6);
-GPIO1.associatedPins[0].initialValue      = "SET";
 GPIO1.associatedPins[0].assignedPin       = "22";
 GPIO1.associatedPins[0].$name             = "RED_22";
+GPIO1.associatedPins[0].initialValue      = "SET";
 GPIO1.associatedPins[1].$name             = "CS";
 GPIO1.associatedPins[1].ioStructure       = "SD";
 GPIO1.associatedPins[1].initialValue      = "SET";
