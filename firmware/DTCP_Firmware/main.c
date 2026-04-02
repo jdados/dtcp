@@ -10,6 +10,8 @@ float voltages[100];
 uint8_t count;
 float sum;
 
+static FIFO_t AFE_FIFO;
+
 /* small printf implementation */
 
 int main(void) {
