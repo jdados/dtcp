@@ -12,7 +12,6 @@ void SPI_init() {
     DL_SPI_setBitRateSerialClockDivider(SPI0, 5);
     DL_SPI_setFIFOThreshold(SPI0, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
-    
     DL_SPI_enable(SPI0);
 }
 
@@ -151,3 +150,10 @@ void ADS1299_start_conversions() {
 void ADS1299_stop_conversions() {
 
 }
+
+// void init_FIFO(FIFO_t *FIFO) {
+//     FIFO.head = FIFOs[FIFO_index].buffer;
+//     FIFO.tail = FIFOs[FIFO_index].buffer;
+//     FIFOs.lostData = 0;
+//     return 0;
+// }

@@ -65,9 +65,4 @@ float ADS1299_read_data_channel_2(void);
 void ADS1299_start_conversions(void);
 void ADS1299_stop_conversions(void);
 extern void delay_ms(int ms);
-int32_t init_FIFO(FIFO_t FIFO) {
-    FIFO.head = FIFOs[FIFO_index].buffer;
-    FIFO.tail = FIFOs[FIFO_index].buffer;
-    FIFOs.lostData = 0;
-    return 0;
-}
+// void init_FIFO(FIFO_t *FIFO);
