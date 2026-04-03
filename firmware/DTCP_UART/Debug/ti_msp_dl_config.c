@@ -146,8 +146,13 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
 
     /* Configure Interrupts */
     DL_UART_Main_enableInterrupt(UART_0_INST,
-                                 DL_UART_MAIN_INTERRUPT_RX);
+                                 DL_UART_MAIN_INTERRUPT_RX |
+                                 DL_UART_MAIN_INTERRUPT_TX);
 
+    /* Configure FIFOs */
+    DL_UART_Main_enableFIFOs(UART_0_INST);
+    DL_UART_Main_setRXFIFOThreshold(UART_0_INST, DL_UART_RX_FIFO_LEVEL_ONE_ENTRY);
+    DL_UART_Main_setTXFIFOThreshold(UART_0_INST, DL_UART_TX_FIFO_LEVEL_EMPTY);
 
     DL_UART_Main_enable(UART_0_INST);
 }
