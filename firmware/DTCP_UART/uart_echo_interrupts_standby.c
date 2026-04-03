@@ -38,7 +38,9 @@ float dataArray[] = {0.0000, 0.7347, 1.1888, 1.1888, 0.7347, 0.0000, -0.7347, -1
 
 #define ARRAY_SIZE (sizeof(dataArray) / sizeof(dataArray[0]))
 
-uint8_t gCurrentIndex = 0; // Tracks which element to send next
+volatile uint8_t gCurrentIndex = 0; // Tracks which element to send next
+volatile uint8_t gTxState = 0; // 0: Header, 1-4: Float Bytes
+const uint8_t HEADER_BYTE = 0xAA;
 
 void UART_transmitString(char* str) {
     while (*str) {
@@ -154,17 +156,57 @@ void transmitNextValue() {
     gCurrentIndex = (gCurrentIndex + 1) % ARRAY_SIZE;
 }
 
+volatile uint8_t byteCount = 1; // Start at 1 because we manually sent byte 0
+
+void UART_0_INST_IRQHandler(void) {
+    switch (DL_UART_Main_getPendingInterrupt(UART_0_INST)) {
+        case DL_UART_MAIN_IIDX_TX:
+            
+            float val = dataArray[gCurrentIndex];
+            uint8_t *ptr = (uint8_t *)&val;
+
+            if (gTxState == 0) {
+                // State 0: Send Header
+                DL_UART_Main_transmitData(UART_0_INST, HEADER_BYTE);
+                gTxState = 1;
+            } 
+            else if (gTxState <= 4) {
+                // State 1-4: Send the 4 bytes of the float
+                // ptr[0] for state 1, ptr[1] for state 2, etc.
+                DL_UART_Main_transmitData(UART_0_INST, ptr[gTxState - 1]);
+                gTxState++;
+                
+                // If we just sent the last byte (state 4), reset for the next float
+                if (gTxState > 4) {
+                    gTxState = 0;
+                    gCurrentIndex = (gCurrentIndex + 1) % ARRAY_SIZE;
+                }
+            }
+            break;
+            
+        default:
+            break;
+    }
+}
+
 int main(void) {
     SYSCFG_DL_init();
+
+    // Enable UART Interrupts in NVIC
+    NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+
+    // START: Manually send the very first header to kick off the ISR
+    DL_UART_Main_transmitData(UART_0_INST, HEADER_BYTE);
+    gTxState = 1; // Next interrupt should send the first byte of the float
     
     // Transmit the whole array once
     // transmitFloatArray();
 
     while (1) {
         // transmitFloatArrayPlotter(); // Plot the array repeatedly
-        transmitNextValue(); 
+        // transmitNextValue(); 
 
         // DL_Common_delayCycles(32000000); // Delay to plotter does not move too fast.
-        //__WFI();
+        __WFI();
     }
 }

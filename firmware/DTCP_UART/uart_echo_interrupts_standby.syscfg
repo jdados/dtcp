@@ -1,8 +1,8 @@
 /**
  * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
  * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
- * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.08.00.03"
- * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.08.00.03"
+ * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.00"
+ * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.00"
  * @versions {"tool":"1.25.0+4268"}
  */
 
@@ -36,11 +36,10 @@ UART1.$name                    = "UART_0";
 UART1.rxFifoThreshold          = "DL_UART_RX_FIFO_LEVEL_ONE_ENTRY";
 UART1.uartClkSrc               = "LFCLK";
 UART1.ovsRate                  = "3";
-UART1.targetBaudRate           = 9600;
-UART1.enableInternalLoopback   = false;
-UART1.enabledInterrupts        = ["RX"];
-UART1.enableFIFO               = false;
 UART1.parity                   = "ODD";
+UART1.enabledInterrupts        = ["RX","TX"];
+UART1.enableFIFO               = true;
+UART1.txFifoThreshold          = "DL_UART_TX_FIFO_LEVEL_EMPTY";
 UART1.peripheral.$assign       = "UART0";
 UART1.peripheral.rxPin.$assign = "PA26";
 UART1.peripheral.txPin.$assign = "PA27";
