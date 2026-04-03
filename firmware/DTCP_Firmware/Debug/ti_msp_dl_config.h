@@ -86,9 +86,9 @@ extern "C" {
 #define GPIO_UART_0_TX_PIN                                        DL_GPIO_PIN_27
 #define GPIO_UART_0_IOMUX_TX                                     (IOMUX_PINCM28)
 #define GPIO_UART_0_IOMUX_TX_FUNC                      IOMUX_PINCM28_PF_UART0_TX
-#define UART_0_BAUD_RATE                                                (800000)
-#define UART_0_IBRD_24_MHZ_800000_BAUD                                       (1)
-#define UART_0_FBRD_24_MHZ_800000_BAUD                                      (56)
+#define UART_0_BAUD_RATE                                               (1000000)
+#define UART_0_IBRD_24_MHZ_1000000_BAUD                                      (1)
+#define UART_0_FBRD_24_MHZ_1000000_BAUD                                     (32)
 
 
 
@@ -123,6 +123,10 @@ extern "C" {
 #define GPIO_A_CS_PIN                                           (DL_GPIO_PIN_24)
 #define GPIO_A_CS_IOMUX                                          (IOMUX_PINCM25)
 /* Defines for DRDY: GPIOA.2 with pinCMx 3 on package pin 8 */
+// pins affected by this interrupt request:["DRDY"]
+#define GPIO_A_INT_IRQN                                         (GPIOA_INT_IRQn)
+#define GPIO_A_INT_IIDX                         (DL_INTERRUPT_GROUP1_IIDX_GPIOA)
+#define GPIO_A_DRDY_IIDX                                     (DL_GPIO_IIDX_DIO2)
 #define GPIO_A_DRDY_PIN                                          (DL_GPIO_PIN_2)
 #define GPIO_A_DRDY_IOMUX                                         (IOMUX_PINCM3)
 /* Defines for PWDN: GPIOA.23 with pinCMx 24 on package pin 18 */

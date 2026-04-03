@@ -30,6 +30,18 @@
 #define V_REF 4.5f
 #define GAIN 24
 
+/* FIFO for holding samples */
+#define FIFO_SIZE 32
+
+typedef struct FIFO_t { 
+    float buffer[FIFO_SIZE];
+    /* read pointer */
+    float *head;
+    /* write pointer */
+    float *tail;
+    uint32_t lostData;
+} FIFO_t;
+
 static const DL_SPI_Config SPI_0_config = {
     .mode        = DL_SPI_MODE_CONTROLLER,
     .frameFormat = DL_SPI_FRAME_FORMAT_MOTO3_POL0_PHA1,
@@ -48,8 +60,14 @@ void ADS1299_init(void);
 void ADS1299_transmit_cmd(uint8_t cmd);
 void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data);
 uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs);
-float ADS1299_read_data(void);
-float ADS1299_read_data_channel_2();
+float ADS1299_read_data_channel_1(void);
+float ADS1299_read_data_channel_2(void);
 void ADS1299_start_conversions(void);
 void ADS1299_stop_conversions(void);
 extern void delay_ms(int ms);
+int32_t init_FIFO(FIFO_t FIFO) {
+    FIFO.head = FIFOs[FIFO_index].buffer;
+    FIFO.tail = FIFOs[FIFO_index].buffer;
+    FIFOs.lostData = 0;
+    return 0;
+}

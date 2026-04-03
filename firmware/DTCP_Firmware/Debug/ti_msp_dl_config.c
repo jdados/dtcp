@@ -104,6 +104,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 		GPIO_A_START_PIN |
 		GPIO_A_RESET_PIN);
     DL_GPIO_setLowerPinsPolarity(GPIO_A_PORT, DL_GPIO_PIN_2_EDGE_FALL);
+    DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+    DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
 
 }
 
@@ -116,6 +118,8 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
 
     DL_SYSCTL_setSYSOSCFreq(DL_SYSCTL_SYSOSC_FREQ_BASE);
     DL_SYSCTL_setMCLKDivider(DL_SYSCTL_MCLK_DIVIDER_DISABLE);
+    /* INT_GROUP1 Priority */
+    NVIC_SetPriority(GPIOA_INT_IRQn, 1);
 
 }
 
@@ -141,11 +145,11 @@ SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
     DL_UART_Main_init(UART_0_INST, (DL_UART_Main_Config *) &gUART_0Config);
     /*
      * Configure baud rate by setting oversampling and baud rate divisors.
-     *  Target baud rate: 800000
-     *  Actual baud rate: 800000
+     *  Target baud rate: 1000000
+     *  Actual baud rate: 1000000
      */
     DL_UART_Main_setOversampling(UART_0_INST, DL_UART_OVERSAMPLING_RATE_16X);
-    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_24_MHZ_800000_BAUD, UART_0_FBRD_24_MHZ_800000_BAUD);
+    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_24_MHZ_1000000_BAUD, UART_0_FBRD_24_MHZ_1000000_BAUD);
 
 
 
