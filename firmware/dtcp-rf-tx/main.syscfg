@@ -1,8 +1,8 @@
 /**
  * These arguments were used when this file was generated. They will be automatically applied on subsequent loads
  * via the GUI or CLI. Run CLI with '--help' for additional information on how to override these arguments.
- * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.02"
- * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.09.00.02"
+ * @cliArgs --device "MSPM0C110X" --part "Default" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.07.00.06"
+ * @v2CliArgs --device "MSPM0C1104" --package "VSSOP-20(DGS20)" --product "mspm0_sdk@2.07.00.06"
  * @versions {"tool":"1.25.0+4268"}
  */
 
@@ -41,14 +41,20 @@ GPIO2.$name                         = "PA";
 GPIO2.associatedPins[0].$name       = "EN";
 GPIO2.associatedPins[0].assignedPin = "28";
 
-GPIO3.$name                         = "GPIO_A";
+GPIO3.$name                               = "GPIO_A";
 GPIO3.associatedPins.create(3);
-GPIO3.associatedPins[0].$name       = "RED_22";
-GPIO3.associatedPins[0].assignedPin = "4";
-GPIO3.associatedPins[1].$name       = "CS";
-GPIO3.associatedPins[1].assignedPin = "24";
-GPIO3.associatedPins[2].$name       = "DRDY";
-GPIO3.associatedPins[2].assignedPin = "6";
+GPIO3.associatedPins[0].assignedPin       = "4";
+GPIO3.associatedPins[0].$name             = "RED_4";
+GPIO3.associatedPins[1].$name             = "CS";
+GPIO3.associatedPins[1].assignedPin       = "24";
+GPIO3.associatedPins[1].ioStructure       = "SD";
+GPIO3.associatedPins[1].initialValue      = "SET";
+GPIO3.associatedPins[2].$name             = "DRDY";
+GPIO3.associatedPins[2].assignedPin       = "6";
+GPIO3.associatedPins[2].direction         = "INPUT";
+GPIO3.associatedPins[2].interruptEn       = true;
+GPIO3.associatedPins[2].interruptPriority = "1";
+GPIO3.associatedPins[2].polarity          = "FALL";
 
 SPI1.$name               = "SPI_0";
 SPI1.targetBitRate       = 1000000;
@@ -63,6 +69,7 @@ SYSCTL.clockTreeEn = true;
 UART1.$name             = "UART_0";
 UART1.targetBaudRate    = 1000000;
 UART1.parity            = "ODD";
+UART1.enabledInterrupts = ["TX"];
 UART1.txPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric3";
 UART1.rxPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric4";
 
