@@ -36,10 +36,10 @@
 typedef struct FIFO_t { 
     float buffer[FIFO_SIZE];
     /* read pointer */
-    float *head;
+    volatile uint16_t head;
     /* write pointer */
-    float *tail;
-    uint32_t lostData;
+    volatile uint16_t tail;
+    uint16_t count;
 } FIFO_t;
 
 static const DL_SPI_Config SPI_0_config = {
@@ -65,4 +65,6 @@ float ADS1299_read_data_channel_2(void);
 void ADS1299_start_conversions(void);
 void ADS1299_stop_conversions(void);
 extern void delay_ms(int ms);
-// void init_FIFO(FIFO_t *FIFO);
+void init_FIFO(FIFO_t *f);
+bool write_FIFO(FIFO_t *f, float data);
+float read_FIFO(FIFO_t *f);

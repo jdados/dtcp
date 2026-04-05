@@ -151,9 +151,24 @@ void ADS1299_stop_conversions() {
 
 }
 
-// void init_FIFO(FIFO_t *FIFO) {
-//     FIFO.head = FIFOs[FIFO_index].buffer;
-//     FIFO.tail = FIFOs[FIFO_index].buffer;
-//     FIFOs.lostData = 0;
-//     return 0;
-// }
+void init_FIFO(FIFO_t *f) {
+    f->head = 0;
+    f->tail = 0;
+    f->count = 0;
+}
+
+bool write_FIFO(FIFO_t *f, float data) {
+        if (f->count >= FIFO_SIZE) return false;
+        f->buffer[f->head] = data;
+        f->head = (f->head + 1) & (FIFO_SIZE - 1);
+        ++f->count;
+        return true;
+}
+
+float read_FIFO(FIFO_t *f) {
+        if (f->count == 0) return 0;
+        float data = f->buffer[f->tail];
+        f->tail = (f->tail + 1) & (FIFO_SIZE - 1);
+        --f->count;
+        return data;
+}

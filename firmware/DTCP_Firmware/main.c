@@ -10,7 +10,7 @@ float voltages[100];
 uint8_t count;
 float sum;
 
-static FIFO_t AFE_FIFO;
+FIFO_t AFE_FIFO;
 
 volatile uint8_t gCurrentIndex = 0; // Tracks which element to send next
 volatile uint8_t gTxState = 0; // 0: Header, 1-4: Float Bytes
@@ -29,6 +29,7 @@ int main(void) {
 
     ADS1299_init();
     ADS1299_start_conversions();
+    init_FIFO(&AFE_FIFO);
 
     DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
     DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
@@ -71,8 +72,9 @@ void GPIOA_IRQHandler(void) {
     switch (DL_GPIO_getPendingInterrupt(GPIOA)) {
         case (DL_GPIO_IIDX_DIO2):
             voltage = ADS1299_read_data_channel_2();
-            voltages[count] = voltage;
-            count = (count + 1) % 100;
+            write_FIFO(&AFE_FIFO, voltage);
+            // voltages[count] = voltage;
+            // count = (count + 1) % 100;
 
             // if (voltage > 1.0f) {
                     /* Timer ? */
@@ -80,7 +82,7 @@ void GPIOA_IRQHandler(void) {
             // }
             
             /* UART transmit interrupt ? */
-            // // UART_transmit_voltage_binary(voltage);
+            // UART_transmit_voltage_binary(voltage);
             
             // if (count == 128) count = 0;
             // ++count;
@@ -95,7 +97,9 @@ void UART_0_INST_IRQHandler(void) {
     switch (DL_UART_Main_getPendingInterrupt(UART_0_INST)) {
         case DL_UART_MAIN_IIDX_TX:
             
-            float val = voltages[gCurrentIndex];
+            // float val = voltages[gCurrentIndex];
+            float val = read_FIFO(&AFE_FIFO);
+            if (val == 0) break;
             uint8_t *ptr = (uint8_t *)&val;
 
             if (gTxState == 0) {
