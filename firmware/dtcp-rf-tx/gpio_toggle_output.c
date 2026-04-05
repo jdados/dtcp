@@ -109,16 +109,14 @@ int main(void)
 
     /* Initialize the GPIO for the DDS interface */
     pin_init();
-    
-    // DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-    // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-    // wait_us(50000);
-    //DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-    //wait_us(50000);
+
+    wait_us(1000000);
+
     DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+    wait_us(1000000);
     DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
     /* Reset the DDS */
-    dds_reset();
+    //dds_reset();
 
     /* Initialize DDS in serial mode */
     dds_serial_load_en();
@@ -127,18 +125,17 @@ int main(void)
     uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
     dds_serial_data_tx(freq_dword);
 
-    
     while (1) {
         __asm__("nop");
-        DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-        DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-        wait_us(100000);
+        // DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+        // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
+        // wait_us(100000);
 
-        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
-        wait_us(10000);
-        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        dds_serial_data_tx(freq_dword);
-        wait_us(100000);
+        // DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        // wait_us(10000);
+        // DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+        // dds_serial_data_tx(freq_dword);
+        // wait_us(100000);
         // dds_serial_data_tx(freq_dword);
         // wait_us(10000);
         // dds_reset();

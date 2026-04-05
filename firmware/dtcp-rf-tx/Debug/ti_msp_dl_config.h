@@ -94,15 +94,15 @@ extern "C" {
 /* Defines for D7: GPIOA.25 with pinCMx 26 on package pin 20 */
 #define DDS_D7_PIN                                              (DL_GPIO_PIN_25)
 #define DDS_D7_IOMUX                                             (IOMUX_PINCM26)
-/* Defines for RST: GPIOA.24 with pinCMx 25 on package pin 19 */
-#define DDS_RST_PIN                                             (DL_GPIO_PIN_24)
-#define DDS_RST_IOMUX                                            (IOMUX_PINCM25)
+/* Defines for RST: GPIOA.17 with pinCMx 18 on package pin 13 */
+#define DDS_RST_PIN                                             (DL_GPIO_PIN_17)
+#define DDS_RST_IOMUX                                            (IOMUX_PINCM18)
 /* Defines for FREQ_UPD: GPIOA.22 with pinCMx 23 on package pin 17 */
 #define DDS_FREQ_UPD_PIN                                        (DL_GPIO_PIN_22)
 #define DDS_FREQ_UPD_IOMUX                                       (IOMUX_PINCM23)
-/* Defines for DDS_EN: GPIOA.0 with pinCMx 1 on package pin 4 */
-#define DDS_DDS_EN_PIN                                           (DL_GPIO_PIN_0)
-#define DDS_DDS_EN_IOMUX                                          (IOMUX_PINCM1)
+/* Defines for DDS_EN: GPIOA.2 with pinCMx 3 on package pin 8 */
+#define DDS_DDS_EN_PIN                                           (DL_GPIO_PIN_2)
+#define DDS_DDS_EN_IOMUX                                          (IOMUX_PINCM3)
 
 
 /* clang-format on */

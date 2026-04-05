@@ -24,11 +24,11 @@ GPIO1.associatedPins[0].assignedPin = "23";
 GPIO1.associatedPins[1].$name       = "D7";
 GPIO1.associatedPins[1].assignedPin = "25";
 GPIO1.associatedPins[2].$name       = "RST";
-GPIO1.associatedPins[2].assignedPin = "24";
+GPIO1.associatedPins[2].assignedPin = "17";
 GPIO1.associatedPins[3].$name       = "FREQ_UPD";
 GPIO1.associatedPins[3].assignedPin = "22";
-GPIO1.associatedPins[4].assignedPin = "0";
 GPIO1.associatedPins[4].$name       = "DDS_EN";
+GPIO1.associatedPins[4].assignedPin = "2";
 
 const Board = scripting.addModule("/ti/driverlib/Board", {}, false);
 
@@ -45,9 +45,9 @@ SYSCTL.clockTreeEn = true;
  */
 GPIO1.associatedPins[0].pin.$suggestSolution = "PA23";
 GPIO1.associatedPins[1].pin.$suggestSolution = "PA25";
-GPIO1.associatedPins[2].pin.$suggestSolution = "PA24";
+GPIO1.associatedPins[2].pin.$suggestSolution = "PA17";
 GPIO1.associatedPins[3].pin.$suggestSolution = "PA22";
-GPIO1.associatedPins[4].pin.$suggestSolution = "PA0";
+GPIO1.associatedPins[4].pin.$suggestSolution = "PA2";
 Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
