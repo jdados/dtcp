@@ -12,19 +12,19 @@ SHELL = cmd.exe
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-build-1782339651: ../gpio_toggle_output.syscfg
+build-1152080954: ../main.syscfg
 	@echo 'Building file: "$<"'
 	@echo 'Invoking: SysConfig'
-	"C:/ti/sysconfig_1.25.0/sysconfig_cli.bat" -s "C:/ti/mspm0_sdk_2_09_00_01/.metadata/product.json" --script "C:/Users/jdado/Desktop/dtcp/dtcp/firmware/dtcp-rf-tx/gpio_toggle_output.syscfg" -o "." --compiler gcc
+	"C:/ti/sysconfig_1.25.0/sysconfig_cli.bat" -s "C:/ti/mspm0_sdk_2_09_00_01/.metadata/product.json" --script "C:/Users/jdado/Desktop/dtcp/dtcp/firmware/dtcp-rf-tx/main.syscfg" -o "." --compiler gcc
 	@echo 'Finished building: "$<"'
 	@echo ' '
 
-device_linker.lds: build-1782339651 ../gpio_toggle_output.syscfg
-device.opt: build-1782339651
-device.lds.genlibs: build-1782339651
-ti_msp_dl_config.c: build-1782339651
-ti_msp_dl_config.h: build-1782339651
-Event.dot: build-1782339651
+device_linker.lds: build-1152080954 ../main.syscfg
+device.opt: build-1152080954
+device.lds.genlibs: build-1152080954
+ti_msp_dl_config.c: build-1152080954
+ti_msp_dl_config.h: build-1152080954
+Event.dot: build-1152080954
 
 %.o: ./%.c $(GEN_OPTS) | $(GEN_FILES) $(GEN_MISC_FILES)
 	@echo 'Building file: "$<"'

@@ -1,7 +1,7 @@
 #include "ti_msp_dl_config.h"
 #include <math.h>
 #include "ads1299.h"
-#include "uart.h"
+
 
 /* This results in approximately 0.5s of delay assuming 24MHz CPU_CLK */
 #define DDS_SYSCLK_FREQ (100000000)
@@ -12,11 +12,6 @@
 /* Wrapper API */
 void wait_us(uint32_t t){
     delay_cycles((MCU_CLK_FREQ/1000000)*t);
-}
-
-void pin_init(){
-    DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-    DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
 }
 
 void dds_reset(){
@@ -36,17 +31,11 @@ void dds_reset(){
 }
 
 void dds_serial_load_en(){
-    /* Set W[2:0] to 011 */
-    // DL_GPIO_setPins(DDS_PORT, DDS_D0_PIN | DDS_D1_PIN);
-    // DL_GPIO_clearPins(DDS_PORT, DDS_D2_PIN);
-    // wait_us(DDS_WCLK_T_US*10);
-
     /* Pulse WCLK */
     DL_GPIO_setPins(DDS_PORT, DDS_WCLK_PIN);
     wait_us(DDS_WCLK_T_US);
     DL_GPIO_clearPins(DDS_PORT, DDS_WCLK_PIN);
     wait_us(DDS_WCLK_T_US*4);
-
 
     /* Pulse FQ_UD */
     wait_us(DDS_WCLK_T_US);
@@ -110,38 +99,26 @@ int main(void)
     SYSCFG_DL_init();
 
     /* Initialize the GPIO for the DDS interface */
-    pin_init();
-
-    wait_us(1000000);
-
-    DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-    wait_us(1000000);
-    DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
-    /* Reset the DDS */
-    //dds_reset();
-
+    DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+    DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
+    
     /* Initialize DDS in serial mode */
     dds_serial_load_en();
+
     /* Calculate the DDS output frequency */
     double f_ratio = (double)F_OUT_DDS/(double)DDS_SYSCLK_FREQ;
     uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
     dds_serial_data_tx(freq_dword);
 
     while (1) {
-        __asm__("nop");
-        // DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-        // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-        // wait_us(100000);
-
-        // DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
-        // wait_us(10000);
-        // DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        // dds_serial_data_tx(freq_dword);
-        // wait_us(100000);
-        // dds_serial_data_tx(freq_dword);
-        // wait_us(10000);
-        // dds_reset();
-        // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-        // wait_us(990000);
+        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+        wait_us(300000);
+        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        dds_serial_data_tx(freq_dword);
+        wait_us(500000);
+        DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+        wait_us(100000);
+        DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
+        wait_us(1000000);
     }
 }
