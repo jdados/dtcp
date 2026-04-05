@@ -4,14 +4,10 @@
 
 #include "ads1299.h"
 
-volatile uint8_t gCurrentIndex = 0; // Tracks which element to send next
-volatile uint8_t gTxState = 0; // 0: Header, 1-4: Float Bytes
-const uint8_t HEADER_BYTE = 0xAA;
-
 volatile float voltage;
 float voltages[100];
+volatile float sum;
 uint8_t count;
-float sum;
 
 FIFO_t AFE_FIFO;
 
@@ -20,6 +16,8 @@ FIFO_t AFE_FIFO;
 #define MCU_CLK_FREQ (24000000)
 #define DDS_WCLK_FREQ (1000000)
 #define DDS_WCLK_T_US (10)
+
+void UART_transmit_voltage_binary(float val);
 
 /* Wrapper API */
 void wait_us(uint32_t t){
@@ -106,23 +104,25 @@ void dds_serial_data_tx(uint32_t dword){
 #define F_OUT_DDS 25000000
 
 volatile uint8_t id;
+volatile uint8_t config1;
+volatile uint8_t ch1;
 
 int main(void) {
     delay_ms(150);
     /* Power on GPIO, initialize pins as digital outputs */
     SYSCFG_DL_init();
 
-    // /* Initialize the GPIO for the DDS interface */
-    // DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-    // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
+    /* Initialize the GPIO for the DDS interface */
+    DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+    DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
     
-    // /* Initialize DDS in serial mode */
-    // dds_serial_load_en();
+    /* Initialize DDS in serial mode */
+    dds_serial_load_en();
 
-    // /* Calculate the DDS output frequency */
-    // double f_ratio = (double)F_OUT_DDS/(double)DDS_SYSCLK_FREQ;
-    // uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
-    // dds_serial_data_tx(freq_dword);
+    /* Calculate the DDS output frequency */
+    double f_ratio = (double)F_OUT_DDS/(double)DDS_SYSCLK_FREQ;
+    uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
+    dds_serial_data_tx(freq_dword);
 
     ADS1299_init();
     ADS1299_start_conversions();
@@ -148,6 +148,10 @@ int main(void) {
         // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
         // wait_us(1000000);
 
+        // id = ADS1299_read_registers(0, 1);
+        // config1 = ADS1299_read_registers(1, 1);
+        // ch1 = ADS1299_read_registers(5, 1);
+        
         uint8_t val = 0;
         val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
         if (val == 0) {

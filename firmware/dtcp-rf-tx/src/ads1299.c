@@ -44,7 +44,7 @@ void ADS1299_init() {
 
         /* Configure Registers */
         /* Config 1, Config 2, Config 3, LOFF (not used), CH1-CH4 */
-        uint8_t config_data[] = {0b11010001, 0b11010000, 0b11111100, \
+        uint8_t config_data[] = {0b11010101, 0b11010000, 0b11111100, \
         0x00, 0b01100101, 0b11100001, 0x81, 0x81};
 
         ADS1299_write_registers(1, 8, config_data);
