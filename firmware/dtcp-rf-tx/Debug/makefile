@@ -10,6 +10,7 @@ GEN_OPTS__FLAG := @"./device.opt"
 GEN_CMDS__FLAG := -Wl,-T"./device_linker.lds" 
 
 ORDERED_OBJS += \
+"./ads1299.o" \
 "./gpio_toggle_output.o" \
 "./ti_msp_dl_config.o" \
 "./startup_mspm0c110x_gcc.o" \
@@ -140,8 +141,8 @@ dtcp.out: $(OBJS) $(GEN_CMDS)
 # Other Targets
 clean:
 	-$(RM) $(GEN_MISC_FILES__QUOTED)$(GEN_FILES__QUOTED)$(EXE_OUTPUTS__QUOTED)
-	-$(RM) "gpio_toggle_output.o" "ti_msp_dl_config.o" "startup_mspm0c110x_gcc.o" 
-	-$(RM) "gpio_toggle_output.d" "ti_msp_dl_config.d" "startup_mspm0c110x_gcc.d" 
+	-$(RM) "ads1299.o" "gpio_toggle_output.o" "ti_msp_dl_config.o" "startup_mspm0c110x_gcc.o" 
+	-$(RM) "ads1299.d" "gpio_toggle_output.d" "ti_msp_dl_config.d" "startup_mspm0c110x_gcc.d" 
 	-@echo 'Finished clean'
 	-@echo ' '
 

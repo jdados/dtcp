@@ -12,7 +12,12 @@
 const GPIO   = scripting.addModule("/ti/driverlib/GPIO", {}, false);
 const GPIO1  = GPIO.addInstance();
 const GPIO2  = GPIO.addInstance();
+const GPIO3  = GPIO.addInstance();
+const SPI    = scripting.addModule("/ti/driverlib/SPI", {}, false);
+const SPI1   = SPI.addInstance();
 const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
+const UART   = scripting.addModule("/ti/driverlib/UART", {}, false);
+const UART1  = UART.addInstance();
 
 /**
  * Write custom configuration values to the imported modules.
@@ -36,7 +41,30 @@ GPIO2.$name                         = "PA";
 GPIO2.associatedPins[0].$name       = "EN";
 GPIO2.associatedPins[0].assignedPin = "28";
 
+GPIO3.$name                         = "GPIO_A";
+GPIO3.associatedPins.create(3);
+GPIO3.associatedPins[0].$name       = "RED_22";
+GPIO3.associatedPins[0].assignedPin = "4";
+GPIO3.associatedPins[1].$name       = "CS";
+GPIO3.associatedPins[1].assignedPin = "24";
+GPIO3.associatedPins[2].$name       = "DRDY";
+GPIO3.associatedPins[2].assignedPin = "6";
+
+SPI1.$name               = "SPI_0";
+SPI1.targetBitRate       = 1000000;
+SPI1.phase               = "1";
+SPI1.frameFormat         = "MOTO3";
+SPI1.sclkPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric0";
+SPI1.mosiPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric1";
+SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
+
 SYSCTL.clockTreeEn = true;
+
+UART1.$name             = "UART_0";
+UART1.targetBaudRate    = 1000000;
+UART1.parity            = "ODD";
+UART1.txPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric3";
+UART1.rxPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric4";
 
 /**
  * Pinmux solution for unlocked pins/peripherals. This ensures that minor changes to the automatic solver in a future
@@ -52,3 +80,13 @@ Board.peripheral.$suggestSolution            = "DEBUGSS";
 Board.peripheral.swclkPin.$suggestSolution   = "PA20";
 Board.peripheral.swdioPin.$suggestSolution   = "PA19";
 GPIO2.associatedPins[0].pin.$suggestSolution = "PA28";
+GPIO3.associatedPins[0].pin.$suggestSolution = "PA4";
+GPIO3.associatedPins[1].pin.$suggestSolution = "PA24";
+GPIO3.associatedPins[2].pin.$suggestSolution = "PA6";
+SPI1.peripheral.$suggestSolution             = "SPI0";
+SPI1.peripheral.sclkPin.$suggestSolution     = "PA11";
+SPI1.peripheral.mosiPin.$suggestSolution     = "PA18";
+SPI1.peripheral.misoPin.$suggestSolution     = "PA16";
+UART1.peripheral.$suggestSolution            = "UART0";
+UART1.peripheral.rxPin.$suggestSolution      = "PA26";
+UART1.peripheral.txPin.$suggestSolution      = "PA27";

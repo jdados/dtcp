@@ -1,5 +1,7 @@
 #include "ti_msp_dl_config.h"
 #include <math.h>
+#include "ads1299.h"
+#include "uart.h"
 
 /* This results in approximately 0.5s of delay assuming 24MHz CPU_CLK */
 #define DDS_SYSCLK_FREQ (100000000)

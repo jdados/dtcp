@@ -9,6 +9,7 @@ SYSCFG_SRCS += \
 ../gpio_toggle_output.syscfg 
 
 C_SRCS += \
+../ads1299.c \
 ../gpio_toggle_output.c \
 ./ti_msp_dl_config.c \
 C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c 
@@ -22,6 +23,7 @@ GEN_FILES += \
 ./ti_msp_dl_config.c 
 
 C_DEPS += \
+./ads1299.d \
 ./gpio_toggle_output.d \
 ./ti_msp_dl_config.d \
 ./startup_mspm0c110x_gcc.d 
@@ -30,6 +32,7 @@ GEN_OPTS += \
 ./device.opt 
 
 OBJS += \
+./ads1299.o \
 ./gpio_toggle_output.o \
 ./ti_msp_dl_config.o \
 ./startup_mspm0c110x_gcc.o 
@@ -40,6 +43,7 @@ GEN_MISC_FILES += \
 ./Event.dot 
 
 OBJS__QUOTED += \
+"ads1299.o" \
 "gpio_toggle_output.o" \
 "ti_msp_dl_config.o" \
 "startup_mspm0c110x_gcc.o" 
@@ -50,6 +54,7 @@ GEN_MISC_FILES__QUOTED += \
 "Event.dot" 
 
 C_DEPS__QUOTED += \
+"ads1299.d" \
 "gpio_toggle_output.d" \
 "ti_msp_dl_config.d" \
 "startup_mspm0c110x_gcc.d" 
@@ -60,6 +65,7 @@ GEN_FILES__QUOTED += \
 "ti_msp_dl_config.c" 
 
 C_SRCS__QUOTED += \
+"../ads1299.c" \
 "../gpio_toggle_output.c" \
 "./ti_msp_dl_config.c" \
 "C:/ti/mspm0_sdk_2_09_00_01/source/ti/devices/msp/m0p/startup_system_files/gcc/startup_mspm0c110x_gcc.c" 

@@ -1,17 +1,125 @@
 Archive member included to satisfy reference by file (symbol)
 
 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
-                              ./gpio_toggle_output.o (DL_Common_delayCycles)
+                              ./ads1299.o (DL_Common_delayCycles)
+C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+                              ./ads1299.o (DL_SPI_init)
+C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+                              ./ti_msp_dl_config.o (DL_UART_init)
+c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+                              C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o) (__aeabi_uidiv)
+c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+                              c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o) (__aeabi_idiv0)
+c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+                              ./ads1299.o (__aeabi_fmul)
+c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+                              ./ads1299.o (__aeabi_i2f)
+c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_clzsi2.o)
+                              c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o) (__clzsi2)
 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
                               ./startup_mspm0c110x_gcc.o (__libc_init_array)
 
 Discarded input sections
 
+ .text.SPI_init
+                0x00000000       0x58 ./ads1299.o
+ .text.ADS1299_transmit_cmd
+                0x00000000       0x38 ./ads1299.o
+ .text.ADS1299_write_registers
+                0x00000000       0x78 ./ads1299.o
+ .text.ADS1299_init
+                0x00000000       0x88 ./ads1299.o
+ .text.ADS1299_read_registers
+                0x00000000       0x64 ./ads1299.o
+ .text.ADS1299_read_data_channel_1
+                0x00000000       0x88 ./ads1299.o
+ .text.ADS1299_read_data_channel_2
+                0x00000000       0x88 ./ads1299.o
+ .text.ADS1299_start_conversions
+                0x00000000       0x10 ./ads1299.o
+ .text.ADS1299_stop_conversions
+                0x00000000        0x4 ./ads1299.o
+ .rodata        0x00000000        0x8 ./ads1299.o
+ .rodata.LSB    0x00000000        0x4 ./ads1299.o
+ .rodata.SPI_0_clock_config
+                0x00000000        0x2 ./ads1299.o
+ .rodata.SPI_0_config
+                0x00000000        0xa ./ads1299.o
  .text.wait_us  0x00000000       0x10 ./gpio_toggle_output.o
  .text.pin_init
                 0x00000000       0x18 ./gpio_toggle_output.o
  .text.dds_reset
                 0x00000000       0x50 ./gpio_toggle_output.o
+ .text.DL_SPI_getClockConfig
+                0x00000000       0x14 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataBlocking8
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataBlocking16
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataBlocking32
+                0x00000000       0x18 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataBlocking8
+                0x00000000       0x24 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataBlocking16
+                0x00000000       0x24 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataBlocking32
+                0x00000000       0x24 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataCheck8
+                0x00000000       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataCheck16
+                0x00000000       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_receiveDataCheck32
+                0x00000000       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataCheck8
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataCheck16
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_transmitDataCheck32
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_drainRXFIFO8
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_drainRXFIFO16
+                0x00000000       0x34 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_drainRXFIFO32
+                0x00000000       0x34 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_fillTXFIFO8
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_fillTXFIFO16
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_saveConfiguration
+                0x00000000       0x70 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_restoreConfiguration
+                0x00000000       0x7c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_SPI_fillTXFIFO32
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text.DL_UART_getClockConfig
+                0x00000000       0x14 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_configBaudRate
+                0x00000000       0xb0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_configIrDAMode
+                0x00000000       0x40 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_setIrDAPulseLength
+                0x00000000       0x34 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_receiveDataBlocking
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_transmitDataBlocking
+                0x00000000       0x24 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_receiveDataCheck
+                0x00000000       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_transmitDataCheck
+                0x00000000       0x1c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_drainRXFIFO
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_fillTXFIFO
+                0x00000000       0x2c C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_Main_saveConfiguration
+                0x00000000       0x84 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_Main_restoreConfiguration
+                0x00000000       0x90 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_Extend_saveConfiguration
+                0x00000000       0xa8 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text.DL_UART_Extend_restoreConfiguration
+                0x00000000       0xc0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
 Memory Configuration
 
@@ -23,6 +131,7 @@ BCR_CONFIG       0x41c00000         0x000000ff         r
 
 Linker script and memory map
 
+LOAD ./ads1299.o
 LOAD ./gpio_toggle_output.o
 LOAD ./ti_msp_dl_config.o
 LOAD ./startup_mspm0c110x_gcc.o
@@ -39,164 +148,229 @@ LOAD ./startup_mspm0c110x_gcc.o
 .vtable
  *(.vtable)
 
-.text           0x000000c0      0x2d0
+.text           0x000000c0      0x8a8
  CREATE_OBJECT_SYMBOLS
  *(.text)
+ .text          0x000000c0        0x0 ./ads1299.o
  .text          0x000000c0        0x0 ./gpio_toggle_output.o
  .text          0x000000c0        0x0 ./ti_msp_dl_config.o
  .text          0x000000c0        0x0 ./startup_mspm0c110x_gcc.o
  .text          0x000000c0        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
- .text          0x000000c0        0x0 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
-                0x000000c0                . = ALIGN (0x8)
+ .text          0x000000c0        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .text          0x000000c0        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .text          0x000000c0      0x114 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+                0x000000c0                __aeabi_uidiv
+                0x000000c0                __udivsi3
+                0x000001cc                __aeabi_uidivmod
+ .text          0x000001d4        0x4 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+                0x000001d4                __aeabi_idiv0
+                0x000001d4                __aeabi_ldiv0
+ .text          0x000001d8      0x234 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+                0x000001d8                __aeabi_fmul
+ .text          0x0000040c       0x8c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+                0x0000040c                __aeabi_i2f
+ .text          0x00000498       0x3c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_clzsi2.o)
+                0x00000498                __clzsi2
+ .text          0x000004d4        0x0 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+                0x000004d8                . = ALIGN (0x8)
+ *fill*         0x000004d4        0x4 
  *(.text.*)
  .text.dds_serial_load_en
-                0x000000c0       0x44 ./gpio_toggle_output.o
-                0x000000c0                dds_serial_load_en
+                0x000004d8       0x44 ./gpio_toggle_output.o
+                0x000004d8                dds_serial_load_en
  .text.dds_serial_data_tx
-                0x00000104       0xdc ./gpio_toggle_output.o
-                0x00000104                dds_serial_data_tx
+                0x0000051c       0xdc ./gpio_toggle_output.o
+                0x0000051c                dds_serial_data_tx
  .text.startup.main
-                0x000001e0       0x44 ./gpio_toggle_output.o
-                0x000001e0                main
+                0x000005f8       0x44 ./gpio_toggle_output.o
+                0x000005f8                main
  .text.SYSCFG_DL_initPower
-                0x00000224       0x28 ./ti_msp_dl_config.o
-                0x00000224                SYSCFG_DL_initPower
+                0x0000063c       0x3c ./ti_msp_dl_config.o
+                0x0000063c                SYSCFG_DL_initPower
  .text.SYSCFG_DL_GPIO_init
-                0x0000024c       0x30 ./ti_msp_dl_config.o
-                0x0000024c                SYSCFG_DL_GPIO_init
+                0x00000678       0x50 ./ti_msp_dl_config.o
+                0x00000678                SYSCFG_DL_GPIO_init
  .text.SYSCFG_DL_SYSCTL_init
-                0x0000027c       0x20 ./ti_msp_dl_config.o
-                0x0000027c                SYSCFG_DL_SYSCTL_init
+                0x000006c8       0x20 ./ti_msp_dl_config.o
+                0x000006c8                SYSCFG_DL_SYSCTL_init
+ .text.SYSCFG_DL_UART_0_init
+                0x000006e8       0x78 ./ti_msp_dl_config.o
+                0x000006e8                SYSCFG_DL_UART_0_init
+ .text.SYSCFG_DL_SPI_0_init
+                0x00000760       0x58 ./ti_msp_dl_config.o
+                0x00000760                SYSCFG_DL_SPI_0_init
  .text.SYSCFG_DL_init
-                0x0000029c       0x10 ./ti_msp_dl_config.o
-                0x0000029c                SYSCFG_DL_init
+                0x000007b8       0x18 ./ti_msp_dl_config.o
+                0x000007b8                SYSCFG_DL_init
  .text.Default_Handler
-                0x000002ac        0x4 ./startup_mspm0c110x_gcc.o
-                0x000002ac                TIMG8_IRQHandler
-                0x000002ac                I2C0_IRQHandler
-                0x000002ac                HardFault_Handler
-                0x000002ac                GPIOA_IRQHandler
-                0x000002ac                SysTick_Handler
-                0x000002ac                PendSV_Handler
-                0x000002ac                NMI_Handler
-                0x000002ac                UART0_IRQHandler
-                0x000002ac                ADC0_IRQHandler
-                0x000002ac                GROUP0_IRQHandler
-                0x000002ac                Default_Handler
-                0x000002ac                TIMG14_IRQHandler
-                0x000002ac                SVC_Handler
-                0x000002ac                SPI0_IRQHandler
-                0x000002ac                DMA_IRQHandler
-                0x000002ac                TIMA0_IRQHandler
+                0x000007d0        0x4 ./startup_mspm0c110x_gcc.o
+                0x000007d0                TIMG8_IRQHandler
+                0x000007d0                I2C0_IRQHandler
+                0x000007d0                HardFault_Handler
+                0x000007d0                GPIOA_IRQHandler
+                0x000007d0                SysTick_Handler
+                0x000007d0                PendSV_Handler
+                0x000007d0                NMI_Handler
+                0x000007d0                UART0_IRQHandler
+                0x000007d0                ADC0_IRQHandler
+                0x000007d0                GROUP0_IRQHandler
+                0x000007d0                Default_Handler
+                0x000007d0                TIMG14_IRQHandler
+                0x000007d0                SVC_Handler
+                0x000007d0                SPI0_IRQHandler
+                0x000007d0                DMA_IRQHandler
+                0x000007d0                TIMA0_IRQHandler
  .text.Reset_Handler
-                0x000002b0       0x8c ./startup_mspm0c110x_gcc.o
-                0x000002b0                Reset_Handler
+                0x000007d4       0x8c ./startup_mspm0c110x_gcc.o
+                0x000007d4                Reset_Handler
  .text.initStub
-                0x0000033c        0x4 ./startup_mspm0c110x_gcc.o
-                0x0000033c                initStub
-                0x0000033c                _init
+                0x00000860        0x4 ./startup_mspm0c110x_gcc.o
+                0x00000860                initStub
+                0x00000860                _init
  .text.DL_Common_delayCycles
-                0x00000340        0xc C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
-                0x00000340                DL_Common_delayCycles
+                0x00000864        0xc C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+                0x00000864                DL_Common_delayCycles
+ .text.DL_SPI_init
+                0x00000870       0x40 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+                0x00000870                DL_SPI_init
+ .text.DL_SPI_setClockConfig
+                0x000008b0       0x14 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+                0x000008b0                DL_SPI_setClockConfig
+ .text.DL_UART_init
+                0x000008c4       0x48 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+                0x000008c4                DL_UART_init
+ .text.DL_UART_setClockConfig
+                0x0000090c       0x14 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+                0x0000090c                DL_UART_setClockConfig
  .text.__libc_init_array
-                0x0000034c       0x44 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
-                0x0000034c                __libc_init_array
-                0x00000390                . = ALIGN (0x8)
+                0x00000920       0x44 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+                0x00000920                __libc_init_array
+                0x00000968                . = ALIGN (0x8)
+ *fill*         0x00000964        0x4 
  *(.ctors)
-                0x00000390                . = ALIGN (0x8)
+                0x00000968                . = ALIGN (0x8)
  *(.dtors)
-                0x00000390                . = ALIGN (0x8)
+                0x00000968                . = ALIGN (0x8)
  *(.init)
-                0x00000390                . = ALIGN (0x8)
+                0x00000968                . = ALIGN (0x8)
  *(.fini*)
-                0x00000390                . = ALIGN (0x8)
+                0x00000968                . = ALIGN (0x8)
 
-.glue_7         0x00000390        0x0
- .glue_7        0x00000390        0x0 linker stubs
+.glue_7         0x00000968        0x0
+ .glue_7        0x00000968        0x0 linker stubs
 
-.glue_7t        0x00000390        0x0
- .glue_7t       0x00000390        0x0 linker stubs
+.glue_7t        0x00000968        0x0
+ .glue_7t       0x00000968        0x0 linker stubs
 
-.vfp11_veneer   0x00000390        0x0
- .vfp11_veneer  0x00000390        0x0 linker stubs
+.vfp11_veneer   0x00000968        0x0
+ .vfp11_veneer  0x00000968        0x0 linker stubs
 
-.v4_bx          0x00000390        0x0
- .v4_bx         0x00000390        0x0 linker stubs
+.v4_bx          0x00000968        0x0
+ .v4_bx         0x00000968        0x0 linker stubs
 
-.iplt           0x00000390        0x0
- .iplt          0x00000390        0x0 ./gpio_toggle_output.o
+.iplt           0x00000968        0x0
+ .iplt          0x00000968        0x0 ./ads1299.o
 
-.rel.dyn        0x00000390        0x0
- .rel.iplt      0x00000390        0x0 ./gpio_toggle_output.o
-
-.ramfunc        0x20000000        0x0 load address 0x00000390
-                0x00000390                __ramfunct_load__ = LOADADDR (.ramfunc)
+.ramfunc        0x20000000        0x0 load address 0x00000968
+                0x00000968                __ramfunct_load__ = LOADADDR (.ramfunc)
                 0x20000000                __ramfunct_start__ = .
  *(.ramfunc)
                 0x20000000                . = ALIGN (0x8)
                 0x20000000                __ramfunct_end__ = .
 
-.rodata         0x00000390        0x0
+.rodata         0x00000968       0x60
  *(.rodata)
-                0x00000390                . = ALIGN (0x8)
+ .rodata        0x00000968       0x40 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+                0x000009a8                . = ALIGN (0x8)
  *(.rodata.*)
-                0x00000390                . = ALIGN (0x8)
+ .rodata.gSPI_0_clockConfig
+                0x000009a8        0x2 ./ti_msp_dl_config.o
+ *fill*         0x000009aa        0x2 
+ .rodata.gSPI_0_config
+                0x000009ac        0xa ./ti_msp_dl_config.o
+ *fill*         0x000009b6        0x2 
+ .rodata.gUART_0ClockConfig
+                0x000009b8        0x2 ./ti_msp_dl_config.o
+ *fill*         0x000009ba        0x2 
+ .rodata.gUART_0Config
+                0x000009bc        0xa ./ti_msp_dl_config.o
+                0x000009c8                . = ALIGN (0x8)
+ *fill*         0x000009c6        0x2 
 
-.preinit_array  0x00000390        0x0
-                0x00000390                PROVIDE (__preinit_array_start = .)
+.rel.dyn        0x000009c8        0x0
+ .rel.iplt      0x000009c8        0x0 ./ads1299.o
+
+.preinit_array  0x000009c8        0x0
+                0x000009c8                PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x00000390                PROVIDE (__preinit_array_end = .)
+                0x000009c8                PROVIDE (__preinit_array_end = .)
 
-.init_array     0x00000390        0x0
-                0x00000390                . = ALIGN (0x8)
-                0x00000390                PROVIDE (__init_array_start = .)
+.init_array     0x000009c8        0x0
+                0x000009c8                . = ALIGN (0x8)
+                0x000009c8                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
-                0x00000390                PROVIDE (__init_array_end = .)
+                0x000009c8                PROVIDE (__init_array_end = .)
 
-.fini_array     0x00000390        0x0
-                0x00000390                . = ALIGN (0x8)
+.fini_array     0x000009c8        0x0
+                0x000009c8                . = ALIGN (0x8)
                 [!provide]                PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
                 [!provide]                PROVIDE (__fini_array_end = .)
-                0x00000390                . = ALIGN (0x8)
+                0x000009c8                . = ALIGN (0x8)
 
-.ARM.exidx      0x00000390        0x0
-                0x00000390                __exidx_start = .
+.ARM.exidx      0x000009c8        0x0
+                0x000009c8                __exidx_start = .
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
-                0x00000390                __exidx_end = .
+                0x000009c8                __exidx_end = .
 
-.ARM.extab      0x00000390        0x0
-                0x00000390                . = ALIGN (0x8)
+.ARM.extab      0x000009c8        0x0
+                0x000009c8                . = ALIGN (0x8)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x00000390                . = ALIGN (0x8)
-                0x00000390                __etext = .
+                0x000009c8                . = ALIGN (0x8)
+                0x000009c8                __etext = .
 
-.data           0x20000000        0x0 load address 0x00000390
-                0x00000390                __data_load__ = LOADADDR (.data)
+.data           0x20000000        0x0 load address 0x000009c8
+                0x000009c8                __data_load__ = LOADADDR (.data)
                 0x20000000                __data_start__ = .
  *(.data)
+ .data          0x20000000        0x0 ./ads1299.o
  .data          0x20000000        0x0 ./gpio_toggle_output.o
  .data          0x20000000        0x0 ./ti_msp_dl_config.o
  .data          0x20000000        0x0 ./startup_mspm0c110x_gcc.o
  .data          0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .data          0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .data          0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .data          0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .data          0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+ .data          0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+ .data          0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+ .data          0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_clzsi2.o)
  .data          0x20000000        0x0 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
  *(.data*)
                 0x20000000                . = ALIGN (0x8)
                 0x20000000                __data_end__ = .
 
-.igot.plt       0x20000000        0x0 load address 0x00000390
- .igot.plt      0x20000000        0x0 ./gpio_toggle_output.o
+.igot.plt       0x20000000        0x0 load address 0x000009c8
+ .igot.plt      0x20000000        0x0 ./ads1299.o
 
 .bss            0x20000000        0x0
                 0x20000000                __bss_start__ = .
  *(.shbss)
  *(.bss)
+ .bss           0x20000000        0x0 ./ads1299.o
  .bss           0x20000000        0x0 ./gpio_toggle_output.o
  .bss           0x20000000        0x0 ./ti_msp_dl_config.o
  .bss           0x20000000        0x0 ./startup_mspm0c110x_gcc.o
  .bss           0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .bss           0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .bss           0x20000000        0x0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .bss           0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .bss           0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+ .bss           0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+ .bss           0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+ .bss           0x20000000        0x0 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_clzsi2.o)
  .bss           0x20000000        0x0 C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
  *(.bss.*)
  *(COMMON)
@@ -241,77 +415,130 @@ LOAD C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libnosys.a
 END GROUP
 OUTPUT(dtcp.out elf32-littlearm)
 
-.debug_info     0x00000000     0xc9b1
- .debug_info    0x00000000     0x4900 ./gpio_toggle_output.o
- .debug_info    0x00004900     0x45a3 ./ti_msp_dl_config.o
- .debug_info    0x00008ea3      0x1bc ./startup_mspm0c110x_gcc.o
- .debug_info    0x0000905f     0x3952 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_info     0x00000000    0x1b774
+ .debug_info    0x00000000     0x4bee ./ads1299.o
+ .debug_info    0x00004bee     0x4bc0 ./gpio_toggle_output.o
+ .debug_info    0x000097ae     0x50b4 ./ti_msp_dl_config.o
+ .debug_info    0x0000e862      0x1bc ./startup_mspm0c110x_gcc.o
+ .debug_info    0x0000ea1e     0x3952 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_info    0x00012370     0x49c2 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_info    0x00016d32     0x4a42 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_abbrev   0x00000000      0x811
- .debug_abbrev  0x00000000      0x328 ./gpio_toggle_output.o
- .debug_abbrev  0x00000328      0x2dc ./ti_msp_dl_config.o
- .debug_abbrev  0x00000604       0xe7 ./startup_mspm0c110x_gcc.o
- .debug_abbrev  0x000006eb      0x126 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_abbrev   0x00000000     0x13ad
+ .debug_abbrev  0x00000000      0x3d4 ./ads1299.o
+ .debug_abbrev  0x000003d4      0x36b ./gpio_toggle_output.o
+ .debug_abbrev  0x0000073f      0x362 ./ti_msp_dl_config.o
+ .debug_abbrev  0x00000aa1       0xe7 ./startup_mspm0c110x_gcc.o
+ .debug_abbrev  0x00000b88      0x126 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_abbrev  0x00000cae      0x37f C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_abbrev  0x0000102d      0x380 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_loc      0x00000000       0x57
- .debug_loc     0x00000000       0x44 ./gpio_toggle_output.o
- .debug_loc     0x00000044       0x13 ./startup_mspm0c110x_gcc.o
+.debug_loc      0x00000000     0x1489
+ .debug_loc     0x00000000       0xdf ./ads1299.o
+ .debug_loc     0x000000df       0x44 ./gpio_toggle_output.o
+ .debug_loc     0x00000123       0x13 ./ti_msp_dl_config.o
+ .debug_loc     0x00000136       0x13 ./startup_mspm0c110x_gcc.o
+ .debug_loc     0x00000149      0x869 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_loc     0x000009b2      0xad7 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_aranges  0x00000000       0xd0
+.debug_aranges  0x00000000      0x2a8
  .debug_aranges
-                0x00000000       0x48 ./gpio_toggle_output.o
+                0x00000000       0x60 ./ads1299.o
  .debug_aranges
-                0x00000048       0x38 ./ti_msp_dl_config.o
+                0x00000060       0x48 ./gpio_toggle_output.o
  .debug_aranges
-                0x00000080       0x30 ./startup_mspm0c110x_gcc.o
+                0x000000a8       0x48 ./ti_msp_dl_config.o
  .debug_aranges
-                0x000000b0       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+                0x000000f0       0x30 ./startup_mspm0c110x_gcc.o
+ .debug_aranges
+                0x00000120       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_aranges
+                0x00000140       0xd0 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_aranges
+                0x00000210       0x98 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_ranges   0x00000000      0x4c0
- .debug_ranges  0x00000000      0x3e8 ./gpio_toggle_output.o
- .debug_ranges  0x000003e8       0xa8 ./ti_msp_dl_config.o
- .debug_ranges  0x00000490       0x20 ./startup_mspm0c110x_gcc.o
- .debug_ranges  0x000004b0       0x10 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_ranges   0x00000000     0x1140
+ .debug_ranges  0x00000000      0x2d8 ./ads1299.o
+ .debug_ranges  0x000002d8      0x3e8 ./gpio_toggle_output.o
+ .debug_ranges  0x000006c0      0x1c8 ./ti_msp_dl_config.o
+ .debug_ranges  0x00000888       0x20 ./startup_mspm0c110x_gcc.o
+ .debug_ranges  0x000008a8       0x10 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_ranges  0x000008b8      0x4f8 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_ranges  0x00000db0      0x390 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_line     0x00000000     0x13bc
- .debug_line    0x00000000      0x8a2 ./gpio_toggle_output.o
- .debug_line    0x000008a2      0x598 ./ti_msp_dl_config.o
- .debug_line    0x00000e3a      0x1cb ./startup_mspm0c110x_gcc.o
- .debug_line    0x00001005      0x3b7 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+.debug_line     0x00000000     0x3ed9
+ .debug_line    0x00000000      0x9d0 ./ads1299.o
+ .debug_line    0x000009d0      0x8be ./gpio_toggle_output.o
+ .debug_line    0x0000128e      0x84a ./ti_msp_dl_config.o
+ .debug_line    0x00001ad8      0x1cb ./startup_mspm0c110x_gcc.o
+ .debug_line    0x00001ca3      0x3b7 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_line    0x0000205a     0x100d C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_line    0x00003067      0xe72 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
-.debug_str      0x00000000     0x1b4e
- .debug_str     0x00000000     0x15a0 ./gpio_toggle_output.o
-                               0x1682 (size before relaxing)
- .debug_str     0x000015a0      0x2c5 ./ti_msp_dl_config.o
-                               0x18a2 (size before relaxing)
- .debug_str     0x00001865      0x13d ./startup_mspm0c110x_gcc.o
+.debug_str      0x00000000     0x3277
+ .debug_str     0x00000000     0x1d6c ./ads1299.o
+                               0x1e85 (size before relaxing)
+ .debug_str     0x00001d6c       0x8f ./gpio_toggle_output.o
+                               0x1bf6 (size before relaxing)
+ .debug_str     0x00001dfb      0x905 ./ti_msp_dl_config.o
+                               0x2605 (size before relaxing)
+ .debug_str     0x00002700      0x13d ./startup_mspm0c110x_gcc.o
                                 0x2dd (size before relaxing)
- .debug_str     0x000019a2      0x1ac C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_str     0x0000283d      0x1ac C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
                                0x1234 (size before relaxing)
+ .debug_str     0x000029e9      0x44a C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+                               0x1b6c (size before relaxing)
+ .debug_str     0x00002e33      0x444 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+                               0x1bb7 (size before relaxing)
 
 .comment        0x00000000       0x79
- .comment       0x00000000       0x79 ./gpio_toggle_output.o
+ .comment       0x00000000       0x79 ./ads1299.o
                                  0x7a (size before relaxing)
+ .comment       0x00000079       0x7a ./gpio_toggle_output.o
  .comment       0x00000079       0x7a ./ti_msp_dl_config.o
  .comment       0x00000079       0x7a ./startup_mspm0c110x_gcc.o
  .comment       0x00000079       0x7a C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .comment       0x00000079       0x7a C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .comment       0x00000079       0x7a C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
 
 .ARM.attributes
                 0x00000000       0x2c
  .ARM.attributes
-                0x00000000       0x2b ./gpio_toggle_output.o
+                0x00000000       0x2b ./ads1299.o
  .ARM.attributes
-                0x0000002b       0x2b ./ti_msp_dl_config.o
+                0x0000002b       0x2b ./gpio_toggle_output.o
  .ARM.attributes
-                0x00000056       0x2b ./startup_mspm0c110x_gcc.o
+                0x00000056       0x2b ./ti_msp_dl_config.o
  .ARM.attributes
-                0x00000081       0x2b C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+                0x00000081       0x2b ./startup_mspm0c110x_gcc.o
  .ARM.attributes
-                0x000000ac       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+                0x000000ac       0x2b C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .ARM.attributes
+                0x000000d7       0x2b C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .ARM.attributes
+                0x00000102       0x2b C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .ARM.attributes
+                0x0000012d       0x1e c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .ARM.attributes
+                0x0000014b       0x1e c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_dvmd_tls.o)
+ .ARM.attributes
+                0x00000169       0x2c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+ .ARM.attributes
+                0x00000195       0x2c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+ .ARM.attributes
+                0x000001c1       0x1e c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_clzsi2.o)
+ .ARM.attributes
+                0x000001df       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
 
-.debug_frame    0x00000000      0x1b4
- .debug_frame   0x00000000       0xc0 ./gpio_toggle_output.o
- .debug_frame   0x000000c0       0x60 ./ti_msp_dl_config.o
- .debug_frame   0x00000120       0x48 ./startup_mspm0c110x_gcc.o
- .debug_frame   0x00000168       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
- .debug_frame   0x00000188       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)
+.debug_frame    0x00000000      0x748
+ .debug_frame   0x00000000      0x114 ./ads1299.o
+ .debug_frame   0x00000114       0xc0 ./gpio_toggle_output.o
+ .debug_frame   0x000001d4       0x94 ./ti_msp_dl_config.o
+ .debug_frame   0x00000268       0x48 ./startup_mspm0c110x_gcc.o
+ .debug_frame   0x000002b0       0x20 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_common.o)
+ .debug_frame   0x000002d0      0x220 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_spi.o)
+ .debug_frame   0x000004f0      0x1a4 C:/ti/mspm0_sdk_2_09_00_01/source\ti/driverlib/lib/gcc/m0p/mspm0c110x/driverlib.a(dl_uart.o)
+ .debug_frame   0x00000694       0x20 c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(_udivsi3.o)
+ .debug_frame   0x000006b4       0x3c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(mulsf3.o)
+ .debug_frame   0x000006f0       0x2c c:/ti/gcc_arm_none_eabi_9_2_1/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v6-m/nofp\libgcc.a(floatsisf.o)
+ .debug_frame   0x0000071c       0x2c C:/ti/gcc_arm_none_eabi_9_2_1/arm-none-eabi/lib/thumb/v6-m/nofp\libc.a(lib_a-init.o)

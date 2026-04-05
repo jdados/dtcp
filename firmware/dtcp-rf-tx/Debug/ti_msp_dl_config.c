@@ -50,18 +50,36 @@ SYSCONFIG_WEAK void SYSCFG_DL_init(void)
     SYSCFG_DL_GPIO_init();
     /* Module-Specific Initializations*/
     SYSCFG_DL_SYSCTL_init();
+    SYSCFG_DL_UART_0_init();
+    SYSCFG_DL_SPI_0_init();
 }
 
 SYSCONFIG_WEAK void SYSCFG_DL_initPower(void)
 {
     DL_GPIO_reset(GPIOA);
+    DL_UART_Main_reset(UART_0_INST);
+    DL_SPI_reset(SPI_0_INST);
 
     DL_GPIO_enablePower(GPIOA);
+    DL_UART_Main_enablePower(UART_0_INST);
+    DL_SPI_enablePower(SPI_0_INST);
     delay_cycles(POWER_STARTUP_DELAY);
 }
 
 SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 {
+
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_UART_0_IOMUX_TX, GPIO_UART_0_IOMUX_TX_FUNC);
+    DL_GPIO_initPeripheralInputFunction(
+        GPIO_UART_0_IOMUX_RX, GPIO_UART_0_IOMUX_RX_FUNC);
+
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_SPI_0_IOMUX_SCLK, GPIO_SPI_0_IOMUX_SCLK_FUNC);
+    DL_GPIO_initPeripheralOutputFunction(
+        GPIO_SPI_0_IOMUX_PICO, GPIO_SPI_0_IOMUX_PICO_FUNC);
+    DL_GPIO_initPeripheralInputFunction(
+        GPIO_SPI_0_IOMUX_POCI, GPIO_SPI_0_IOMUX_POCI_FUNC);
 
     DL_GPIO_initDigitalOutput(PA_EN_IOMUX);
 
@@ -75,18 +93,30 @@ SYSCONFIG_WEAK void SYSCFG_DL_GPIO_init(void)
 
     DL_GPIO_initDigitalOutput(DDS_DDS_EN_IOMUX);
 
+    DL_GPIO_initDigitalOutput(GPIO_A_RED_22_IOMUX);
+
+    DL_GPIO_initDigitalOutput(GPIO_A_CS_IOMUX);
+
+    DL_GPIO_initDigitalOutput(GPIO_A_DRDY_IOMUX);
+
     DL_GPIO_clearPins(GPIOA, PA_EN_PIN |
 		DDS_WCLK_PIN |
 		DDS_D7_PIN |
 		DDS_RST_PIN |
 		DDS_FREQ_UPD_PIN |
-		DDS_DDS_EN_PIN);
+		DDS_DDS_EN_PIN |
+		GPIO_A_RED_22_PIN |
+		GPIO_A_CS_PIN |
+		GPIO_A_DRDY_PIN);
     DL_GPIO_enableOutput(GPIOA, PA_EN_PIN |
 		DDS_WCLK_PIN |
 		DDS_D7_PIN |
 		DDS_RST_PIN |
 		DDS_FREQ_UPD_PIN |
-		DDS_DDS_EN_PIN);
+		DDS_DDS_EN_PIN |
+		GPIO_A_RED_22_PIN |
+		GPIO_A_CS_PIN |
+		GPIO_A_DRDY_PIN);
 
 }
 
@@ -103,4 +133,68 @@ SYSCONFIG_WEAK void SYSCFG_DL_SYSCTL_init(void)
 
 }
 
+
+static const DL_UART_Main_ClockConfig gUART_0ClockConfig = {
+    .clockSel    = DL_UART_MAIN_CLOCK_BUSCLK,
+    .divideRatio = DL_UART_MAIN_CLOCK_DIVIDE_RATIO_1
+};
+
+static const DL_UART_Main_Config gUART_0Config = {
+    .mode        = DL_UART_MAIN_MODE_NORMAL,
+    .direction   = DL_UART_MAIN_DIRECTION_TX_RX,
+    .flowControl = DL_UART_MAIN_FLOW_CONTROL_NONE,
+    .parity      = DL_UART_MAIN_PARITY_ODD,
+    .wordLength  = DL_UART_MAIN_WORD_LENGTH_8_BITS,
+    .stopBits    = DL_UART_MAIN_STOP_BITS_ONE
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_UART_0_init(void)
+{
+    DL_UART_Main_setClockConfig(UART_0_INST, (DL_UART_Main_ClockConfig *) &gUART_0ClockConfig);
+
+    DL_UART_Main_init(UART_0_INST, (DL_UART_Main_Config *) &gUART_0Config);
+    /*
+     * Configure baud rate by setting oversampling and baud rate divisors.
+     *  Target baud rate: 1000000
+     *  Actual baud rate: 1000000
+     */
+    DL_UART_Main_setOversampling(UART_0_INST, DL_UART_OVERSAMPLING_RATE_16X);
+    DL_UART_Main_setBaudRateDivisor(UART_0_INST, UART_0_IBRD_24_MHZ_1000000_BAUD, UART_0_FBRD_24_MHZ_1000000_BAUD);
+
+
+
+    DL_UART_Main_enable(UART_0_INST);
+}
+
+static const DL_SPI_Config gSPI_0_config = {
+    .mode        = DL_SPI_MODE_CONTROLLER,
+    .frameFormat = DL_SPI_FRAME_FORMAT_MOTO3_POL0_PHA1,
+    .parity      = DL_SPI_PARITY_NONE,
+    .dataSize    = DL_SPI_DATA_SIZE_8,
+    .bitOrder    = DL_SPI_BIT_ORDER_MSB_FIRST,
+};
+
+static const DL_SPI_ClockConfig gSPI_0_clockConfig = {
+    .clockSel    = DL_SPI_CLOCK_BUSCLK,
+    .divideRatio = DL_SPI_CLOCK_DIVIDE_RATIO_1
+};
+
+SYSCONFIG_WEAK void SYSCFG_DL_SPI_0_init(void) {
+    DL_SPI_setClockConfig(SPI_0_INST, (DL_SPI_ClockConfig *) &gSPI_0_clockConfig);
+
+    DL_SPI_init(SPI_0_INST, (DL_SPI_Config *) &gSPI_0_config);
+
+    /* Configure Controller mode */
+    /*
+     * Set the bit rate clock divider to generate the serial output clock
+     *     outputBitRate = (spiInputClock) / ((1 + SCR) * 2)
+     *     1000000 = (24000000)/((1 + 11) * 2)
+     */
+    DL_SPI_setBitRateSerialClockDivider(SPI_0_INST, 11);
+    /* Set RX and TX FIFO threshold levels */
+    DL_SPI_setFIFOThreshold(SPI_0_INST, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
+
+    /* Enable module */
+    DL_SPI_enable(SPI_0_INST);
+}
 
