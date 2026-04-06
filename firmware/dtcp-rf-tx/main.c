@@ -130,7 +130,7 @@ int main(void) {
 
     DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
     DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
-    // NVIC_EnableIRQ(GPIOA_INT_IRQn);
+    NVIC_EnableIRQ(GPIOA_INT_IRQn);
     // NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
 
     count = 0;
@@ -152,22 +152,22 @@ int main(void) {
         // config1 = ADS1299_read_registers(1, 1);
         // ch1 = ADS1299_read_registers(5, 1);
         
-        uint8_t val = 0;
-        val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
-        if (val == 0) {
-            voltage = ADS1299_read_data_channel_1();
+        // uint8_t val = 0;
+        // val = DL_GPIO_readPins(GPIO_A_PORT, GPIO_A_DRDY_PIN);
+        // if (val == 0) {
+        //     voltage = ADS1299_read_data_channel_1();
             
-            /* Remove offset */
-            // sum -= voltages[count];
-            // sum += voltage;
-            voltages[count] = voltage;
-            count = (count + 1) % 100;
-            // float average = sum / 100;
+        //     /* Remove offset */
+        //     // sum -= voltages[count];
+        //     // sum += voltage;
+        //     voltages[count] = voltage;
+        //     count = (count + 1) % 100;
+        //     // float average = sum / 100;
 
-            // if (fabsf(voltage) - fabsf(average) > 5.0f) {
-            //     DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RED_22_PIN);
-            // }
-        }
+        //     // if (fabsf(voltage) - fabsf(average) > 5.0f) {
+        //     //     DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RED_22_PIN);
+        //     // }
+        // }
 
     }
 }
@@ -187,7 +187,7 @@ void GPIOA_IRQHandler(void) {
             // }
             
             /* UART transmit interrupt ? */
-            // UART_transmit_voltage_binary(voltage);
+            UART_transmit_voltage_binary(voltage);
             
             // if (count == 128) count = 0;
             // ++count;

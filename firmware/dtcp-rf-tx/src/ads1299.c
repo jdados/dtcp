@@ -5,16 +5,6 @@ const float LSB = 2.235e-8;
 /* LSB with gain 1*/
 // const float LSB = 5.364e-7;
 
-/* don't use yet */
-// void SPI_init() {
-//     DL_SPI_setClockConfig(SPI0, &SPI_0_clock_config);
-//     DL_SPI_init(SPI0, &SPI_0_config);
-//     DL_SPI_setBitRateSerialClockDivider(SPI0, 5);
-//     DL_SPI_setFIFOThreshold(SPI0, DL_SPI_RX_FIFO_LEVEL_1_2_FULL, DL_SPI_TX_FIFO_LEVEL_1_2_EMPTY);
-//     // DL_SPI_setChipSelect(SPI_0_INST, DL_SPI_CHIP_SELECT_0);
-//     DL_SPI_enable(SPI0);
-// }
-
 void ADS1299_init() {
         // SPI_init();
         // GPIO_A_RESET_PIN
@@ -44,16 +34,16 @@ void ADS1299_init() {
 
         /* Configure Registers */
         /* Config 1, Config 2, Config 3, LOFF (not used), CH1-CH4 */
-        uint8_t config_data[] = {0b11010101, 0b11010000, 0b11111100, \
-        0x00, 0b01100101, 0b11100001, 0x81, 0x81};
+        uint8_t config_data[] = {0b11010001, 0b11010000, 0b11111100, \
+        0x00, 0b01100000, 0b01100001, 0x81, 0x81};
 
         ADS1299_write_registers(1, 8, config_data);
         delay_cycles(2e3);
 
         /* Bias driver registers */
-        uint8_t bias_config_data[] = {0x01, 0x01};
-        ADS1299_write_registers(0x0D, 2, bias_config_data);
-        delay_cycles(2e3);
+        // uint8_t bias_config_data[] = {0x01, 0x01};
+        // ADS1299_write_registers(0x0D, 2, bias_config_data);
+        // delay_cycles(2e3);
 
         // /* SRB1 */
         // uint8_t srb1_config[] = {0x20};
