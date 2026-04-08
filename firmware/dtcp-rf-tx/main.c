@@ -128,8 +128,6 @@ int main(void) {
     ADS1299_start_conversions();
     init_FIFO(&AFE_FIFO);
 
-    DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
-    DL_GPIO_enableInterrupt(GPIO_A_PORT, GPIO_A_DRDY_PIN);
     NVIC_EnableIRQ(GPIOA_INT_IRQn);
     // NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
 
