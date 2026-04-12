@@ -3,7 +3,7 @@
 ## Overview
 
 This repository presents the files associated with the design of a wireless neurostimulation platform powered through **Differential Tissue Coupled Powering (DTCP)**.  
-The system transmits high-frequency (~20 – 25 MHz) differential signals through epidermal electrodes to power and communicate with implanted devices, while simultaneously recording **EMG (Electromyography)** activity for research.
+The system transmits high-frequency (~20 – 25 MHz) differential signals through needle electrodes to power and communicate with implanted devices, while simultaneously recording **EMG (Electromyography)** activity for research.
 
 The project integrates four key subsystems:
 
