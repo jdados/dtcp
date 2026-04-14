@@ -3,21 +3,24 @@
 #include <math.h>
 
 #include "ads1299.h"
+#include "uart.h"
 
 volatile float voltage;
-float voltages[100];
+volatile float voltages[100];
 volatile float sum;
 uint8_t count;
 
 FIFO_t AFE_FIFO;
+
+// volatile uint8_t gCurrentIndex = 0; // Tracks which element to send next
+// volatile uint8_t gTxState = 0; // 0: Header, 1-4: Float Bytes
+const uint8_t HEADER_BYTE = 0xAA;
 
 /* This results in approximately 0.5s of delay assuming 24MHz CPU_CLK */
 #define DDS_SYSCLK_FREQ (100000000)
 #define MCU_CLK_FREQ (24000000)
 #define DDS_WCLK_FREQ (1000000)
 #define DDS_WCLK_T_US (10)
-
-void UART_transmit_voltage_binary(float val);
 
 /* Wrapper API */
 void wait_us(uint32_t t){
@@ -129,7 +132,11 @@ int main(void) {
     init_FIFO(&AFE_FIFO);
 
     NVIC_EnableIRQ(GPIOA_INT_IRQn);
-    // NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+    NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+
+    // DL_UART_Main_transmitData(UART_0_INST, HEADER_BYTE);
+    // gTxState = 1; // Next interrupt should send the first byte of the float
+    DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
 
     count = 0;
     sum = 0;
@@ -175,26 +182,54 @@ void GPIOA_IRQHandler(void) {
     switch (DL_GPIO_getPendingInterrupt(GPIOA)) {
         case (DL_GPIO_IIDX_DIO6):
             voltage = ADS1299_read_data_channel_1();
-            // write_FIFO(&AFE_FIFO, voltage);
-            voltages[count] = voltage;
-            count = (count + 1) % 100;
+            write_FIFO(&AFE_FIFO, voltage);
+            DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
+
+            // voltages[count] = voltage;
+            // count = (count + 1) % 100;
 
             // if (voltage > 1.0f) {
                     /* Timer ? */
             //     delay_ms(55);
             // }
             
-            /* UART transmit interrupt ? */
-            UART_transmit_voltage_binary(voltage);
-            
-            // if (count == 128) count = 0;
-            // ++count;
+            // UART_transmit_voltage_binary(voltage);
 
             DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
             break;
         default:
             break;
         }
+}
+
+void UART_0_INST_IRQHandler(void) {
+    switch (DL_UART_Main_getPendingInterrupt(UART_0_INST)) {
+        case DL_UART_MAIN_IIDX_TX: {
+            
+            // float val = voltages[gCurrentIndex];
+            float val = 0;
+            read_FIFO(&AFE_FIFO, &val);
+            // if (val == 0) {
+            //     // DL_UART_Main_disableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
+            //     // DL_UART_clearInterruptStatus(UART_0_INST, DL_UART_MAIN_IIDX_TX);
+            //     break;
+            // }
+            uint8_t *ptr = (uint8_t *)&val;
+
+            /* Interrupt triggers when UART FIFO is empty so we can put 4 bytes */
+
+            for (int i = 0; i < sizeof(float); ++i) {
+                DL_UART_Main_transmitData(UART0, ptr[i]);
+            }
+
+            DL_UART_Main_disableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
+            DL_UART_clearInterruptStatus(UART_0_INST, DL_UART_MAIN_IIDX_TX);
+            break;
+        }
+            
+        default:
+            break;
+    }
 }
 
 void delay_ms(int ms) {

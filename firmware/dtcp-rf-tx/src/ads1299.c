@@ -142,23 +142,36 @@ void ADS1299_stop_conversions() {
 }
 
 void init_FIFO(FIFO_t *f) {
-    f->head = 0;
-    f->tail = 0;
-    f->count = 0;
+        f->head = 0;
+        f->tail = 0;
+        f->count = 0;
 }
 
 bool write_FIFO(FIFO_t *f, float data) {
-        if (f->count >= FIFO_SIZE) return false;
+        if (f->count >= FIFO_SIZE) {
+                return false;
+        }
         f->buffer[f->head] = data;
-        f->head = (f->head + 1) & (FIFO_SIZE - 1);
-        ++f->count;
+        f->head = (f->head + 1) % FIFO_SIZE;
+        f->count++;
         return true;
 }
 
-float read_FIFO(FIFO_t *f) {
-        if (f->count == 0) return 0;
-        float data = f->buffer[f->tail];
-        f->tail = (f->tail + 1) & (FIFO_SIZE - 1);
-        --f->count;
-        return data;
+bool read_FIFO(FIFO_t *f, float* data) {
+        bool ret = false;
+
+        uint32_t primask = __get_PRIMASK();
+        __disable_irq();
+
+        if (f->count > 0) {
+                *data = f->buffer[f->tail];
+                f->tail = (f->tail + 1) % FIFO_SIZE;
+                f->count--;
+                ret = true;
+        }
+
+        __set_PRIMASK(primask);
+
+        return ret;
+
 }
