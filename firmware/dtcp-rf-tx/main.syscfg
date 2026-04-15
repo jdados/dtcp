@@ -53,8 +53,8 @@ GPIO3.associatedPins[2].$name             = "DRDY";
 GPIO3.associatedPins[2].assignedPin       = "6";
 GPIO3.associatedPins[2].direction         = "INPUT";
 GPIO3.associatedPins[2].interruptEn       = true;
-GPIO3.associatedPins[2].interruptPriority = "1";
 GPIO3.associatedPins[2].polarity          = "FALL";
+GPIO3.associatedPins[2].interruptPriority = "0";
 
 SPI1.$name               = "SPI_0";
 SPI1.targetBitRate       = 1000000;
@@ -67,11 +67,12 @@ SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
 SYSCTL.clockTreeEn = true;
 
 UART1.$name             = "UART_0";
-UART1.targetBaudRate    = 1000000;
 UART1.parity            = "ODD";
 UART1.enabledInterrupts = ["TX"];
 UART1.enableFIFO        = true;
+UART1.interruptPriority = "1";
 UART1.txFifoThreshold   = "DL_UART_TX_FIFO_LEVEL_EMPTY";
+UART1.targetBaudRate    = 115200;
 UART1.txPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric3";
 UART1.rxPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric4";
 

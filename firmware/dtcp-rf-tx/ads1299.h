@@ -1,3 +1,6 @@
+#ifndef ADS1299_H_
+#define ADS1299_H_
+
 #include "ti/driverlib/dl_spi.h"
 #include "ti/driverlib/dl_gpio.h"
 #include "ti_msp_dl_config.h"
@@ -38,7 +41,7 @@ typedef struct FIFO_t {
     volatile uint16_t head;
     /* write pointer */
     volatile uint16_t tail;
-    uint16_t count;
+    volatile uint16_t count;
 } FIFO_t;
 
 // void SPI_init(void);
@@ -53,4 +56,6 @@ void ADS1299_stop_conversions(void);
 extern void delay_ms(int ms);
 void init_FIFO(FIFO_t *f);
 bool write_FIFO(FIFO_t *f, float data);
-float read_FIFO(FIFO_t *f);
+bool read_FIFO(FIFO_t *f, float* data);
+
+#endif /* ADS1299_H_ */
