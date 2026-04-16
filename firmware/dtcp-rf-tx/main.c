@@ -132,11 +132,11 @@ int main(void) {
     init_FIFO(&AFE_FIFO);
 
     NVIC_EnableIRQ(GPIOA_INT_IRQn);
-    NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
+    // NVIC_EnableIRQ(UART_0_INST_INT_IRQN);
 
     // DL_UART_Main_transmitData(UART_0_INST, HEADER_BYTE);
     // gTxState = 1; // Next interrupt should send the first byte of the float
-    DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
+    // DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
 
     count = 0;
     sum = 0;
@@ -183,7 +183,7 @@ void GPIOA_IRQHandler(void) {
         case (DL_GPIO_IIDX_DIO6):
             voltage = ADS1299_read_data_channel_1();
             write_FIFO(&AFE_FIFO, voltage);
-            DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
+            // DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
 
             // voltages[count] = voltage;
             // count = (count + 1) % 100;
@@ -193,7 +193,7 @@ void GPIOA_IRQHandler(void) {
             //     delay_ms(55);
             // }
             
-            // UART_transmit_voltage_binary(voltage);
+            UART_transmit_voltage_binary(voltage);
 
             DL_GPIO_clearInterruptStatus(GPIO_A_PORT, GPIO_A_DRDY_PIN);
             break;
