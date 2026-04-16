@@ -143,15 +143,15 @@ int main(void) {
     for (uint8_t i = 0; i < 100; ++i) voltages[i] = 0;
 
     while (1) {
-        // DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        // wait_us(300000);
-        // DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
-        // dds_serial_data_tx(freq_dword);
-        // wait_us(500000);
-        // DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-        // wait_us(100000);
-        // DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-        // wait_us(1000000);
+        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+        wait_us(300000);
+        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        dds_serial_data_tx(freq_dword);
+        wait_us(500000);
+        DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
+        wait_us(100000);
+        DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
+        wait_us(1000000);
 
         // id = ADS1299_read_registers(0, 1);
         // config1 = ADS1299_read_registers(1, 1);
