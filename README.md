@@ -2,13 +2,17 @@
 
 ## Overview
 
+![Prototype 2 3D render](./notes/system%20design/PCB_AltiumModel2.png)
+
 This repository presents the files associated with the design of a wireless neurostimulation platform powered through **Differential Tissue Coupled Powering (DTCP)**.  
 The system transmits high-frequency (~20 – 25 MHz) differential signals through needle electrodes to power and communicate with implanted devices, while simultaneously recording **EMG (Electromyography)** activity for research.
+
+![Prototype 2 System Architecture](./notes/system%20design/System_Architecture.png)
 
 The project integrates four key subsystems:
 
 1. **RF Signal Generation** – AD9850 DDS digitally tunes the HF output frequency.  
-2. **Power Amplification** – 2 PAs in series deliver ≥ 1 W (≈ 30–35 dBm).  
+2. **Power Amplification** – 2 PAs in series deliver ≥ 1 W (≈ 30–35 dBm). Adjustable power through the help of a potentiometer and LED is included to make tuning power in surgery easier. It will light up when EMG signal is detected. 
 3. **Signal Acquisition** – ADS1299 AFE captures and amplifies EMG signals.  
 4. **Control & Interface** – MSPM0C1104 microcontroller manages DDS control, AFE sampling, and power switching.
 
@@ -39,41 +43,27 @@ The second prototype addresses issues found in the first design and focuses on i
 | Revisions to the circuit design | Mid-February 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ✔️ |
 | Design and order the PCB | End of February 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
 | Place the fabrication order | End of February 2026 | Jeremiah Dados | Han Wu |  | ✔️ |
-| Receive the board and assemble it | Mid-March 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | 🟡 |
-| Validate board outputs on lab equipment | End of March 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | 🟡 |
-| Validate board functionality in animal experiments | End of April 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi |  | ❌ |
+| Receive the board and assemble it | Mid-March 2026 | Luis Wong, Dmytro Stavskyi | Jeremiah Dados |  | ✔️ |
+| Validate board outputs on lab equipment | End of March 2026 | Jeremiah Dados | Luis Wong, Dmytro Stavskyi |  | ✔️ |
+| Validate board functionality in animal experiments | End of April 2026 | Han Wu | Jeremiah Dados, Luis Wong, Dmytro Stavskyi |  | 🟡 |
 
 ## Bugs
 
 ### Firmware
 
 - `printf` is apparently too large to fit into the MCU, and debugging is harder without console printing
-  - look for smaller alternative
+  - look for smaller alternative, UART cannot be used as it is utilized for EMG plotting through SerialPlot.
 - Not yet sure if it causes or will cause problems, but the serial clock starts at high and remains high until the first transaction, even though it should be low when not transmitting or receiving data (and hence should start with low)
-- The need for the biasing feature of the ADS is becoming apparent but we did not wire the circuit in our current PCB prototype.
-- When using UART to transmit the data from the AFE (to have real-time measurements) and viewing it through SerialPlot, we are seeing spikes (if the signal is 10mVpp, we are seeing spikes of +- 100mV-150mV regularly) that are not present when viewing the data through the Code Composer Studio graph functionality
-	- maybe an issue with UART not sending / receiving data correctly or from the microcontroller overhead or that it's actually correct and CCS does not capture it for some reason
-	- increasing the baud rate fixed the issue in one setup but not in setup involving saline
+  - It has not seemed to though.
+- Fluctuating offset, possibly due to noise from main, makes EMG detection algorithm non-trivial.
 
 ### Hardware
 
-#### MCU
-
-- Improper pins were used as we failed to consider that our MCU only supports certain funtions (like chip select) on certain pins.
-
 #### EMG Circuit
 
-- 5V connection with the soldered header pins is not properly working
-- It seems that we cannot use the bias drive amplifier with the current circuit to provide a 2.5V offset to the input signals
-
-#### DDS
-
-- Not producing signal in the complete PCB only working periodically.
-
-#### Class A PA
-
-- Damaged potentiometer causes issues where gain is affected by whether or not we press on it during use. Another solution for regulating power might be necessary.
-- The gain of the first stage is much less than expected, only producing 3 dBm with Vdd = 5V. VDD had to be increased to 13V to obtain 10 dBm output.
+- Class A PA is part of the second prototype and maxes out at 31 dBm meeting our target, but when we connect the SMA connector while also recording EMG we seem to face some interference or noise. Perhaps it's due to improper grounding?
+- New PCB seems to have introduce more noise causing the EMG + Stimulation signal to be less clean.
+  - Something might be shorted.
 
 #### Class E PA
 
