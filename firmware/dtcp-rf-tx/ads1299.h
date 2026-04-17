@@ -44,6 +44,13 @@ typedef struct FIFO_t {
     volatile uint16_t count;
 } FIFO_t;
 
+/* Bitmasks */
+
+#define PGA_GAIN_24 (uint8_t)0b01100000
+#define PGA_GAIN_1 (uint8_t)0b00000000
+#define NORMAL_ELECTRODE_INPUT (uint8_t)0b00000000
+#define TEST_SIGNAL_INPUT (uint8_t)0b00000101
+
 // void SPI_init(void);
 void ADS1299_init(void);
 void ADS1299_transmit_cmd(uint8_t cmd);

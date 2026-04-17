@@ -17,6 +17,8 @@ void ADS1299_init() {
         // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
         // DL_SPI_receiveData8(SPI_0_INST);
 
+        // delay_ms(150);
+
         /* Reset */
         // ADS1299_transmit_cmd(RESET_cmd);
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
