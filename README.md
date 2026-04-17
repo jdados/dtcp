@@ -2,12 +2,10 @@
 
 ## Overview
 
-![Prototype 2 3D render](./notes/system%20design/PCB_AltiumModel2.png)
-
 This repository presents the files associated with the design of a wireless neurostimulation platform powered through **Differential Tissue Coupled Powering (DTCP)**.  
 The system transmits high-frequency (~20 – 25 MHz) differential signals through needle electrodes to power and communicate with implanted devices, while simultaneously recording **EMG (Electromyography)** activity for research.
 
-![Prototype 2 System Architecture](./notes/system%20design/System_Architecture.png)
+![Prototype 2 3D render](./notes/system%20design/PCB_AltiumModel2.png)
 
 The project integrates four key subsystems:
 
@@ -15,6 +13,8 @@ The project integrates four key subsystems:
 2. **Power Amplification** – 2 PAs in series deliver ≥ 1 W (≈ 30–35 dBm). Adjustable power through the help of a potentiometer and LED is included to make tuning power in surgery easier. It will light up when EMG signal is detected. 
 3. **Signal Acquisition** – ADS1299 AFE captures and amplifies EMG signals.  
 4. **Control & Interface** – MSPM0C1104 microcontroller manages DDS control, AFE sampling, and power switching.
+
+![Prototype 2 System Architecture](./notes/system%20design/System_Architecture.png)
 
 ## Project Plan
 
