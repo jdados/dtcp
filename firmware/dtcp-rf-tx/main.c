@@ -111,21 +111,16 @@ volatile uint8_t config1;
 volatile uint8_t ch1;
 
 int main(void) {
-    delay_ms(150);
     /* Power on GPIO, initialize pins as digital outputs */
     SYSCFG_DL_init();
 
     /* Initialize the GPIO for the DDS interface */
     DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
     DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
-    
-    /* Initialize DDS in serial mode */
-    dds_serial_load_en();
 
     /* Calculate the DDS output frequency */
     double f_ratio = (double)F_OUT_DDS/(double)DDS_SYSCLK_FREQ;
     uint32_t freq_dword = (uint32_t)(f_ratio*pow(2,32));
-    dds_serial_data_tx(freq_dword);
 
     ADS1299_init();
     ADS1299_start_conversions();
@@ -144,10 +139,13 @@ int main(void) {
 
     while (1) {
         DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        wait_us(300000);
-        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
-        dds_serial_data_tx(freq_dword);
         wait_us(500000);
+        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        /* Initialize DDS in serial mode */
+        dds_serial_load_en();
+        wait_us(100000);
+        dds_serial_data_tx(freq_dword);
+        wait_us(1000000);
         DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
         wait_us(100000);
         DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
