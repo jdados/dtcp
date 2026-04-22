@@ -10,6 +10,8 @@ volatile float voltages[100];
 volatile float sum;
 uint8_t count;
 
+
+/* Between AFE and UART */
 FIFO_t AFE_FIFO;
 
 // volatile uint8_t gCurrentIndex = 0; // Tracks which element to send next
@@ -136,21 +138,33 @@ int main(void) {
     count = 0;
     sum = 0;
     for (uint8_t i = 0; i < 100; ++i) voltages[i] = 0;
+    #define PULSED_POWERING
+    
+    #ifdef CONSTANT_POWERING
+        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+        wait_us(10000);
+        DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        wait_us(10000);
+        dds_serial_load_en();
+        wait_us(10000);
+        dds_serial_data_tx(freq_dword);
+    #endif
 
     while (1) {
-        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        wait_us(500000);
+        #ifdef PULSED_POWERING
         DL_GPIO_setPins(DDS_PORT, DDS_DDS_EN_PIN);
+        wait_us(1000);
         /* Initialize DDS in serial mode */
         dds_serial_load_en();
-        wait_us(100000);
+        wait_us(1000);
         dds_serial_data_tx(freq_dword);
-        wait_us(1000000);
+        wait_us(1000);
+        DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
+        wait_us(10000);
         DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
-        wait_us(100000);
         DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
         wait_us(1000000);
-
+        #endif
         // id = ADS1299_read_registers(0, 1);
         // config1 = ADS1299_read_registers(1, 1);
         // ch1 = ADS1299_read_registers(5, 1);
