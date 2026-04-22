@@ -160,7 +160,7 @@ int main(void) {
         dds_serial_data_tx(freq_dword);
         wait_us(1000);
         DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
-        wait_us(10000);
+        wait_us(500);
         DL_GPIO_clearPins(DDS_PORT, DDS_DDS_EN_PIN);
         DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
         wait_us(1000000);
