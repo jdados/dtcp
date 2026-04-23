@@ -2,6 +2,8 @@
 
 This part of the repository is dedicated to maintaining and updating a **single slideshow** that is presented weekly to our professor. Each week, the slideshow will be revised to include new content, updates, or results based on our ongoing project progress.
 
+During the tail-end of the project the dmytro_2 slideshow contains info of the contributions of both Luis and Dmytro. This slideshow also contains embedded videos which is only viewable in the pptx format.
+
 ## Weekly Process
 
 1. **Update the slideshow** with new material each week.
