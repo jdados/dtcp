@@ -16,6 +16,8 @@ const GPIO3  = GPIO.addInstance();
 const SPI    = scripting.addModule("/ti/driverlib/SPI", {}, false);
 const SPI1   = SPI.addInstance();
 const SYSCTL = scripting.addModule("/ti/driverlib/SYSCTL");
+const TIMER  = scripting.addModule("/ti/driverlib/TIMER", {}, false);
+const TIMER1 = TIMER.addInstance();
 const UART   = scripting.addModule("/ti/driverlib/UART", {}, false);
 const UART1  = UART.addInstance();
 
@@ -66,6 +68,10 @@ SPI1.misoPinConfig.$name = "ti_driverlib_gpio_GPIOPinGeneric2";
 
 SYSCTL.clockTreeEn = true;
 
+TIMER1.$name       = "TIMER_AFE";
+TIMER1.timerPeriod = "5 ms";
+TIMER1.timerClkDiv = 8;
+
 UART1.$name             = "UART_0";
 UART1.parity            = "ODD";
 UART1.enabledInterrupts = ["TX"];
@@ -97,6 +103,7 @@ SPI1.peripheral.$suggestSolution             = "SPI0";
 SPI1.peripheral.sclkPin.$suggestSolution     = "PA11";
 SPI1.peripheral.mosiPin.$suggestSolution     = "PA18";
 SPI1.peripheral.misoPin.$suggestSolution     = "PA16";
+TIMER1.peripheral.$suggestSolution           = "TIMA0";
 UART1.peripheral.$suggestSolution            = "UART0";
 UART1.peripheral.rxPin.$suggestSolution      = "PA26";
 UART1.peripheral.txPin.$suggestSolution      = "PA27";

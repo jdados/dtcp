@@ -6,13 +6,6 @@ const float LSB = 2.235e-8;
 // const float LSB = 5.364e-7;
 
 void ADS1299_init() {
-        // SPI_init();
-        // GPIO_A_RESET_PIN
-        // DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
-        // delay_cycles(40);
-        // DL_GPIO_setPins(GPIO_A_PORT, GPIO_A_RESET_PIN);
-        // delay_cycles(40);
-
         /* dummy */
         // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
         // DL_SPI_receiveData8(SPI_0_INST);
@@ -20,6 +13,7 @@ void ADS1299_init() {
         // delay_ms(150);
 
         /* Reset */
+        /* Need more delay than what is done in the function */
         // ADS1299_transmit_cmd(RESET_cmd);
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
         DL_SPI_transmitDataBlocking8(SPI0, RESET_cmd);
@@ -65,7 +59,7 @@ void ADS1299_transmit_cmd(uint8_t cmd) {
 /* Write ADS1299 register(s) */
 void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data) {
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0x40 | reg_addr);
+        DL_SPI_transmitDataBlocking8(SPI0, WRITE_REG_ADDR_OFFSET | reg_addr);
         DL_SPI_receiveData8(SPI_0_INST);
         DL_SPI_transmitDataBlocking8(SPI0, num_regs - 1);
         DL_SPI_receiveData8(SPI_0_INST);
@@ -80,7 +74,7 @@ void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data) 
 /* Read ADS1299 register(s) */
 uint8_t ADS1299_read_registers(uint8_t reg_addr, uint8_t num_regs) {
         DL_GPIO_clearPins(GPIO_A_PORT, GPIO_A_CS_PIN);
-        DL_SPI_transmitDataBlocking8(SPI0, 0x20 | reg_addr);
+        DL_SPI_transmitDataBlocking8(SPI0, READ_REG_ADDR_OFFSET | reg_addr);
         DL_SPI_receiveData8(SPI_0_INST);
         DL_SPI_transmitDataBlocking8(SPI0, num_regs - 1);
         DL_SPI_receiveData8(SPI_0_INST);
@@ -140,7 +134,8 @@ void ADS1299_start_conversions() {
 
 /* Stop the data conversions */
 void ADS1299_stop_conversions() {
-
+        ADS1299_transmit_cmd(SDATAC_cmd);
+        ADS1299_transmit_cmd(STOP_cmd);
 }
 
 void init_FIFO(FIFO_t *f) {

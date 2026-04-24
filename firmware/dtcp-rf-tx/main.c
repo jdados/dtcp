@@ -106,13 +106,13 @@ void dds_serial_data_tx(uint32_t dword){
     wait_us(DDS_WCLK_T_US);
 }
 
-#define F_OUT_DDS 25000000
+#define F_OUT_DDS 25e6
 
 volatile uint8_t id;
 volatile uint8_t config1;
 volatile uint8_t ch1;
 
-int main(void) {
+int main(void) {    
     /* Power on GPIO, initialize pins as digital outputs */
     SYSCFG_DL_init();
 
@@ -138,7 +138,7 @@ int main(void) {
     count = 0;
     sum = 0;
     for (uint8_t i = 0; i < 100; ++i) voltages[i] = 0;
-    #define PULSED_POWERING
+    #define CONSTANT_POWERING
     
     #ifdef CONSTANT_POWERING
         DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
@@ -165,6 +165,7 @@ int main(void) {
         DL_GPIO_clearPins(PA_PORT, PA_EN_PIN);
         wait_us(1000000);
         #endif
+
         // id = ADS1299_read_registers(0, 1);
         // config1 = ADS1299_read_registers(1, 1);
         // ch1 = ADS1299_read_registers(5, 1);
@@ -200,10 +201,10 @@ void GPIOA_IRQHandler(void) {
             // voltages[count] = voltage;
             // count = (count + 1) % 100;
 
-            // if (voltage > 1.0f) {
-                    /* Timer ? */
-            //     delay_ms(55);
-            // }
+            if (voltage > 15.0f) {
+                DL_GPIO_togglePins(GPIOA, GPIO_A_RED_4_PIN);
+                // DL_TimerG_startCounter(TIMER_AFE_INST);
+            }
             
             UART_transmit_voltage_binary(voltage);
 
@@ -239,6 +240,15 @@ void UART_0_INST_IRQHandler(void) {
             break;
         }
             
+        default:
+            break;
+    }
+}
+
+void TIMER_AFE_INST_IRQHandler(void) {
+    switch (DL_TimerG_getPendingInterrupt(TIMER_AFE_INST)) {
+        case DL_TIMER_EVENT_ZERO_EVENT:
+            break;
         default:
             break;
     }

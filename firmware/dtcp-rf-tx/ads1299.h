@@ -46,12 +46,24 @@ typedef struct FIFO_t {
 
 /* Bitmasks */
 
-#define PGA_GAIN_24 (uint8_t)0b01100000
-#define PGA_GAIN_1 (uint8_t)0b00000000
-#define NORMAL_ELECTRODE_INPUT (uint8_t)0b00000000
-#define TEST_SIGNAL_INPUT (uint8_t)0b00000101
+/* CONFIG1 */
+#define MULTIPLE_READBACK_MODE (uint8_t)0b11010000
+#define SAMPLING_RATE_8k (uint8_t)0b10010001
+#define SAMPLING_RATE_1k (uint8_t)0b10010100
 
-// void SPI_init(void);
+/* CONFIG3 (Bias) */
+
+/* Bias driver registers */
+
+
+/* CHnSET */
+#define POWER_DOWN (uint8_t)0b10000000
+#define PGA_GAIN_24 (uint8_t)0b01100000
+#define PGA_GAIN_1 (uint8_t)0x00
+#define NORMAL_ELECTRODE_INPUT (uint8_t)0x00
+#define TEST_SIGNAL_INPUT (uint8_t)0x05
+#define SHORTED_INPUT (uint8_t)0x01
+
 void ADS1299_init(void);
 void ADS1299_transmit_cmd(uint8_t cmd);
 void ADS1299_write_registers(uint8_t reg_addr, uint8_t num_regs, uint8_t *data);
