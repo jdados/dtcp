@@ -30,7 +30,7 @@ void ADS1299_init() {
 
         /* Configure Registers */
         /* Config 1, Config 2, Config 3, LOFF (not used), CH1-CH4 */
-        uint8_t config_data[] = {0b11010001, 0b11010000, 0b11111100, \
+        uint8_t config_data[] = {0b11010001, 0b11010000, 0b11101100, \
         0x00, 0b01100000, 0b11100001, 0x81, 0x81};
 
         ADS1299_write_registers(1, 8, config_data);
@@ -92,6 +92,7 @@ float ADS1299_read_data_channel_1(void) {
         // DL_SPI_transmitDataBlocking8(SPI0, RDATA_cmd);
         // DL_SPI_receiveData8(SPI_0_INST);
         for (uint8_t i = 0; i < 15; ++i) {
+                // DL_SPI_transmitDataBlocking8(SPI0, 0x00);
                 DL_SPI_transmitDataBlocking8(SPI0, 0x00);
                 data[i] = DL_SPI_receiveData8(SPI_0_INST);
         }

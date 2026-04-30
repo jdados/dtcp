@@ -10,7 +10,6 @@ volatile float voltages[100];
 volatile float sum;
 uint8_t count;
 
-
 /* Between AFE and UART */
 FIFO_t AFE_FIFO;
 
@@ -108,9 +107,9 @@ void dds_serial_data_tx(uint32_t dword){
 
 #define F_OUT_DDS 25e6
 
-volatile uint8_t id;
-volatile uint8_t config1;
-volatile uint8_t ch1;
+// volatile uint8_t id;
+// volatile uint8_t config1;
+// volatile uint8_t ch1;
 
 int main(void) {    
     /* Power on GPIO, initialize pins as digital outputs */
@@ -138,7 +137,7 @@ int main(void) {
     count = 0;
     sum = 0;
     for (uint8_t i = 0; i < 100; ++i) voltages[i] = 0;
-    #define CONSTANT_POWERING
+    // #define PULSED_POWERING
     
     #ifdef CONSTANT_POWERING
         DL_GPIO_setPins(PA_PORT, PA_EN_PIN);
@@ -195,13 +194,13 @@ void GPIOA_IRQHandler(void) {
     switch (DL_GPIO_getPendingInterrupt(GPIOA)) {
         case (DL_GPIO_IIDX_DIO6):
             voltage = ADS1299_read_data_channel_1();
-            write_FIFO(&AFE_FIFO, voltage);
+            //write_FIFO(&AFE_FIFO, voltage);
             // DL_UART_Main_enableInterrupt(UART_0_INST, DL_UART_MAIN_INTERRUPT_TX);
 
             // voltages[count] = voltage;
             // count = (count + 1) % 100;
 
-            if (voltage > 15.0f) {
+            if (fabs(voltage) > 15.0f) {
                 DL_GPIO_togglePins(GPIOA, GPIO_A_RED_4_PIN);
                 // DL_TimerG_startCounter(TIMER_AFE_INST);
             }
